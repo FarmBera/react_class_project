@@ -1,14 +1,13 @@
 # TODO
 
 - [ ] 페이지 기본 틀 제작
-  - [ ] Main
-  - [ ] Register
-  - [ ] Login
-  - [ ] Support
-  - [X] Foot
-  - [X] Header
-    - [ ] 검색 아이콘 삽입
-- [ ]
+  - [ ] foot.js
+  - [ ] head.js
+    - [ ] 검색 아이콘
+  - [ ] login.js
+  - [ ] main.js
+  - [ ] register.js
+  - [ ] support.js
 
 ## 페이지 구성
 
@@ -35,8 +34,6 @@
 - [ ] 장바구니 담기 기능 구현 (로그인 완료 시)
 - [ ] 구매 완료 시, 장바구니 초기화
 - [ ] [보류] 검색 기능 구현
-
-
 
 ## Issue
 
