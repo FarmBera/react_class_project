@@ -1,3 +1,13 @@
+.COLOR_SAMPLE {
+  color: #11151a;
+  color: #32d3ff;
+  color: #8c8cff;
+}
+
+
+
+
+
 body {
   background-color: #11151a;
   color: #fff;
@@ -11,6 +21,19 @@ a:hover {
   /* color: yellow; */
   font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* .App {
   text-align: center;
 }
