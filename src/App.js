@@ -1,20 +1,22 @@
 import "./App.css";
-import Foot from "./js/foot";
 import Head from "./js/head";
-import Login from "./js/login";
 import Main from "./js/main";
-import Register from "./js/register";
+import Foot from "./js/foot";
+
 import Support from "./js/support";
+import Login from "./js/login";
+import Register from "./js/register";
 
 function App() {
   return (
     <div className="App">
-      <Head /><hr/>
-      <Main /><hr/>
-      {/* <Register /><hr/> */}
-      {/* <Login /><hr/> */}
-      {/* <Support /><hr/> */}
-      {/* <Foot /><hr/> */}
+      <Head />
+      <hr />
+      <div className="">
+        <Main />
+      </div>
+      <hr />
+      <Foot />
     </div>
   );
 }

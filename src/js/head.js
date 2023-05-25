@@ -7,26 +7,26 @@ function Head() {
     <div className="Head">
       <h1>header Area</h1>
       <header>
-        <ul>
+        <ul className="">
           <li className="">
-            <img src="/img/logo.png" alt="Company Logo" 
-            width="30px" 
-            />
+            <img src="/img/logo.png" alt="Company Logo" width="30px" />
           </li>
           <li className="">
-            <a href="#">Home</a>
+            <a href="#">Daily Note</a>
           </li>
           <li className="">
-            <a href="#">Category</a>
+            <a href="#">ToDo</a>
           </li>
           <li className="">
-            <a href="#">Shop</a>
+            <a href="#">D-Day</a>
           </li>
           <li className="">
             <a href="#">My Page</a>
           </li>
-          <input type="text" placeholder="Search..." />
-          <img src="search_ico" alt="search Icon" />
+          {/* <li className="">
+            <input type="text" placeholder="Search..." />
+            <img src="search_ico" alt="search Icon" />
+          </li> */}
           <li className="">
             <a href="#">LogIn</a>
           </li>

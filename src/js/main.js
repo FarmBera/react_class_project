@@ -1,11 +1,21 @@
-import "../css/main.css";
+import "../css/main.css"; // CSS import
 
-function Main() {
+import Topclock from "./topclock";
+import Todo from "./todo";
+import Diary from "./diary";
+import Dday from "./dday";
+
+
+function App() {
   return (
-    <div className="Main">
-      <h1>Main Page</h1>
+    <div className="App">
+      <Topclock />
+      <hr></hr>
+      <Diary />
+      <Todo />
+      <Dday />
     </div>
-  )
+  );
 }
 
-export default Main;
+export default App;

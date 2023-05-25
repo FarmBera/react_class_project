@@ -4,10 +4,15 @@ import "../css/foot.css";
 function Foot() {
   return (
     <div className="Foot">
-      <h1>Foot Page</h1>
+      <h1>Footer Page</h1>
       <ul>
         <li>
-          <img src="../img/logo512.png" alt="Company Logo" width="30px" height="30px" />
+          <img
+            src="../img/logo512.png"
+            alt="Company Logo"
+            width="30px"
+            height="30px"
+          />
           &nbsp; REACT Company
         </li>
       </ul>
