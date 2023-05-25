@@ -5,11 +5,13 @@ import "../css/head.css";
 function Head() {
   return (
     <div className="Head">
+      <h1>header Area</h1>
       <header>
-        <h1>header Area</h1>
         <ul>
           <li className="">
-            <img src="/img/logo.png" alt="Company Logo" />
+            <img src="/img/logo.png" alt="Company Logo" 
+            width="30px" 
+            />
           </li>
           <li className="">
             <a href="#">Home</a>
