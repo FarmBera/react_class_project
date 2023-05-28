@@ -5,7 +5,6 @@ import Todo from "./todo";
 import Diary from "./diary";
 import Dday from "./dday";
 
-
 function App() {
   return (
     <div className="App">
