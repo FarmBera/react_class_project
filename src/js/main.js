@@ -5,9 +5,9 @@ import Todo from "./todo";
 import Diary from "./diary";
 import Dday from "./dday";
 
-function App() {
+function MainTemp() {
   return (
-    <div className="App">
+    <div className="MainTemp">
       <Topclock />
       <hr></hr>
       <Diary />
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainTemp;

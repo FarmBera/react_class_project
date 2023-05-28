@@ -1,6 +1,7 @@
 import "../css/main.css";
 
-import { Component, useState, useEffect, useMemo, useCallback } from "react";
+import { useState } from "react";
+import { Component, useEffect, useMemo, useCallback } from "react";
 
 import Clock from "react-live-clock";
 // import Date from "react-live-clock"; // ERROR
