@@ -1,5 +1,5 @@
-import "../css/todo.css";
-import { useState } from "react";
+import '../css/todo.css';
+import { useState } from 'react';
 
 // function Header(props) {
 //   // console.log("props", props.title);
@@ -27,7 +27,7 @@ function Nav(props) {
       <li key={t.id}>
         <a
           id={t.id}
-          href={"/read/" + t.id}
+          href={'/read/' + t.id}
           onClick={event => {
             event.preventDefault();
             props.onChangeMode(Number(event.target.id));
@@ -62,7 +62,7 @@ function Create(props) {
           event.preventDefault();
           const title = event.target.title.value;
           const body = event.target.body.value;
-          if (title !== "" || body !== "") {
+          if (title !== '' || body !== '') {
             props.onCreate(title, body);
           }
         }}>
@@ -122,19 +122,19 @@ function Update(props) {
 }
 
 function Todo() {
-  const [mode, setMode] = useState("none");
+  const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
   const [topics, setTopics] = useState([
-    { id: 1, title: "HTML", body: "Study html ..." },
-    { id: 2, title: "CSS", body: "Study css ..." },
-    { id: 3, title: "JavaScript", body: "Study javascript ..." },
+    { id: 1, title: 'HTML', body: 'Study html ...' },
+    { id: 2, title: 'CSS', body: 'Study css ...' },
+    { id: 3, title: 'JavaScript', body: 'Study javascript ...' },
   ]);
   let content = null;
   let contextControl = null;
-  if (mode === "none") {
+  if (mode === 'none') {
     content = null;
-  } else if (mode === "READ") {
+  } else if (mode === 'read') {
     let title,
       body = null;
     for (let i = 0; i < topics.length; i++) {
@@ -148,10 +148,10 @@ function Todo() {
     contextControl = (
       <>
         <button
-          href={"/update/" + id}
+          href={'/update/' + id}
           onClick={event => {
             event.preventDefault();
-            setMode("UPDATE");
+            setMode('UPDATE');
           }}>
           Update
         </button>
@@ -164,13 +164,13 @@ function Todo() {
               }
             }
             setTopics(newTopics);
-            setMode("WELCOME");
+            setMode('WELCOME');
           }}>
           Delete
         </button>
       </>
     );
-  } else if (mode === "CREATE") {
+  } else if (mode === 'CREATE') {
     content = (
       <Create
         onCreate={(_title, _body) => {
@@ -178,12 +178,12 @@ function Todo() {
           const newTopics = [...topics];
           newTopics.push(newTopic);
           setTopics(newTopics);
-          setMode("READ");
+          setMode('read');
           setId(nextId);
           setNextId(nextId + 1);
         }}></Create>
     );
-  } else if (mode === "UPDATE") {
+  } else if (mode === 'UPDATE') {
     let title,
       body = null;
     for (let i = 0; i < topics.length; i++) {
@@ -208,7 +208,7 @@ function Todo() {
             }
           }
           setTopics(newTopics);
-          setMode("READ");
+          setMode('read');
         }}></Update>
     );
   }
@@ -219,7 +219,7 @@ function Todo() {
       <button
         onClick={event => {
           event.preventDefault();
-          setMode("none");
+          setMode('none');
         }}>
         Close
       </button>
@@ -227,7 +227,7 @@ function Todo() {
         href="/create"
         onClick={event => {
           event.preventDefault();
-          setMode("CREATE");
+          setMode('CREATE');
         }}>
         Create
       </button>
@@ -237,7 +237,7 @@ function Todo() {
       <Nav
         topics={topics}
         onChangeMode={_id => {
-          setMode("READ");
+          setMode('read');
           setId(_id);
         }}></Nav>
     </div>

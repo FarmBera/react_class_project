@@ -1,19 +1,19 @@
-import "./App.css";
+import './App.css';
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Head from "./js/head";
-import Main from "./js/main";
-import Foot from "./js/foot";
+import Head from './js/head';
+import Main from './js/main';
+import Foot from './js/foot';
 
-import Topclock from "./js/topclock";
-import Todo from "./js/todo";
-import Diary from "./js/diary";
-import Dday from "./js/dday";
+import Topclock from './js/topclock';
+import Todo from './js/todo';
+import Diary from './js/diary';
+import Dday from './js/dday';
 
-import Support from "./js/support";
-import Login from "./js/login";
-import Register from "./js/register";
+import Support from './js/support';
+import Login from './js/login';
+import Register from './js/register';
 
 function Temp() {
   return (
@@ -38,7 +38,8 @@ function App() {
   return (
     <div className="App">
       {/* <Temp /> */}
-      <Todo />
+      {/* <Todo /> */}
+      <Dday />
     </div>
   );
 }
