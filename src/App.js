@@ -15,26 +15,14 @@ import Support from "./js/support";
 import Login from "./js/login";
 import Register from "./js/register";
 
-function Home() {
-  return (
-    <div className="App">
-      <Topclock />
-      <hr></hr>
-      <Diary />
-      <Todo />
-      <Dday />
-    </div>
-  );
-}
-
-function App() {
+function Temp() {
   return (
     <div className="App">
       <Head />
       <hr />
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<Home />}></Route>
+          <Route path="/" element={<Main />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
           <Route path="/todo" element={<Todo />}></Route>
           <Route path="/dday" element={<Dday />}></Route>
@@ -42,6 +30,15 @@ function App() {
       </BrowserRouter>
       <hr />
       <Foot />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      {/* <Temp /> */}
+      <Todo />
     </div>
   );
 }

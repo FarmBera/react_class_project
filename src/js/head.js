@@ -12,16 +12,16 @@ function Head() {
             <img src="/img/logo.png" alt="Company Logo" width="30px" />
           </li>
           <li className="">
-            <a href="#">Daily Note</a>
+            <a href="/diary">Daily Note</a>
           </li>
           <li className="">
-            <a href="#">ToDo</a>
+            <a href="/todo">ToDo</a>
           </li>
           <li className="">
-            <a href="#">D-Day</a>
+            <a href="/dday">D-Day</a>
           </li>
           <li className="">
-            <a href="#">My Page</a>
+            <a href="#">LogIn</a>
           </li>
           {/* <li className="">
             <input type="text" placeholder="Search..." />
