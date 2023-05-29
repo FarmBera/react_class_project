@@ -20,7 +20,7 @@ function Inputs(props) {
           const body = event.target.inputBody.value;
           const date = event.target.inputDate.value;
           if (title !== '' && body !== '' && date !== '') {
-            console.log(`${title}, ${body}, ${date}`);
+            // console.log(`${title}, ${body}, ${date}`);
             props.onCreate(title, body, date);
           } else {
             alert('모든 항목을 입력하세요!');
@@ -28,10 +28,20 @@ function Inputs(props) {
             return;
           }
         }}>
-        <input id="inputTitle" type="text" placeholder="제목" />
+        <input id="inputTitle" type="text" placeholder="제목" value="test" />
+        <input
+          id="inputBody"
+          type="text"
+          placeholder="추가 내용"
+          value="12345678"
+        />
+        <input id="inputDate" type="date" value="2023-05-06" />
+        <input id="inputSubmit" type="submit" value="추가!" />
+
+        {/* <input id="inputTitle" type="text" placeholder="제목" />
         <input id="inputBody" type="text" placeholder="추가 내용" />
         <input id="inputDate" type="date" />
-        <input id="inputSubmit" type="submit" value="추가!" />
+        <input id="inputSubmit" type="submit" value="추가!" /> */}
         {/* <button type="button" id="date" onClick={event => {
             console.log('Clicked!');
           }}>ADD Item</button> */}
@@ -96,36 +106,14 @@ function Dday(props) {
     },
   ]);
 
-  const detailDate = inputDate => {
-    const milliSeconds = new Date() - inputDate;
-    const seconds = milliSeconds / 1000;
-    if (seconds < 60) return `방금 전`;
-    const minutes = seconds / 60;
-    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-    const hours = minutes / 60;
-    if (hours < 24) return `${Math.floor(hours)}시간 전`;
-    const days = hours / 24;
-    if (days < 7) return `${Math.floor(days)}일 전`;
-    const weeks = days / 7;
-    if (weeks < 5) return `${Math.floor(weeks)}주 전`;
-    const months = days / 30;
-    if (months < 12) return `${Math.floor(months)}개월 전`;
-    const years = days / 365;
-    return `${Math.floor(years)}년 전`;
-  };
-
-  const nowDate = detailDate(new Date());
-
-  // const [listid, setListid] = useState('0');
-  // const [list, setList] = useState([
-  //   { id: 1, title: 'title1', body: 'body1', date_current: '' },
-  //   { id: 2, title: 'title2', body: 'body1', date_current: '' },
-  // ]);
+  /////////////////////////////
+  /////////////////////////////
+  /////////////////////////////
 
   let content = null;
 
   if (mode === 'none') {
-    console.log(`mode: ${mode}`);
+    // console.log(`mode: ${mode}`);
   }
   // else if (mode === 'read') {
   //   // let title,
@@ -166,8 +154,6 @@ function Dday(props) {
   //       date_finish={date_finish}></Lists>
   //   );
   // }
-  else if (mode === 'create') {
-  }
 
   return (
     <div>
@@ -177,13 +163,36 @@ function Dday(props) {
       </p>
       <Inputs
         onCreate={(inputTitle, inputBody, inputDate) => {
+          /** 두 날짜의 차이 구하기 */
+          // const getDayDiff = indate => {
+          //   const date1 = new Date();
+          //   const date2 = new Date(indate);
+          //   const DateDiff = date1.getTime() - date2.getTime();
+          //   const result = Math.floor(
+          //     Math.abs(DateDiff / (1000 * 60 * 60 * 24)),
+          //   );
+          //   console.log(result);
+          //   return result;
+          //   // console.log(getDayDiff('2021-05-01', '2021-09-01'));
+          //   // 4
+          // };
+
+          const date1 = new Date();
+          const date2 = new Date(inputDate);
+          const DateDiff = date1.getTime() - date2.getTime();
+          let conDDay = Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24)));
+          // conDDay = JSON.stringify(conDDay);
+          console.log(conDDay);
+
           const newTopic = {
             id: nextId,
             title: inputTitle,
             body: inputBody,
-            inputDate: inputDate,
+            date_current: inputDate,
+            // date_finish: conDate,
+            date_finish: JSON.stringify(conDDay),
           };
-          console.log(inputDate);
+          // 추가하기
           const newTopics = [...topics];
           newTopics.push(newTopic);
           setTopics(newTopics);
@@ -194,7 +203,7 @@ function Dday(props) {
       <Nav
         topics={topics}
         onChangeMode={_id => {
-          setMode('read');
+          // setMode('read');
           setId(_id);
         }}></Nav>
       <div className="body_list">
