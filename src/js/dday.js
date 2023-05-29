@@ -71,7 +71,7 @@ function Nav(props) {
       <li key={t.id}>
         <hr />
         <span>{t.date_current}</span> &nbsp;
-        <span>{t.date_finish}</span> &nbsp;
+        <span>D-{t.date_finish}</span> &nbsp;
         <span>{t.title}</span> &nbsp;
         <span>{t.body}</span>
         <hr />
@@ -92,17 +92,10 @@ function Dday(props) {
   const [topics, setTopics] = useState([
     {
       id: 1,
-      title: 'title1',
-      body: 'body1',
       date_current: 'DATE-CURRENT 1',
       date_finish: 'DATE_FINISH 1',
-    },
-    {
-      id: 2,
-      title: 'title2',
-      body: 'body2',
-      date_current: 'DATE-CURRENT 2',
-      date_finish: 'DATE_FINISH 2',
+      title: 'title1',
+      body: 'body1',
     },
   ]);
 
@@ -163,34 +156,24 @@ function Dday(props) {
       </p>
       <Inputs
         onCreate={(inputTitle, inputBody, inputDate) => {
-          /** 두 날짜의 차이 구하기 */
-          // const getDayDiff = indate => {
-          //   const date1 = new Date();
-          //   const date2 = new Date(indate);
-          //   const DateDiff = date1.getTime() - date2.getTime();
-          //   const result = Math.floor(
-          //     Math.abs(DateDiff / (1000 * 60 * 60 * 24)),
-          //   );
-          //   console.log(result);
-          //   return result;
-          //   // console.log(getDayDiff('2021-05-01', '2021-09-01'));
-          //   // 4
-          // };
-
+          // 날짜 변환
           const date1 = new Date();
           const date2 = new Date(inputDate);
+          // 날짜 계산
           const DateDiff = date1.getTime() - date2.getTime();
-          let conDDay = Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24)));
-          // conDDay = JSON.stringify(conDDay);
-          console.log(conDDay);
-
+          // 날짜 문자열로 변환
+          const conDDay = JSON.stringify(
+            Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24))),
+          );
+          // console.log(conDDay);
+          // 객체 생성
           const newTopic = {
             id: nextId,
             title: inputTitle,
             body: inputBody,
             date_current: inputDate,
             // date_finish: conDate,
-            date_finish: JSON.stringify(conDDay),
+            date_finish: conDDay,
           };
           // 추가하기
           const newTopics = [...topics];
