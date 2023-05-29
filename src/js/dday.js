@@ -92,8 +92,8 @@ function Dday(props) {
   const [topics, setTopics] = useState([
     {
       id: 1,
-      date_current: 'DATE-CURRENT 1',
-      date_finish: 'DATE_FINISH 1',
+      date_current: 'DATE-CURRENT',
+      date_finish: 'Day',
       title: 'title1',
       body: 'body1',
     },
@@ -104,6 +104,7 @@ function Dday(props) {
   /////////////////////////////
 
   let content = null;
+  let contextControl = null;
 
   if (mode === 'none') {
     // console.log(`mode: ${mode}`);
@@ -147,6 +148,33 @@ function Dday(props) {
   //       date_finish={date_finish}></Lists>
   //   );
   // }
+  else if (mode === 'read') {
+    contextControl = (
+      <>
+        <button
+          href={'/update/' + id}
+          onClick={event => {
+            event.preventDefault();
+            setMode('UPDATE');
+          }}>
+          Update
+        </button>
+        <button
+          onClick={() => {
+            const newTopics = [];
+            for (let i = 0; i < topics.length; i++) {
+              if (topics[i].id !== id) {
+                newTopics.push(topics[i]);
+              }
+            }
+            setTopics(newTopics);
+            setMode('none');
+          }}>
+          Delete
+        </button>
+      </>
+    );
+  }
 
   return (
     <div>
@@ -154,6 +182,7 @@ function Dday(props) {
       <p>
         Today is "<Clock format="MM/DD/YYYY HH:mm" ticking="true"></Clock>"
       </p>
+      {contextControl}
       <Inputs
         onCreate={(inputTitle, inputBody, inputDate) => {
           // 날짜 변환
@@ -175,11 +204,11 @@ function Dday(props) {
             // date_finish: conDate,
             date_finish: conDDay,
           };
-          // 추가하기
+          /** 추가하기 */
           const newTopics = [...topics];
           newTopics.push(newTopic);
           setTopics(newTopics);
-          setMode('read');
+          // setMode('read');
           setId(nextId);
           setNextId(nextId + 1);
         }}></Inputs>
