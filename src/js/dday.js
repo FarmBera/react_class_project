@@ -53,43 +53,69 @@ function Lists(props) {
   return (
     <div>
       {props.date_current}
-      <li>{props.title}</li>
+      <br />
       {props.date_final}
+      <br />
+      {props.title}
+      <br />
+      {props.body}
     </div>
   );
 }
 
 function Dday(props) {
-  const Date = null;
   const [mode, setMode] = useState('none');
-  const [list, setList] = useState([
-    { id: 1, title: 'title1', date: '' },
-    { id: 2, title: 'title2', date: '' },
+  const [id, setId] = useState(null);
+  const [nextId, setNextId] = useState('0');
+  const [topics, setTopics] = useState([
+    { id: 1, title: 'title1', body: 'body1', date_current: '' },
+    { id: 2, title: 'title2', body: 'body1', date_current: '' },
   ]);
+
+  // const [listid, setListid] = useState('0');
+  // const [list, setList] = useState([
+  //   { id: 1, title: 'title1', body: 'body1', date_current: '' },
+  //   { id: 2, title: 'title2', body: 'body1', date_current: '' },
+  // ]);
+
   let content = null;
-  let date_current; // 현재 날짜
-  let date_final; // 설정 날짜
-  let title; // 제목
+  let visibleContent = null;
 
   if (mode === 'none') {
   } else if (mode === 'read') {
-    let title;
-    let body = null;
-    for (let i = 0; i < list.length; i++) {
-      // if (list[i].id === id) {
-      title = list[i].title;
-      body = list[i].body;
-      // }
+    let title,
+      body = null;
+    for (let i = 0; i < topics.length; i++) {
+      // console.log(topics[i].id, id);
+      if (topics[i].id === id) {
+        title = topics[i].title;
+        body = topics[i].body;
+      }
     }
+    content = <Lists title={title} body={body}></Lists>;
+    // let title,
+    //   body = null,
+    //   date_current = null,
+    //   date_final = null; // 계산한 날짜 삽입할 것
+
+    // for (let i = 0; i < list.length; i++) {
+    //   if (list[i].id === listid) {
+    //     title = list[i].title;
+    //     body = list[i].body;
+    //     date_current = list[i].date;
+    //     date_final = null; // 계산한 날짜 삽입할 것
+    //   }
+    // }
+    // visibleContent = (
+    //   <Lists
+    //     title={title}
+    //     body={body}
+    //     date_current={date_current}
+    //     date_final={date_final}></Lists>
+    // );
   } else if (mode === 'create') {
   }
 
-  content = (
-    <Lists
-      date_current={date_current}
-      date_final={date_final}
-      title={title}></Lists>
-  );
   return (
     <div>
       <h2>Dday Area</h2>
@@ -98,8 +124,30 @@ function Dday(props) {
       </p>
       <Inputs
         onCreate={(inputTitle, inputBody, inputDate) => {
-          console.log('onCreate!');
+          const newTopic = {
+            id: nextId,
+            title: inputTitle,
+            body: inputBody,
+            inputDate: inputDate,
+          };
+          const newTopics = [...topics];
+          newTopics.push(newTopic);
+          setTopics(newTopics);
+          setMode('read');
+          setId(nextId);
+          setNextId(nextId + 1);
         }}></Inputs>
+      {/* <Inputs
+        onCreate={(inputTitle, inputBody, inputDate) => {
+          console.log('onCreate!');
+          const newItem = { id: listid, title: inputTitle, body: inputBody };
+          const newItems = [...newItem];
+          newItems.push(newItem);
+          setList(newItems);
+          setMode('read');
+          setListid(listid);
+          setListid(listid + 1);
+        }}></Inputs> */}
       <div className="body_list">
         <ul>{content}</ul>
       </div>

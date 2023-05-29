@@ -15,7 +15,7 @@ import Support from './js/support';
 import Login from './js/login';
 import Register from './js/register';
 
-function Temp() {
+function Final() {
   return (
     <div className="App">
       <Head />
@@ -33,13 +33,28 @@ function Temp() {
     </div>
   );
 }
+function Temp() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/diary" element={<Diary />}></Route>
+          <Route path="/todo" element={<Todo />}></Route>
+          <Route path="/dday" element={<Dday />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      {/* <Temp /> */}
+      {/* <Final /> */}
+      <Temp />
       {/* <Todo /> */}
-      <Dday />
+      {/* <Dday /> */}
     </div>
   );
 }
