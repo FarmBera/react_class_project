@@ -4,11 +4,10 @@ import { useState } from 'react';
 // import { useEffect } from "react";
 // import { useMemo } from "react";
 // import { useCallback } from "react";
-import { Component } from 'react';
+// import { Component } from 'react';
 // import { Component, useState, useEffect, useMemo, useCallback } from "react";
 
 import Clock from 'react-live-clock';
-import Ddate from 'react-live-clock';
 
 function Inputs(props) {
   return (
@@ -52,14 +51,44 @@ function Inputs(props) {
 function Lists(props) {
   return (
     <div>
-      {props.date_current}
-      <br />
-      {props.date_final}
-      <br />
-      {props.title}
-      <br />
-      {props.body}
+      <hr />
+      <span>{props.date_current}</span> &nbsp;
+      <span>{props.date_finish}</span> &nbsp;
+      <span>{props.title}</span> &nbsp;
+      <span>{props.body}</span>
+      <hr />
     </div>
+  );
+}
+
+function Nav(props) {
+  const lis = [];
+  for (let i = 0; i < props.topics.length; i++) {
+    let t = props.topics[i];
+    lis.push(
+      <li key={t.id}>
+        <hr />
+        <span>{t.date_current}</span> &nbsp;
+        <span>{t.date_finish}</span> &nbsp;
+        <span>{t.title}</span> &nbsp;
+        <span>{t.body}</span>
+        <hr />
+        {/* <a
+          id={t.id}
+          href={'/read/' + t.id}
+          onClick={event => {
+            event.preventDefault();
+            props.onChangeMode(Number(event.target.id));
+          }}>
+          {t.title}
+        </a> */}
+      </li>,
+    );
+  }
+  return (
+    <nav>
+      <ul>{lis}</ul>
+    </nav>
   );
 }
 
@@ -68,8 +97,20 @@ function Dday(props) {
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState('0');
   const [topics, setTopics] = useState([
-    { id: 1, title: 'title1', body: 'body1', date_current: '' },
-    { id: 2, title: 'title2', body: 'body1', date_current: '' },
+    {
+      id: 1,
+      title: 'title1',
+      body: 'body1',
+      date_current: '',
+      date_finish: '',
+    },
+    {
+      id: 2,
+      title: 'title2',
+      body: 'body2',
+      date_current: '',
+      date_finish: '',
+    },
   ]);
 
   // const [listid, setListid] = useState('0');
@@ -82,37 +123,46 @@ function Dday(props) {
   let visibleContent = null;
 
   if (mode === 'none') {
+    console.log(`mode: ${mode}`);
   } else if (mode === 'read') {
+    // let title,
+    //   body = null;
+    // for (let i = 0; i < topics.length; i++) {
+    //   // console.log(topics[i].id, id);
+    //   if (topics[i].id === id) {
+    //     title = topics[i].title;
+    //     body = topics[i].body;
+    //   }
+    // }
+    // content = <Lists title={title} body={body}></Lists>;
+
     let title,
-      body = null;
+      body = null,
+      date_current = null,
+      date_finish = null; // 계산한 날짜 삽입할 것
+
     for (let i = 0; i < topics.length; i++) {
-      // console.log(topics[i].id, id);
       if (topics[i].id === id) {
         title = topics[i].title;
         body = topics[i].body;
+        // date_current = topics[i].date_current;
+        // date_finish = topics[i].date_finish; // 계산한 날짜 삽입할 것
+
+        date_current = 'DATE_CURRENT'; // 계산한 날짜 삽입할 것
+        date_finish = 'DATE_FINISH'; // 계산한 날짜 삽입할 것
+
+        console.log(`date_current: ${date_current}`);
+        console.log(`date_finish: ${date_finish}`);
+        <Lists></Lists>;
       }
     }
-    content = <Lists title={title} body={body}></Lists>;
-    // let title,
-    //   body = null,
-    //   date_current = null,
-    //   date_final = null; // 계산한 날짜 삽입할 것
-
-    // for (let i = 0; i < list.length; i++) {
-    //   if (list[i].id === listid) {
-    //     title = list[i].title;
-    //     body = list[i].body;
-    //     date_current = list[i].date;
-    //     date_final = null; // 계산한 날짜 삽입할 것
-    //   }
-    // }
-    // visibleContent = (
-    //   <Lists
-    //     title={title}
-    //     body={body}
-    //     date_current={date_current}
-    //     date_final={date_final}></Lists>
-    // );
+    content = (
+      <Lists
+        title={title}
+        body={body}
+        date_current={date_current}
+        date_finish={date_finish}></Lists>
+    );
   } else if (mode === 'create') {
   }
 
@@ -148,6 +198,12 @@ function Dday(props) {
           setListid(listid);
           setListid(listid + 1);
         }}></Inputs> */}
+      <Nav
+        topics={topics}
+        onChangeMode={_id => {
+          setMode('read');
+          setId(_id);
+        }}></Nav>
       <div className="body_list">
         <ul>{content}</ul>
       </div>
