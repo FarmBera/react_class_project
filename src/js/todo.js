@@ -21,8 +21,8 @@ import { useState } from 'react';
 
 function Nav(props) {
   const lis = [];
-  for (let i = 0; i < props.topics.length; i++) {
-    let t = props.topics[i];
+  for (let i = 0; i < props.todos.length; i++) {
+    let t = props.todos[i];
     lis.push(
       <li key={t.id}>
         <a
@@ -39,7 +39,7 @@ function Nav(props) {
   }
   return (
     <nav>
-      <ol>{lis}</ol>
+      <ul>{lis}</ul>
     </nav>
   );
 }
@@ -125,10 +125,10 @@ function Todo() {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
-  const [topics, setTopics] = useState([
-    { id: 1, title: 'HTML', body: 'Study html ...' },
-    { id: 2, title: 'CSS', body: 'Study css ...' },
-    { id: 3, title: 'JavaScript', body: 'Study javascript ...' },
+  const [todos, setTodos] = useState([
+    { id: 1, title: 'Study HTML', body: 'Study html ...' },
+    { id: 2, title: 'Study CSS', body: 'Study css ...' },
+    { id: 3, title: 'Study JavaScript', body: 'Study javascript ...' },
   ]);
   let content = null;
   let contextControl = null;
@@ -137,11 +137,11 @@ function Todo() {
   } else if (mode === 'read') {
     let title,
       body = null;
-    for (let i = 0; i < topics.length; i++) {
-      // console.log(topics[i].id, id);
-      if (topics[i].id === id) {
-        title = topics[i].title;
-        body = topics[i].body;
+    for (let i = 0; i < todos.length; i++) {
+      // console.log(todos[i].id, id);
+      if (todos[i].id === id) {
+        title = todos[i].title;
+        body = todos[i].body;
       }
     }
     content = <Article title={title} body={body}></Article>;
@@ -158,12 +158,12 @@ function Todo() {
         <button
           onClick={() => {
             const newTopics = [];
-            for (let i = 0; i < topics.length; i++) {
-              if (topics[i].id !== id) {
-                newTopics.push(topics[i]);
+            for (let i = 0; i < todos.length; i++) {
+              if (todos[i].id !== id) {
+                newTopics.push(todos[i]);
               }
             }
-            setTopics(newTopics);
+            setTodos(newTopics);
             setMode('WELCOME');
           }}>
           Delete
@@ -175,9 +175,9 @@ function Todo() {
       <Create
         onCreate={(_title, _body) => {
           const newTopic = { id: nextId, title: _title, body: _body };
-          const newTopics = [...topics];
+          const newTopics = [...todos];
           newTopics.push(newTopic);
-          setTopics(newTopics);
+          setTodos(newTopics);
           setMode('read');
           setId(nextId);
           setNextId(nextId + 1);
@@ -186,11 +186,11 @@ function Todo() {
   } else if (mode === 'UPDATE') {
     let title,
       body = null;
-    for (let i = 0; i < topics.length; i++) {
-      // console.log(topics[i].id, id);
-      if (topics[i].id === id) {
-        title = topics[i].title;
-        body = topics[i].body;
+    for (let i = 0; i < todos.length; i++) {
+      // console.log(todos[i].id, id);
+      if (todos[i].id === id) {
+        title = todos[i].title;
+        body = todos[i].body;
       }
     }
     content = (
@@ -199,7 +199,7 @@ function Todo() {
         body={body}
         onUpdate={(title, body) => {
           // console.log(title, body);
-          const newTopics = [...topics];
+          const newTopics = [...todos];
           const updatedTopic = { id: id, title: title, body: body };
           for (let i = 0; i < newTopics.length; i++) {
             if (newTopics[i].id === id) {
@@ -207,7 +207,7 @@ function Todo() {
               break;
             }
           }
-          setTopics(newTopics);
+          setTodos(newTopics);
           setMode('read');
         }}></Update>
     );
@@ -235,7 +235,7 @@ function Todo() {
       {content}
       <h2>To Do List</h2>
       <Nav
-        topics={topics}
+        todos={todos}
         onChangeMode={_id => {
           setMode('read');
           setId(_id);
