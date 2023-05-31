@@ -70,7 +70,15 @@ function Nav(props) {
     lis.push(
       <li key={t.id}>
         <hr />
-        <span>{t.date_current}</span> &nbsp;
+        <span>
+          <a
+            onClick={() => {
+              console.log('clicked!');
+            }}>
+            {t.date_current}
+          </a>
+        </span>
+        &nbsp;
         <span>D-{t.date_finish}</span> &nbsp;
         <span>{t.title}</span> &nbsp;
         <span>{t.body}</span>
@@ -214,6 +222,9 @@ function Dday(props) {
         }}></Inputs>
       <Nav
         topics={topics}
+        onClickInfo={() => {
+          console.log('asdfasdfa');
+        }}
         onChangeMode={_id => {
           // setMode('read');
           setId(_id);
