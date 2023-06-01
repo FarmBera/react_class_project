@@ -2,18 +2,18 @@ import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Head from './js/head';
-import Main from './js/main';
-import Foot from './js/foot';
+import Head from './components/head';
+import Main from './components/main';
+import Foot from './components/foot';
 
-import Topclock from './js/topclock';
-import Todo from './js/todo';
-import Diary from './js/diary';
-import Dday from './js/dday';
+import Topclock from './components/topclock';
+import Todo from './components/todo';
+import Diary from './components/diary';
+import Dday from './components/dday';
 
-import Support from './js/support';
-import Login from './js/login';
-import Register from './js/register';
+import Support from './components/support';
+import Login from './components/login';
+import Register from './components/register';
 
 function Final() {
   return (
@@ -42,6 +42,8 @@ function Temp() {
           <Route path="/diary" element={<Diary />}></Route>
           <Route path="/todo" element={<Todo />}></Route>
           <Route path="/dday" element={<Dday />}></Route>
+
+          <Route path="/dday" element={<Support />}></Route>          
         </Routes>
       </BrowserRouter>
     </div>
@@ -51,10 +53,7 @@ function Temp() {
 function App() {
   return (
     <div className="App">
-      {/* <Final /> */}
       <Temp />
-      {/* <Todo /> */}
-      {/* <Dday /> */}
     </div>
   );
 }

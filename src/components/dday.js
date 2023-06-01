@@ -28,7 +28,7 @@ function Inputs(props) {
             return;
           }
         }}>
-        <input id="inputTitle" type="text" placeholder="제목" value="test" />
+        {/* <input id="inputTitle" type="text" placeholder="제목" value="test" />
         <input
           id="inputBody"
           type="text"
@@ -36,12 +36,12 @@ function Inputs(props) {
           value="12345678"
         />
         <input id="inputDate" type="date" value="2023-05-06" />
-        <input id="inputSubmit" type="submit" value="추가!" />
+        <input id="inputSubmit" type="submit" value="추가!" /> */}
 
-        {/* <input id="inputTitle" type="text" placeholder="제목" />
+        <input id="inputTitle" type="text" placeholder="제목" />
         <input id="inputBody" type="text" placeholder="추가 내용" />
         <input id="inputDate" type="date" />
-        <input id="inputSubmit" type="submit" value="추가!" /> */}
+        <input id="inputSubmit" type="submit" value="추가!" />
         {/* <button type="button" id="date" onClick={event => {
             console.log('Clicked!');
           }}>ADD Item</button> */}
@@ -49,19 +49,6 @@ function Inputs(props) {
     </div>
   );
 }
-
-// function Lists(props) {
-//   return (
-//     <div>
-//       <hr />
-//       <span>{props.date_current}</span> &nbsp;
-//       <span>{props.date_finish}</span> &nbsp;
-//       <span>{props.title}</span> &nbsp;
-//       <span>{props.body}</span>
-//       <hr />
-//     </div>
-//   );
-// }
 
 function Nav(props) {
   const lis = [];
@@ -72,14 +59,18 @@ function Nav(props) {
         <hr />
         <span>
           <a
-            onClick={() => {
-              console.log('clicked!');
+            id={t.id}
+            href={'/read/' + t.id}
+            onClick={event => {
+              event.preventDefault();
+              props.onChangeMode(Number(event.target.id));
             }}>
-            {t.date_current}
+            D-{t.date_finish}
           </a>
         </span>
         &nbsp;
-        <span>D-{t.date_finish}</span> &nbsp;
+        <span>{t.date_current}</span>
+        &nbsp;
         <span>{t.title}</span> &nbsp;
         <span>{t.body}</span>
         <hr />
@@ -96,12 +87,12 @@ function Nav(props) {
 function Dday(props) {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
-  const [nextId, setNextId] = useState('0');
+  let [nextId, setNextId] = useState(0);
   const [topics, setTopics] = useState([
     {
-      id: 1,
-      date_current: 'DATE-CURRENT',
-      date_finish: 'Day',
+      id: 0,
+      date_current: '2021-05-06',
+      date_finish: 'Day"',
       title: 'title1',
       body: 'body1',
     },
@@ -188,9 +179,9 @@ function Dday(props) {
     <div>
       <h2>Dday Area</h2>
       <p>
-        Today is "<Clock format="MM/DD/YYYY HH:mm" ticking="true"></Clock>"
+        Today is "<Clock format="YYYY-MM-DD " ticking="true"></Clock>"
       </p>
-      {contextControl}
+      {/* {contextControl} */}
       <Inputs
         onCreate={(inputTitle, inputBody, inputDate) => {
           // 날짜 변환
@@ -198,19 +189,27 @@ function Dday(props) {
           const date2 = new Date(inputDate);
           // 날짜 계산
           const DateDiff = date1.getTime() - date2.getTime();
+
+          // 음수 계산
+          let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
+          console.log(temp);
+          if (temp < 0) temp = `${Math.abs(temp)}`;
+          else if (temp > 0) temp = `-${temp}`;
+          else if (temp === 0) temp = `Day`;
+
           // 날짜 문자열로 변환
-          const conDDay = JSON.stringify(
-            Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24))),
-          );
-          // console.log(conDDay);
+          // temp = JSON.stringify(temp);
+          const conDDay = JSON.stringify(temp);
+          // Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24))),
+          // Math.floor(DateDiff / (1000 * 60 * 60 * 24)),
+          console.log(conDDay);
           // 객체 생성
           const newTopic = {
             id: nextId,
             title: inputTitle,
             body: inputBody,
             date_current: inputDate,
-            // date_finish: conDate,
-            date_finish: conDDay,
+            date_finish: conDDay.replace('"', ''),
           };
           /** 추가하기 */
           const newTopics = [...topics];
@@ -218,15 +217,16 @@ function Dday(props) {
           setTopics(newTopics);
           // setMode('read');
           setId(nextId);
-          setNextId(nextId + 1);
+          setNextId(nextId+1);
         }}></Inputs>
+      {contextControl}
       <Nav
         topics={topics}
         onClickInfo={() => {
           console.log('asdfasdfa');
         }}
         onChangeMode={_id => {
-          // setMode('read');
+          setMode('read');
           setId(_id);
         }}></Nav>
       <div className="body_list">

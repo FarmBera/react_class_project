@@ -1,30 +1,15 @@
 import '../css/todo.css';
 import { useState } from 'react';
-
-// function Header(props) {
-//   // console.log("props", props.title);
-//   return (
-//     <header>
-//       <h1>
-//         <a
-//           href="/"
-//           onClick={event => {
-//             event.preventDefault();
-//             props.onChangeMode();
-//           }}>
-//           {props.title}
-//         </a>
-//       </h1>
-//     </header>
-//   );
-// }
+import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 function Nav(props) {
   const lis = [];
   for (let i = 0; i < props.todos.length; i++) {
     let t = props.todos[i];
     lis.push(
-      <li key={t.id}>
+      <div key={t.id}>
+        <input type="checkbox" />
         <a
           id={t.id}
           href={'/read/' + t.id}
@@ -34,7 +19,7 @@ function Nav(props) {
           }}>
           {t.title}
         </a>
-      </li>,
+      </div>,
     );
   }
   return (
@@ -125,20 +110,40 @@ function Todo() {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
-  const [todos, setTodos] = useState([
-    { id: 1, title: 'Study HTML', body: 'Study html ...' },
-    { id: 2, title: 'Study CSS', body: 'Study css ...' },
-    { id: 3, title: 'Study JavaScript', body: 'Study javascript ...' },
-  ]);
+  // const [isEdit, setIsEdit] = useState(false);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return [
+        { id: 1, title: 'Study HTML', body: 'Study html ...' },
+        { id: 2, title: 'Study CSS', body: 'Study css ...' },
+        { id: 3, title: 'Study JavaScript', body: 'Study javascript ...' },
+      ];
+    }
+  });
+
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
+  
+  // useEffect(()=>{
+  //   const localList = localStorage.getItem('todos');
+  //   if(localList) localStorage.setItem(JSON.parse(localList)); //최초 렌더링 시 로컬스토리지에 저장된 값이 있으면 리스트에 셋한다.
+  // },[])
+
+  // console.log(todos);
+
   let content = null;
   let contextControl = null;
+
   if (mode === 'none') {
     content = null;
   } else if (mode === 'read') {
     let title,
       body = null;
     for (let i = 0; i < todos.length; i++) {
-      // console.log(todos[i].id, id);
       if (todos[i].id === id) {
         title = todos[i].title;
         body = todos[i].body;
@@ -151,7 +156,7 @@ function Todo() {
           href={'/update/' + id}
           onClick={event => {
             event.preventDefault();
-            setMode('UPDATE');
+            setMode('update');
           }}>
           Update
         </button>
@@ -159,7 +164,7 @@ function Todo() {
           onClick={() => {
             const newTopics = [];
             for (let i = 0; i < todos.length; i++) {
-              if (todos[i].id !== id) {
+              if (todos[i].id !== id || todos[i].ckb !== true) {
                 newTopics.push(todos[i]);
               }
             }
@@ -170,11 +175,11 @@ function Todo() {
         </button>
       </>
     );
-  } else if (mode === 'CREATE') {
+  } else if (mode === 'create') {
     content = (
       <Create
-        onCreate={(_title, _body) => {
-          const newTopic = { id: nextId, title: _title, body: _body };
+        onCreate={(inputTitle, inputBody) => {
+          const newTopic = { id: nextId, title: inputTitle, body: inputBody };
           const newTopics = [...todos];
           newTopics.push(newTopic);
           setTodos(newTopics);
@@ -183,11 +188,10 @@ function Todo() {
           setNextId(nextId + 1);
         }}></Create>
     );
-  } else if (mode === 'UPDATE') {
+  } else if (mode === 'update') {
     let title,
       body = null;
     for (let i = 0; i < todos.length; i++) {
-      // console.log(todos[i].id, id);
       if (todos[i].id === id) {
         title = todos[i].title;
         body = todos[i].body;
@@ -197,10 +201,13 @@ function Todo() {
       <Update
         title={title}
         body={body}
-        onUpdate={(title, body) => {
-          // console.log(title, body);
+        // onClick={event => {
+        //   setIsEdit(true);
+        // }}
+        onUpdate={(inTitle, inBody) => {
+          // console.log(inTitle, inBody);
           const newTopics = [...todos];
-          const updatedTopic = { id: id, title: title, body: body };
+          const updatedTopic = { id: id, title: inTitle, body: inBody };
           for (let i = 0; i < newTopics.length; i++) {
             if (newTopics[i].id === id) {
               newTopics[i] = updatedTopic;
@@ -216,29 +223,33 @@ function Todo() {
   return (
     <div className="App">
       <h1>TODO Lists</h1>
-      <button
-        onClick={event => {
-          event.preventDefault();
-          setMode('none');
-        }}>
-        Close
-      </button>
-      <button
-        href="/create"
-        onClick={event => {
-          event.preventDefault();
-          setMode('CREATE');
-        }}>
-        Create
-      </button>
-      {contextControl}
-      {content}
+      <div className="controller">
+        <button
+          onClick={event => {
+            event.preventDefault();
+            setMode('none');
+          }}>
+          Close
+        </button>
+        <button
+          href="/create"
+          onClick={event => {
+            event.preventDefault();
+            setMode('create');
+          }}>
+          Create
+        </button>
+        {contextControl}
+      </div>
+
+      <div className="content-body">{content}</div>
+      <hr></hr>
       <h2>To Do List</h2>
       <Nav
         todos={todos}
-        onChangeMode={_id => {
+        onChangeMode={getid => {
           setMode('read');
-          setId(_id);
+          setId(getid);
         }}></Nav>
     </div>
   );
