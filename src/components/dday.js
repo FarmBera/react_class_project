@@ -107,47 +107,7 @@ function Dday(props) {
 
   if (mode === 'none') {
     // console.log(`mode: ${mode}`);
-  }
-  // else if (mode === 'read') {
-  //   // let title,
-  //   //   body = null;
-  //   // for (let i = 0; i < topics.length; i++) {
-  //   //   // console.log(topics[i].id, id);
-  //   //   if (topics[i].id === id) {
-  //   //     title = topics[i].title;
-  //   //     body = topics[i].body;
-  //   //   }
-  //   // }
-  //   // content = <Lists title={title} body={body}></Lists>;
-
-  //   let title,
-  //     body = null,
-  //     date_current = null,
-  //     date_finish = null; // 계산한 날짜 삽입할 것
-
-  //   for (let i = 0; i < topics.length; i++) {
-  //     if (topics[i].id === id) {
-  //       title = topics[i].title;
-  //       body = topics[i].body;
-  //       // date_current = topics[i].date_current;
-  //       // date_finish = topics[i].date_finish; // 계산한 날짜 삽입할 것
-  //       date_current = 'DATE_CURRENT'; // 계산한 날짜 삽입할 것
-  //       date_finish = 'DATE_FINISH'; // 계산한 날짜 삽입할 것
-
-  //       console.log(`date_current: ${date_current}`);
-  //       console.log(`date_finish: ${date_finish}`);
-  //       <Lists></Lists>;
-  //     }
-  //   }
-  //   content = (
-  //     <Lists
-  //       title={title}
-  //       body={body}
-  //       date_current={date_current}
-  //       date_finish={date_finish}></Lists>
-  //   );
-  // }
-  else if (mode === 'read') {
+  } else if (mode === 'read') {
     contextControl = (
       <>
         <button
@@ -190,7 +150,7 @@ function Dday(props) {
           // 날짜 계산
           const DateDiff = date1.getTime() - date2.getTime();
 
-          // 음수 계산
+          // 계산
           let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
           console.log(temp);
           if (temp < 0) temp = `${Math.abs(temp)}`;
@@ -217,7 +177,7 @@ function Dday(props) {
           setTopics(newTopics);
           // setMode('read');
           setId(nextId);
-          setNextId(nextId+1);
+          setNextId(nextId + 1);
         }}></Inputs>
       {contextControl}
       <Nav
@@ -229,9 +189,9 @@ function Dday(props) {
           setMode('read');
           setId(_id);
         }}></Nav>
-      <div className="body_list">
+      {/* <div className="body_list">
         <ul>{content}</ul>
-      </div>
+      </div> */}
     </div>
   );
 }

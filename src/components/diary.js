@@ -1,20 +1,6 @@
 import '../css/diary.css';
 import { useState } from 'react';
 
-function DiaryBox(props) {
-  return (
-    <div className="diary-box">
-      <div className="diary-date" id="bold-text">
-        {props.diaryDate}
-      </div>
-      <div className="diary-title">{props.diaryTitle}</div>
-      <div className="diary-text" id="basic-text">
-        {props.diaryBody}
-      </div>
-    </div>
-  );
-}
-
 function InputDiary(props) {
   return (
     <div>
@@ -27,7 +13,7 @@ function InputDiary(props) {
             date: event.target.date.value,
             body: event.target.body.value,
           };
-          props.onCreates(AGER_VAR);
+          props.onCreate(AGER_VAR);
         }}>
         <input id="title" dtype="text" placeholder="Title" />
         <input id="date" type="date" />
@@ -37,6 +23,32 @@ function InputDiary(props) {
         <input type="submit" />
       </form>
     </div>
+  );
+}
+
+function DiaryBox(props) {
+  const lis = [];
+  for (let i = 0; i < props.article.length; i++) {
+    let t = props.article[i];
+    lis.push(
+      <div>
+        <div className="diary-date">{props.diary_date}</div>
+        <div className="diary-title">{props.diary_title}</div>
+        <div className="diary-text">{props.diary_body}</div>
+      </div>,
+    );
+  }
+  return (
+    <div className="diary-box">{lis}</div>
+    // <div className="diary-box">
+    //   <div className="diary-date" id="bold-text">
+    //     {props.diary_date}
+    //   </div>
+    //   <div className="diary-title">{props.diary_title}</div>
+    //   <div className="diary-text" id="basic-text">
+    //     {props.diary_body}
+    //   </div>
+    // </div>
   );
 }
 
@@ -56,32 +68,61 @@ function Diary(props) {
   // const [diary_title, setDiary_title] = useState(null);
   // const [diary_body, setDiary_body] = useState(null);
 
-  let diary_date = Date();
-  let diary_title = 'Title';
-  let diary_body = 'Article';
+  let diaryObj = {
+    diary_date: Date(),
+    diary_title: 'Title',
+    diary_body: 'Article',
+  };
   return (
     <div>
       <h2>Diary Area</h2>
-      <InputDiary
+      {/* <InputDiary
         onCreates={AGER_VAR => {
           console.log(AGER_VAR);
         }}
-      />
+      /> */}
       {/* diary */}
       <div className="main-content">
         <div className="diary">
+          <InputDiary
+            onCreate={AGER_VAR => {
+              console.log(AGER_VAR);
+              // const date = new Date(inputDate);
+              const convDate = JSON.stringify(AGER_VAR.date);
+              console.log(AGER_VAR.title);
+              console.log(AGER_VAR.date);
+              console.log(AGER_VAR.body);
+
+              // 객체 생성
+              const newArticle = {
+                id: nextId,
+                title: AGER_VAR.title,
+                date_current: convDate,
+                body: AGER_VAR.body,
+              };
+              const newArticles = [...article];
+              newArticles.push(newArticle);
+              setArticle(newArticles);
+              setId(nextId);
+              setNextId(nextId + 1);
+            }}></InputDiary>
+
           <DiaryBox
-            diaryDate={diary_date}
-            diaryTitle={diary_title}
-            diaryBody={diary_body}></DiaryBox>
+            article={article}
+            onClickInfo={() => {
+              console.log('asdfasdfa');
+            }}
+            onChangeMode={_id => {
+              // setMode('read');
+              setId(_id);
+            }}></DiaryBox>
+
+          {/* <DiaryBox
+            diaryObj={diaryObj}></DiaryBox>
           <DiaryBox
-            diaryDate={diary_date}
-            diaryTitle={diary_title}
-            diaryBody={diary_body}></DiaryBox>
+            diaryObj={diaryObj}></DiaryBox>
           <DiaryBox
-            diaryDate={diary_date}
-            diaryTitle={diary_title}
-            diaryBody={diary_body}></DiaryBox>
+            diaryObj={diaryObj}></DiaryBox> */}
         </div>
       </div>
     </div>
