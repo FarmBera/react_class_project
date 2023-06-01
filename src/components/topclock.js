@@ -1,4 +1,4 @@
-import "../css/main.css";
+import "../css/topclock.css"
 
 // import { useState } from "react";
 // import { Component, useEffect, useMemo, useCallback } from "react";
@@ -26,7 +26,7 @@ function Topclock(props) {
               timezone={"Asia/Seoul"}
             />
           </span>
-          &nbsp;
+          {/* &nbsp; */}/
           <span className="second">
             <Clock
               id="second"
@@ -35,7 +35,7 @@ function Topclock(props) {
               timezone={"Asia/Seoul"}
             />
           </span>
-          &nbsp;
+          {/* &nbsp; */}/
           <span className="year">
             <Clock
               id="year"

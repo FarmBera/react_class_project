@@ -10,15 +10,18 @@
   padding: 20px;
 }
 
-.diary-date {
+.diary-input-date {
   font-size: 0.75rem;
+  text-align: right;
+  margin-right: 2rem;
 }
 
-.diary-title {
+.diary-input-title {
+  font-size: 2rem;
   text-align: center;
   font-weight: bold;
 }
 
-.diary-text {
+.diary-input-text {
   text-align: center;
 }

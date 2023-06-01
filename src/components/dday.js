@@ -152,7 +152,7 @@ function Dday(props) {
 
           // 계산
           let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
-          console.log(temp);
+          // console.log(temp);
           if (temp < 0) temp = `${Math.abs(temp)}`;
           else if (temp > 0) temp = `-${temp}`;
           else if (temp === 0) temp = `Day`;
@@ -162,7 +162,7 @@ function Dday(props) {
           const conDDay = JSON.stringify(temp);
           // Math.floor(Math.abs(DateDiff / (1000 * 60 * 60 * 24))),
           // Math.floor(DateDiff / (1000 * 60 * 60 * 24)),
-          console.log(conDDay);
+          // console.log(conDDay);
           // 객체 생성
           const newTopic = {
             id: nextId,

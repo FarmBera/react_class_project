@@ -53,7 +53,9 @@ function Temp() {
 function App() {
   return (
     <div className="App">
+      {/* <Head /> */}
       <Temp />
+      {/* <Foot /> */}
     </div>
   );
 }
