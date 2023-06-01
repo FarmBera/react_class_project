@@ -55,7 +55,7 @@ function DiaryBox(props) {
   );
 }
 
-function Diary(props) {
+export default function Diary(props) {
   const [id, setId] = useState(null);
   let [nextId, setNextId] = useState(1);
   const [article, setArticle] = useState([
@@ -112,5 +112,3 @@ function Diary(props) {
     </div>
   );
 }
-
-export default Diary;

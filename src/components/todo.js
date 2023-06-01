@@ -106,7 +106,7 @@ function Update(props) {
   );
 }
 
-function Todo() {
+export default function Todo() {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
@@ -127,7 +127,7 @@ function Todo() {
   // useEffect(() => {
   //   localStorage.setItem("todos", JSON.stringify(todos));
   // }, [todos]);
-  
+
   // useEffect(()=>{
   //   const localList = localStorage.getItem('todos');
   //   if(localList) localStorage.setItem(JSON.parse(localList)); //최초 렌더링 시 로컬스토리지에 저장된 값이 있으면 리스트에 셋한다.
@@ -254,5 +254,3 @@ function Todo() {
     </div>
   );
 }
-
-export default Todo;

@@ -1,8 +1,8 @@
-import "../css/head.css";
+import '../css/head.css';
 // import logo from "img/logo.png";
 // import search_ico from "img/search-icon.png";
 
-function Head() {
+export default function Head() {
   return (
     <div className="Head">
       <h1>header Area</h1>
@@ -35,5 +35,3 @@ function Head() {
     </div>
   );
 }
-
-export default Head;

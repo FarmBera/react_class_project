@@ -14,25 +14,8 @@ import Dday from './components/dday';
 import Support from './components/support';
 import Login from './components/login';
 import Register from './components/register';
+import TodoNew from './components/todo_new';
 
-function Final() {
-  return (
-    <div className="App">
-      <Head />
-      <hr />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/diary" element={<Diary />}></Route>
-          <Route path="/todo" element={<Todo />}></Route>
-          <Route path="/dday" element={<Dday />}></Route>
-        </Routes>
-      </BrowserRouter>
-      <hr />
-      <Foot />
-    </div>
-  );
-}
 function Temp() {
   return (
     <div className="App">
@@ -54,7 +37,8 @@ function App() {
   return (
     <div className="App">
       {/* <Head /> */}
-      <Temp />
+      {/* <Temp /> */}
+      <TodoNew />
       {/* <Foot /> */}
     </div>
   );

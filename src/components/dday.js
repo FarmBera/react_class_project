@@ -84,7 +84,7 @@ function Nav(props) {
   );
 }
 
-function Dday(props) {
+export default function Dday(props) {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   let [nextId, setNextId] = useState(0);
@@ -195,5 +195,3 @@ function Dday(props) {
     </div>
   );
 }
-
-export default Dday;

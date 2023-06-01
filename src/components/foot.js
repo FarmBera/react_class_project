@@ -1,7 +1,7 @@
-import "../css/foot.css";
+import '../css/foot.css';
 // import "../img/logo512.png";
 
-function Foot() {
+export default function Foot() {
   return (
     <div className="Foot">
       <h1>Footer Page</h1>
@@ -28,5 +28,3 @@ function Foot() {
     </div>
   );
 }
-
-export default Foot;
