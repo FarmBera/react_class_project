@@ -70,8 +70,7 @@ export default function TodoNew() {
           <div className="container">
             <button className="delBtn" onClick={() => DeleteContent(task)}>
               완료!
-            </button>{' '}
-            &nbsp;
+            </button>
             <span className="item body-innertext">{task.title}</span>
           </div>
         </React.Fragment>

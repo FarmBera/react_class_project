@@ -55,10 +55,10 @@ body {
   max-width: 500px;
   height: 100px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(2, 1fr);
 }
+
 .delBtn {
   margin: 20px;
   width: auto;
@@ -67,5 +67,5 @@ body {
 
 .innertext {
   text-align: left;
+  justify-content: left;
 }
-

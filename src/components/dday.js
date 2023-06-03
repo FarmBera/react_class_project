@@ -31,23 +31,10 @@ function Inputs(props) {
             return;
           }
         }}>
-        {/* <input id="inputTitle" type="text" placeholder="제목" value="test" />
-        <input
-          id="inputBody"
-          type="text"
-          placeholder="추가 내용"
-          value="12345678"
-        />
-        <input id="inputDate" type="date" value="2023-05-06" />
-        <input id="inputSubmit" type="submit" value="추가!" /> */}
-
         <input id="inputTitle" type="text" placeholder="제목" />
         <input id="inputBody" type="text" placeholder="추가 내용" />
         <input id="inputDate" type="date" />
         <input id="inputSubmit" type="submit" value="추가!" />
-        {/* <button type="button" id="date" onClick={event => {
-            console.log('Clicked!');
-          }}>ADD Item</button> */}
       </form>
     </div>
   );
@@ -96,10 +83,10 @@ export default function Dday(props) {
   const [topics, setTopics] = useState([
     {
       id: 0,
-      date_current: '2021-05-06',
-      date_finish: 'Day"',
-      title: 'title1',
-      body: 'body1',
+      date_current: 'Date sample',
+      date_finish: 'Sample"',
+      title: 'Sample Title',
+      body: 'Sample Body',
     },
   ]);
 
@@ -191,9 +178,6 @@ export default function Dday(props) {
       {contextControl}
       <Nav
         topics={topics}
-        onClickInfo={() => {
-          console.log('asdfasdfa');
-        }}
         onChangeMode={_id => {
           setMode('read');
           setId(_id);
