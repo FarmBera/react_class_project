@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
+import '../css/todo.css';
 
 export default function TodoNew() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
+  console.log(task);
+  console.log(tasks);
 
   useEffect(() => {
     if (localStorage.getItem('localTasks')) {
@@ -30,18 +35,22 @@ export default function TodoNew() {
     setTasks([]);
     localStorage.removeItem('localTasks');
   };
+
   return (
     <div className="">
       <h1 className="title">TODO List</h1>
       <div className="badge">
         You have
-        {!tasks.length
-          ? ' no tasks'
-          : tasks.length === 1
-          ? ' 1 task'
-          : tasks.length > 1
-          ? ` ${tasks.length} tasks`
-          : null}
+        <span>
+          {!tasks.length
+            ? ' no '
+            : tasks.length === 1
+            ? ' 1 '
+            : tasks.length > 1
+            ? ` ${tasks.length} `
+            : null}
+        </span>
+        tasks
       </div>
       <div className="input-area ">
         <input
@@ -58,20 +67,18 @@ export default function TodoNew() {
       </div>
       {tasks.map(task => (
         <React.Fragment key={task.id}>
-          <div className="body">
+          <div className="container">
             <button className="delBtn" onClick={() => DeleteContent(task)}>
-              Del
+              완료!
             </button>{' '}
             &nbsp;
-            <span className="innertext">{task.title}</span>
+            <span className="item body-innertext">{task.title}</span>
           </div>
         </React.Fragment>
       ))}
       {!tasks.length ? null : (
-        <div>
-          <button
-            className="clearBtn"
-            onClick={() => clearContent()}>
+        <div className="item-bottom">
+          <button className="body-clearBtn" onClick={() => clearContent()}>
             Clear
           </button>
         </div>

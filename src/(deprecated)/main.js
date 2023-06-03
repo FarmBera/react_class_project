@@ -1,9 +1,9 @@
 import '../css/main.css'; // CSS import
 
-import Topclock from './topclock';
-import Todo from './todo';
-import Diary from './diary';
-import Dday from './dday';
+import Topclock from '../components/topclock';
+import Todo from '../components/todo';
+import Diary from '../components/diary';
+import Dday from '../components/dday';
 
 export default function MainTemp() {
   return (

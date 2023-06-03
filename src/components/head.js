@@ -4,15 +4,24 @@ import '../css/head.css';
 
 export default function Head() {
   return (
-    <div className="Head">
-      <h1>header Area</h1>
-      <header>
-        <ul className="">
+    <header className="header">
+      <div class="header">
+        {/* <img src="../logo.svg" alt="Company Logo" width="30px" /> */}
+        <a href="/" class="logo">
+          React Company
+        </a>
+        <div class="header-right">
+          <a href="/diary">Diary</a>
+          <a href="/todo">TODO</a>
+          <a href="/dday">D-Day</a>
+          <a href="/support">About</a>
+          <a href="/login">LogIn</a>
+        </div>
+      </div>
+      {/* <nav>
+        <ul>
           <li className="">
-            <img src="/img/logo.png" alt="Company Logo" width="30px" />
-          </li>
-          <li className="">
-            <a href="/diary">Daily Note</a>
+            <a href="/diary">Diary</a>
           </li>
           <li className="">
             <a href="/todo">ToDo</a>
@@ -24,14 +33,11 @@ export default function Head() {
             <a href="#">LogIn</a>
           </li>
           {/* <li className="">
-            <input type="text" placeholder="Search..." />
-            <img src="search_ico" alt="search Icon" />
-          </li> */}
-          <li className="">
-            <a href="#">LogIn</a>
-          </li>
+                <input type="text" placeholder="Search..." />
+                <img src="search_ico" alt="search Icon" />
+              </li>
         </ul>
-      </header>
-    </div>
+      </nav> */}
+    </header>
   );
 }

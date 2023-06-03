@@ -11,7 +11,7 @@ export default function Topclock(props) {
   return (
     <div>
       {/* <span>{date.toLocaleTimeString()}</span> */}
-      <h2>Topclock Area</h2>
+      {/* <h2>Topclock Area</h2> */}
       <h2>Hello [Username]</h2>
       <div className="clock">
         <Clock format="HH:mm:ss" ticking={true} timezone={'Asia/Seoul'} />

@@ -1,30 +1,5 @@
 import '../css/diary.css';
-import { useState } from 'react';
-
-function InputDiary(props) {
-  return (
-    <div>
-      <h2>Write Article</h2>
-      <form
-        onSubmit={event => {
-          event.preventDefault();
-          const AGER_VAR = {
-            title: event.target.title.value,
-            date: event.target.date.value,
-            body: event.target.body.value,
-          };
-          props.onCreate(AGER_VAR);
-        }}>
-        <input id="title" dtype="text" placeholder="Title" />
-        <input id="date" type="date" />
-        <br />
-        <textarea id="body" placeholder="Body area"></textarea>
-        <br />
-        <input type="submit" />
-      </form>
-    </div>
-  );
-}
+import { useState, useRef } from 'react';
 
 function DiaryBox(props) {
   const lis = [];
@@ -72,31 +47,32 @@ export default function Diary(props) {
 
   return (
     <div>
-      <h2>Diary Area</h2>
-      {/* diary */}
+      <h2>Today's Note</h2>
       <div className="diary-input">
-        <InputDiary
-          onCreate={AGER_VAR => {
-            // console.log(AGER_VAR);
-            // const date = new Date(inputDate);
-            const convDate = JSON.stringify(AGER_VAR.date);
-            // console.log(AGER_VAR.title);
-            // console.log(AGER_VAR.date);
-            // console.log(AGER_VAR.body);
-
-            // 객체 생성
+        <h2>Write Article</h2>
+        <form
+          onSubmit={event => {
+            event.preventDefault();
+            const convDate = JSON.stringify(event.target.date.value);
             const newArticle = {
               id: nextId,
-              title: AGER_VAR.title,
+              title: event.target.title.value,
               date: convDate,
-              body: AGER_VAR.body,
+              body: event.target.body.value,
             };
             const newArticles = [...article];
             newArticles.push(newArticle);
             setArticle(newArticles);
             setId(nextId);
             setNextId(nextId + 1);
-          }}></InputDiary>
+          }}>
+          <input id="title" dtype="text" placeholder="Title" />
+          <input id="date" type="date" />
+          <br />
+          <textarea id="body" placeholder="Body area"></textarea>
+          <br />
+          <input type="submit" />
+        </form>
       </div>
       <div className="diary-body">
         <DiaryBox

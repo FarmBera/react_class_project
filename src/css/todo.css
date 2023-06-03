@@ -1,0 +1,71 @@
+body {
+  text-align: center;
+}
+
+.badge {
+  font-size: 20px;
+  border: 1px solid #f0f;
+}
+
+.badge>span {
+  font-size: 50px;
+  color: aqua;
+}
+
+.body {
+  text-align: center;
+}
+
+.input-area {
+  border: 3px dotted #f0f;
+  height: 50px;
+  border-radius: 0px;
+
+}
+
+.input-area>.input-box {
+  border: 2px solid #f00;
+  border-radius: 0px;
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.input-area>.input-addBtn {
+  border: 2px solid #f00;
+  margin-left: 20px;
+  width: 80px;
+  height: 50px;
+  font-size: 20px;
+
+}
+
+
+/* [class *=box] {
+  box-sizing: border-box;
+  border: 5px solid rgb(168, 168, 168);
+  border-radius: 10px;
+  padding: 10px;
+} */
+
+.container {
+  border: 3px solid #0ff;
+  align-items: center;
+  margin: 30px;
+  max-width: 500px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.delBtn {
+  margin: 20px;
+  width: auto;
+  height: 60%;
+}
+
+.innertext {
+  text-align: left;
+}
+
