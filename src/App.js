@@ -23,7 +23,8 @@ function Temp() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
-          <Route path="/todo" element={<Todo />}></Route>
+          {/* <Route path="/todo" element={<Todo />}></Route> */}
+          <Route path="/todo" element={<TodoNew />}></Route>
           <Route path="/dday" element={<Dday />}></Route>
 
           <Route path="/dday" element={<Support />}></Route>          
@@ -37,8 +38,8 @@ function App() {
   return (
     <div className="App">
       {/* <Head /> */}
-      {/* <Temp /> */}
-      <TodoNew />
+      <Temp />
+      {/* <TodoNew /> */}
       {/* <Foot /> */}
     </div>
   );
