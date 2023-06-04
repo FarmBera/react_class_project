@@ -36,18 +36,9 @@ a:hover {
   grid-gap: 10px;
 }
 
-[class *=box] {
+.BoxContainer>[class *=box] {
   box-sizing: border-box;
   border: 5px solid rgb(168, 168, 168);
   border-radius: 10px;
   padding: 10px;
-}
-
-.box-a {
-  /* 행(가로)으로 1 ~ 4 번까지 차지합니다. */
-  /* grid-row-start: 1; */
-  /* grid-row-end: 4; */
-  /* 열(세로)로 1 ~ 3 번까지 차지합니다. */
-  /* grid-column-start: 1; */
-  /* grid-column-end: 4; */
 }

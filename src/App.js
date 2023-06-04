@@ -1,7 +1,7 @@
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import Head from './components/head';
 import Foot from './components/foot';
@@ -16,12 +16,13 @@ import Support from './components/support';
 import Login from './components/login';
 import Register from './components/register';
 import DiaryEditor from './components/diary_new';
+import { useEffect, useState } from 'react';
 
-function Home() {
+function Home(props) {
   return (
     <div>
       {/* <StyledHome> */}
-      <Topclock />
+      <Topclock isLogin={props.isLogin} userid={props.userid} />
       <div className="BoxContainer">
         <div className="box-a">
           <Diary />
@@ -37,34 +38,71 @@ function Home() {
     </div>
   );
 }
-function Main() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/diary_new" element={<DiaryEditor />}></Route>
-          <Route path="/diary" element={<Diary />}></Route>
-          {/* <Route path="/todo" element={<Todo />}></Route> */}
-          <Route path="/todo" element={<TodoNew />}></Route>
-          <Route path="/dday" element={<Dday />}></Route>
-
-          <Route path="/support" element={<Support />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
 
 export default function App() {
+  const [isLogin, setIsLogin] = useState('false'); // 로그인 상태
+  // const [username, setUsername] = useState(''); // userName 저장
+  const [userid, setUserid] = useState(''); // userId 저장
+  const [userpw, setUserpw] = useState(''); // userPw 저장
+
+  useEffect(() => {
+    // if (!localStorage.getItem('isLogin')) return;
+    if (!localStorage.getItem('userInfo')) return;
+
+    const getIsLogin = localStorage.getItem('isLogin');
+    setIsLogin(getIsLogin);
+    const gotUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(`gotUserInfo>>"${gotUserInfo}"`);
+    setUserid(gotUserInfo.userid);
+    setUserpw(gotUserInfo.userpw);
+  }, []);
+  console.log('<APP>');
+  console.log(`userid>>"${userid}"`);
+  console.log(`userpw>>"${userpw}"`);
+
+  const setLoginStatOK = () => {
+    setIsLogin('true');
+    localStorage.setItem('isLogin', 'true');
+  };
+
+  const setLogoutOK = () => {
+    setIsLogin('false');
+    localStorage.setItem('isLogin', 'false');
+  };
+
+  let content = null;
   return (
     <div className="App">
-      <Head />
+      <Head isLogin={isLogin} userid={userid} setLogoutOK={setLogoutOK} />
       <div className="grid">
-        <Main />
-        {/* <TodoNew /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home isLogin={isLogin} userid={userid} />}></Route>
+            <Route path="/diary_new" element={<DiaryEditor />}></Route>
+            <Route path="/diary" element={<Diary />}></Route>
+            {/* <Route path="/todo" element={<Todo />}></Route> */}
+            <Route path="/todo" element={<TodoNew />}></Route>
+            <Route path="/dday" element={<Dday />}></Route>
+
+            <Route path="/support" element={<Support />}></Route>
+            <Route
+              path="/login"
+              element={
+                <Login
+                  userid={userid}
+                  userpw={userpw}
+                  isLogin={isLogin}
+                  setIsLogin={setIsLogin}
+                  setLogintOK={setLogoutOK}
+                  setLoginStatOK={setLoginStatOK}
+                />
+              }></Route>
+            <Route path="/register" element={<Register />}></Route>
+          </Routes>
+        </BrowserRouter>
       </div>
-      {/* <Foot /> */}
     </div>
   );
 }

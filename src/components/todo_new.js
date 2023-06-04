@@ -6,8 +6,8 @@ import '../css/todo.css';
 export default function TodoNew() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-  console.log(task);
-  console.log(tasks);
+  // console.log(task);
+  // console.log(tasks);
 
   useEffect(() => {
     if (localStorage.getItem('localTasks')) {
