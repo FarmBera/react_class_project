@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import '../css/todo.css';
 
@@ -19,6 +19,7 @@ export default function TodoNew() {
   const addTask = event => {
     if (task) {
       const newTask = { id: new Date().getTime().toString(), title: task };
+      console.log(newTask);
       setTasks([...tasks, newTask]);
       localStorage.setItem('localTasks', JSON.stringify([...tasks, newTask]));
       setTask('');
@@ -67,11 +68,15 @@ export default function TodoNew() {
       </div>
       {tasks.map(task => (
         <React.Fragment key={task.id}>
-          <div className="container">
-            <button className="delBtn" onClick={() => DeleteContent(task)}>
-              완료!
-            </button>
-            <span className="item body-innertext">{task.title}</span>
+          <div className="outer">
+            <div className="container">
+              <button
+                className="custom-btn btn-3"
+                onClick={() => DeleteContent(task)}>
+                <span>{/* 완료! */}</span>
+              </button>
+              <span className="innertext fromLeft">{task.title}</span>
+            </div>
           </div>
         </React.Fragment>
       ))}

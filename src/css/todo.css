@@ -14,6 +14,11 @@ body {
 
 .body {
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  /* position: relative; */
+  min-width: 500px;
 }
 
 .input-area {
@@ -40,32 +45,203 @@ body {
 
 }
 
-
-/* [class *=box] {
-  box-sizing: border-box;
-  border: 5px solid rgb(168, 168, 168);
-  border-radius: 10px;
-  padding: 10px;
-} */
-
+/* Output Area */
 .container {
-  border: 3px solid #0ff;
+  margin: 0 auto;
+  /* border: 3px solid #0ff; */
   align-items: center;
-  margin: 30px;
-  max-width: 500px;
+  text-align: left;
+  max-width: 700px;
   height: 100px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(2, 1fr);
+  /* justify-content: center; */
+  grid-template-columns: 1fr 4fr;
+  /* grid-template-rows: repeat(1, 1fr); */
 }
 
+
+
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
 .delBtn {
   margin: 20px;
-  width: auto;
-  height: 60%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  align-items: center;
+  /* width: 70%; */
+  /* height: 70%; */
+  justify-content: center;
+  align-content: center;
+  background-color: #a9f;
 }
 
-.innertext {
-  text-align: left;
-  justify-content: left;
+.delBtn:hover {
+  justify-content: center;
+  align-content: center;
+  /* color: white; */
+  /* background-color: #11f; */
+  transition: 1s ease-in-out;
 }
+
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+
+.custom-btn {
+  justify-content: center;
+  align-content: center;
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  /* border-radius: 5px; */
+  /* padding: 10px 25px; */
+  /* font-weight: 500; */
+  background: transparent;
+  /* cursor: pointer; */
+  transition: all 0.5s ease;
+  position: relative;
+  display: inline-block;
+  /* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1); */
+  outline: none;
+}
+
+.btn-3 {
+  background-color: #494949;
+
+  /* background: radial-gradient(#a3c9fd 0%,#11151a 70%); */
+  width: 70px;
+  height: 70px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+
+}
+
+.btn-3 span {
+  /* border: 3px solid #ffffff; */
+  justify-content: right;
+  align-items: right;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  background: #0ff;
+  transition: all 0.5s ease;
+}
+
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+
+.btn-3:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.btn-3:hover:before {
+  height: 100%;
+  font-size: 1px;
+}
+
+.btn-3:hover:after {
+  width: 100%;
+  content: "완료!";
+  font-size: 20px;
+}
+
+.btn-3 span:hover {
+  color: #0ff;
+}
+
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  background: #0ff;
+  transition: all 0.5s ease;
+}
+
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+
+.btn-3 span:hover:before {
+  height: 100%;
+}
+
+.btn-3 span:hover:after {
+  width: 100%;
+  /* content: "완료!"; */
+}
+
+
+
+/* InnerText tttttttttttttttttttttttttt */
+/* InnerText tttttttttttttttttttttttttt */
+/* InnerText tttttttttttttttttttttttttt */
+/* InnerText tttttttttttttttttttttttttt */
+/* InnerText tttttttttttttttttttttttttt */
+
+.container>.innertext {
+  font-size: 30px;
+  color: #fff;
+  display: inline-block;
+  /* margin: 0; */
+  /* text-decoration: underline; */
+}
+
+.innertext:after {
+  display: block;
+  content: '';
+  border-bottom: solid 3px #ffffff;
+  transform: scaleX(1);
+  /* transform: scaleX(0); */
+  transition: transform 250ms ease-in-out;
+  transform-origin: 0% 50%;
+}
+
+.innertext:hover {
+  transition: font-weight 0.2s ease-in-out;
+  font-weight: bold;
+
+}
+
+/* .innertext:hover:after {
+  transform: scaleX(1);
+} */
+
+/*.innertext.fromLeft:after {
+  transform-origin: 0% 50%;
+} */
