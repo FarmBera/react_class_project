@@ -2,12 +2,6 @@ import '../css/dday.css';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
-// import styled from 'styled-components';
-// import { useMemo } from "react";
-// import { useCallback } from "react";
-// import { Component } from 'react';
-// import { Component, useState, useEffect, useMemo, useCallback } from "react";
-
 import Clock from 'react-live-clock';
 
 // 오류 메시지 띄우기
@@ -59,39 +53,41 @@ function Nav(props) {
   for (let i = 0; i < props.topics.length; i++) {
     let t = props.topics[i];
     lis.push(
-      <li key={t.id} className="container-dday">
+      <div>
         <hr />
-        <button
-          onClick={event => {
-            props.deleteItems(t.id);
-          }}>
-          삭제!
-        </button>
-        <span> </span>
-        <span>
-          <a
-            id={t.id}
-            href={'/read/' + t.id}
+        <li key={t.id} className="container-dday">
+          <button
             onClick={event => {
-              event.preventDefault();
-              props.onChangeMode(Number(event.target.id));
+              props.deleteItems(t.id);
             }}>
-            D-{t.date_finish}
-          </a>
-        </span>
-        &nbsp;
-        <span>{t.date_current}</span>
-        &nbsp;
-        <span>{t.title}</span> &nbsp;
-        <span>{t.body}</span>
+            삭제!
+          </button>
+          <span> </span>
+          <span>
+            <a
+              id={t.id}
+              href={'/read/' + t.id}
+              onClick={event => {
+                event.preventDefault();
+                props.onChangeMode(Number(event.target.id));
+              }}>
+              D-{t.date_finish}
+            </a>
+          </span>
+          &nbsp;
+          <span>{t.date_current}</span>
+          &nbsp;
+          <span>{t.title}</span> &nbsp;
+          <span>{t.body}</span>
+        </li>
         <hr />
-      </li>,
+      </div>,
     );
   }
   return (
-    <nav>
+    <div>
       <ul>{lis}</ul>
-    </nav>
+    </div>
   );
 }
 

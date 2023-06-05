@@ -10,6 +10,14 @@
   font-size: 25px;
 }
 
+
+
+
+
+/* input area ---------------- */
+/* input area ---------------- */
+/* input area ---------------- */
+
 .top_input {
   /* border: 3px solid #0ff; */
   display: flex;
@@ -20,6 +28,7 @@
   height: 25px;
   margin-right: 10px;
 }
+
 #inputBody {
   width: 200px;
 }
@@ -32,4 +41,22 @@
   height: 31px;
 }
 
-.container-dday {}
+
+/* Visible Area -------------- */
+/* Visible Area -------------- */
+/* Visible Area -------------- */
+
+
+.container-dday {
+  margin-right: 40px;
+  /* margin: 0 auto; */
+  /* border: 3px solid #0ff; */
+  align-items: center;
+  /* text-align: left; */
+  /* max-width: 700px; */
+  /* height: 100px; */
+  /* display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr 2fr 4fr; */
+  /* grid-template-rows: repeat(1, 1fr); */
+}
