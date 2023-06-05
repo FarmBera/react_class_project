@@ -52,13 +52,13 @@ export default function App() {
     const getIsLogin = localStorage.getItem('isLogin');
     setIsLogin(getIsLogin);
     const gotUserInfo = JSON.parse(localStorage.getItem('userInfo'));
-    console.log(`gotUserInfo>>"${gotUserInfo}"`);
+    // console.log(`gotUserInfo>>"${gotUserInfo}"`);
     setUserid(gotUserInfo.userid);
     setUserpw(gotUserInfo.userpw);
   }, []);
-  console.log('<APP>');
-  console.log(`userid>>"${userid}"`);
-  console.log(`userpw>>"${userpw}"`);
+  // console.log('<APP>');
+  // console.log(`userid>>"${userid}"`);
+  // console.log(`userpw>>"${userpw}"`);
 
   const setLoginStatOK = () => {
     setIsLogin('true');
@@ -80,13 +80,13 @@ export default function App() {
             <Route
               path="/"
               element={<Home isLogin={isLogin} userid={userid} />}></Route>
-            <Route path="/diary_new" element={<DiaryEditor />}></Route>
-            <Route path="/diary" element={<Diary />}></Route>
-            {/* <Route path="/todo" element={<Todo />}></Route> */}
-            <Route path="/todo" element={<TodoNew />}></Route>
-            <Route path="/dday" element={<Dday />}></Route>
+            <Route path="/diary_new" element={<DiaryEditor isLogin={isLogin} />}></Route>
+            <Route path="/diary" element={<Diary isLogin={isLogin} />}></Route>
+            {/* <Route path="/todo" element={<Todo isLogin={isLogin} />}></Route> */}
+            <Route path="/todo" element={<TodoNew isLogin={isLogin} />}></Route>
+            <Route path="/dday" element={<Dday isLogin={isLogin} />}></Route>
 
-            <Route path="/support" element={<Support />}></Route>
+            <Route path="/support" element={<Support isLogin={isLogin} />}></Route>
             <Route
               path="/login"
               element={

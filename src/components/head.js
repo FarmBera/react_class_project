@@ -4,17 +4,17 @@ import '../css/head.css';
 // import search_ico from "img/search-icon.png";
 
 export default function Head(props) {
-  const [isLoginlog, setIsLoginlog] = useState('false');
+  // const [isLoginlog, setIsLoginlog] = useState('false');
   // let [loginStat, setLoginStat] = useState('false');
 
-  useEffect(() => {
-    if (!localStorage.getItem('isLogin')) {
-      return;
-    } else {
-      setIsLoginlog(JSON.stringify(localStorage.getItem('isLogin')));
-      // const atLocalLogin = JSON.stringify(localStorage.getItem('isLogin'));
-    }
-  });
+  // useEffect(() => {
+  //   if (!localStorage.getItem('isLogin')) {
+  //     return;
+  //   } else {
+  //     setIsLoginlog(JSON.stringify(localStorage.getItem('isLogin')));
+  //     // const atLocalLogin = JSON.stringify(localStorage.getItem('isLogin'));
+  //   }
+  // });
   // console.log(props.isLogin);
   return (
     <header className="header">

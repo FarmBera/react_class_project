@@ -1,6 +1,17 @@
 .top_input {
-  border: 3px solid #0ff;
+  /* border: 3px solid #0ff; */
   display: flex;
   justify-content: center;
 }
 
+.top_input>input {
+  height: 25px;
+}
+
+#inputDate {
+  height: 27px;
+}
+
+#inputSubmit {
+  height: 31px;
+}
