@@ -115,7 +115,7 @@ export default function TodoNew(props) {
         tasks.map(task => (
           <React.Fragment key={task.id}>
             <div className="outer">
-              <div className="container">
+              <div className="container-todo">
                 <button
                   className="custom-btn btn-3"
                   onClick={() => DeleteContent(task)}>

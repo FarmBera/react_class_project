@@ -1,3 +1,15 @@
+.err-msg {
+  margin-top: 50px;
+  font-size: 30pt;
+  color: red;
+  text-align: center;
+}
+
+.big {
+  color: #0ff;
+  font-size: 25px;
+}
+
 .top_input {
   /* border: 3px solid #0ff; */
   display: flex;
@@ -6,6 +18,10 @@
 
 .top_input>input {
   height: 25px;
+  margin-right: 10px;
+}
+#inputBody {
+  width: 200px;
 }
 
 #inputDate {
@@ -15,3 +31,5 @@
 #inputSubmit {
   height: 31px;
 }
+
+.container-dday {}

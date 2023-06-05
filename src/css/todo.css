@@ -49,7 +49,7 @@ body {
 }
 
 /* Output Area */
-.container {
+.container-todo {
   margin: 0 auto;
   /* border: 3px solid #0ff; */
   align-items: center;
@@ -217,7 +217,7 @@ body {
 /* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
 
-.container>.innertext {
+.container-todo>.innertext {
   font-size: 30px;
   color: #fff;
   display: inline-block;
