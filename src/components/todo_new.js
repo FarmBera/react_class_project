@@ -9,19 +9,23 @@ export default function TodoNew(props) {
   // console.log(task);
   // console.log(tasks);
 
+  // 페이지 불러올 시,
   useEffect(() => {
     if (localStorage.getItem('localTasks')) {
       const storedList = JSON.parse(localStorage.getItem('localTasks'));
       setTasks(storedList);
     }
+    // console.log(props.isLogin);
   }, []);
 
+  // 오류 메시지
   const ErrMsg = props => {
     alert('로그인 후에 이용하세요!');
     console.log('로그인 후에 이용하세요!');
     return;
   };
 
+  // 작업 추가하기
   const addTask = event => {
     if (props.isLogin === 'false') {
       ErrMsg();
@@ -36,25 +40,29 @@ export default function TodoNew(props) {
     }
   };
 
+  // 삭제하기
   const DeleteContent = task => {
     const deleted = tasks.filter(t => t.id !== task.id);
     setTasks(deleted);
     localStorage.setItem('localTasks', JSON.stringify(deleted));
   };
 
+  // 모두 제거하기
   const clearContent = () => {
     setTasks([]);
     localStorage.removeItem('localTasks');
   };
 
+  // 경고 메시지 스타일
   const WarningStyle = styled.div`
     span {
+      font-size: 35pt;
       color: red;
     }
   `;
 
+  // 할 일 개수 보여주는 곳
   let badgeInfo = null;
-  // console.log(props.isLogin);
   if (props.isLogin === 'false') {
     badgeInfo = (
       <WarningStyle>
@@ -66,7 +74,7 @@ export default function TodoNew(props) {
   } else {
     badgeInfo = (
       <div className="badge">
-        해야 할 일 개수: 
+        해야 할 일 개수:
         <span>
           {!tasks.length
             ? ' 없음 '
@@ -76,7 +84,7 @@ export default function TodoNew(props) {
             ? ` ${tasks.length} `
             : null}
         </span>
-      {/* <div className="badge">
+        {/* <div className="badge">
         해야 할 일이
         {!tasks.length ? (
           <span>없습니다.</span>
@@ -92,6 +100,8 @@ export default function TodoNew(props) {
       </div>
     );
   }
+
+  // Output area
   return (
     <div className="">
       <h1 className="title">TODO List</h1>
@@ -110,7 +120,7 @@ export default function TodoNew(props) {
         </button>
       </div>
       {props.isLogin === 'false' ? (
-        <div>asdf</div>
+        <div></div>
       ) : (
         tasks.map(task => (
           <React.Fragment key={task.id}>
@@ -119,7 +129,7 @@ export default function TodoNew(props) {
                 <button
                   className="custom-btn btn-3"
                   onClick={() => DeleteContent(task)}>
-                  <span>{/* 완료! */}</span>
+                  <span></span>
                 </button>
                 <span className="innertext fromLeft">{task.title}</span>
               </div>
@@ -127,7 +137,7 @@ export default function TodoNew(props) {
           </React.Fragment>
         ))
       )}
-      {!tasks.length ? null : (
+      {props.isLogin === 'false' || !tasks.length ? null : (
         <div className="item-bottom">
           <button className="body-clearBtn" onClick={() => clearContent()}>
             Clear

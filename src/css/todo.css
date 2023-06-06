@@ -52,11 +52,11 @@ body {
 .container-todo {
   margin: 0 auto;
   /* border: 3px solid #0ff; */
-  align-items: center;
   text-align: left;
   max-width: 700px;
   height: 100px;
   display: grid;
+  align-items: center;
   /* justify-content: center; */
   grid-template-columns: 1fr 4fr;
   /* grid-template-rows: repeat(1, 1fr); */
@@ -87,13 +87,12 @@ body {
   transition: 1s ease-in-out;
 }
 
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
 
+
+
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
+/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
 .custom-btn {
   justify-content: center;
   align-content: center;
@@ -202,7 +201,6 @@ body {
 
 .btn-3 span:hover:after {
   width: 100%;
-  /* content: "완료!"; */
 }
 
 
