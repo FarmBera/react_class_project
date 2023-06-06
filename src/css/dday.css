@@ -45,18 +45,90 @@
 /* Visible Area -------------- */
 /* Visible Area -------------- */
 /* Visible Area -------------- */
+/* .dday-cent {
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+} */
 
+.headHR {
+  margin-left: 40px;
+  margin-right: 40px;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
+}
+
+.specialHR {
+  /* margin-bottom: 20px; */
+  margin-left: 40px;
+  margin-right: 40px;
+  border: 0;
+  height: 5px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
+}
+
+/* Glow effect HR */
+/* .specialHR {
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(255, 255, 255, 0.8);
+} */
+
+/* S Shape HR */
+/* .specialHR {
+  overflow: visible;
+  padding: 0;
+  border: none;
+  border-top: medium double #fff;
+  color: #fff;
+  text-align: center;
+}
+.specialHR:after {
+  color: #fff;
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+} */
 
 .container-dday {
-  margin-right: 40px;
-  /* margin: 0 auto; */
+  margin-left: 40px;
   /* border: 3px solid #0ff; */
+  min-width: 500px;
+  max-width: 1000px;
+  height: 35px;
+  display: flex;
+  text-align: center;
   align-items: center;
-  /* text-align: left; */
-  /* max-width: 700px; */
-  /* height: 100px; */
-  /* display: grid;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr 2fr 4fr; */
+  flex-direction: row;
+  justify-content: space-between;
+  /* display: grid; */
+  /* justify-content: center; */
+  /* grid-template-columns: 1fr 1fr 1fr 2fr 4fr; */
   /* grid-template-rows: repeat(1, 1fr); */
+}
+
+.item-dday:nth-child(1) {
+  flex-basis: 50px;
+}
+
+.item-dday:nth-child(2) {
+  flex-basis: 50px;
+}
+
+.item-dday:nth-child(3) {
+  flex-basis: 100px;
+}
+
+.item-dday:nth-child(4) {
+  flex-basis: 100px;
+}
+
+.item-dday:nth-child(5) {
+  flex-basis: 250px;
 }

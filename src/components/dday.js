@@ -53,42 +53,27 @@ function Nav(props) {
   for (let i = 0; i < props.topics.length; i++) {
     let t = props.topics[i];
     lis.push(
-      <div>
-        <hr />
-        <li key={t.id} className="container-dday">
+      <div key={t.id} className="">
+        <hr className="headHR" />
+        <div key={t.id} className="container-dday">
           <button
+            className="item-dday"
             onClick={event => {
               props.deleteItems(t.id);
             }}>
             삭제!
           </button>
-          <span> </span>
-          <span>
-            <a
-              id={t.id}
-              href={'/read/' + t.id}
-              onClick={event => {
-                event.preventDefault();
-                props.onChangeMode(Number(event.target.id));
-              }}>
-              D-{t.date_finish}
-            </a>
-          </span>
-          &nbsp;
-          <span>{t.date_current}</span>
-          &nbsp;
-          <span>{t.title}</span> &nbsp;
-          <span>{t.body}</span>
-        </li>
-        <hr />
+          {/* <span> </span> */}
+          <span className="item-dday">D-{t.date_finish}</span>
+          <span className="item-dday">{t.date_current}</span>
+          <span className="item-dday">{t.title}</span>
+          <span className="item-dday">{t.body}</span>
+        </div>
+        <hr className="headHR" />
       </div>,
     );
   }
-  return (
-    <div>
-      <ul>{lis}</ul>
-    </div>
-  );
+  return <div>{lis}</div>;
 }
 
 export default function Dday(props) {
@@ -112,8 +97,6 @@ export default function Dday(props) {
     },
   ]);
 
-  /////////////////////////////
-  /////////////////////////////
   const ErrMsg = () => {
     const msg = `로그인 후에 이용하세요!`;
     alert(msg);
@@ -122,7 +105,7 @@ export default function Dday(props) {
   };
 
   // let content = null;
-  let contextControl = null;
+  // let contextControl = null;
 
   useEffect(() => {
     if (props.isLogin !== false && localStorage.getItem('localDday')) {
@@ -133,57 +116,61 @@ export default function Dday(props) {
     }
   }, []);
 
-  if (mode === 'none') {
-    // console.log(`mode: ${mode}`);
-  } else if (mode === 'read') {
-    // console.log(`mode: ${mode}`);
-    contextControl = (
-      <>
-        <button
-          href={'/update/' + id}
-          onClick={event => {
-            event.preventDefault();
-            if (props.isLogin === 'false') {
-              ErrMsg();
-              return;
-            } else {
-            }
-          }}>
-          Update
-        </button>
-        <button
-          onClick={() => {
-            if (props.isLogin === 'false') {
-              ErrMsg();
-              return;
-            } else {
-              const newTopics = [];
-              for (let i = 0; i < topics.length; i++) {
-                if (topics[i].id !== id) {
-                  newTopics.push(topics[i]);
-                }
-              }
-              setTopics(newTopics);
-              localStorage.setItem('localDday', JSON.stringify(newTopics));
-              setMode('none');
-            }
-          }}>
-          Delete
-        </button>
-      </>
-    );
-  }
+  // if (mode === 'none') {
+  //   // console.log(`mode: ${mode}`);
+  // } else if (mode === 'read') {
+  //   // console.log(`mode: ${mode}`);
+  //   contextControl = (
+  //     <>
+  //       <button
+  //         href={'/update/' + id}
+  //         onClick={event => {
+  //           event.preventDefault();
+  //           if (props.isLogin === 'false') {
+  //             ErrMsg();
+  //             return;
+  //           } else {
+  //           }
+  //         }}>
+  //         Update
+  //       </button>
+  //       <button
+  //         onClick={() => {
+  //           if (props.isLogin === 'false') {
+  //             ErrMsg();
+  //             return;
+  //           } else {
+  //             const newTopics = [];
+  //             for (let i = 0; i < topics.length; i++) {
+  //               if (topics[i].id !== id) {
+  //                 newTopics.push(topics[i]);
+  //               }
+  //             }
+  //             setTopics(newTopics);
+  //             localStorage.setItem('localDday', JSON.stringify(newTopics));
+  //             setMode('none');
+  //           }
+  //         }}>
+  //         Delete
+  //       </button>
+  //     </>
+  //   );
+  // }
 
-  // return (
-  //   {content}
-  // )
+  const headerItem = {
+    btn: 'control',
+    dday: 'D-Day',
+    date: 'Date',
+    title: 'Title',
+    comment: 'Comment',
+  };
 
   return (
     <div className="hover">
       <h2>Dday Area</h2>
       <p>
         Today is "
-        <Clock className="big" format="YYYY-MM-DD" ticking="true"></Clock>"
+        <Clock className="big" format="YYYY-MM-DD" ticking={false}></Clock>"
       </p>
       <Inputs
         isLogin={props.isLogin}
@@ -221,41 +208,55 @@ export default function Dday(props) {
           const newTopics = [...topics];
           newTopics.push(newTopic);
           setTopics(newTopics);
-          console.log(topics);
-          // setMode('read');
+          // console.log(topics);
           setId(nextId);
           setNextId(nextId + 1);
           localStorage.setItem('localDday', JSON.stringify(newTopics));
           // localStorage.setItem('len', nextId);
           // }
         }}></Inputs>
-      {contextControl}
+      {/* {contextControl} */}
       {props.isLogin === 'false' ? (
         <div className="err-msg">로그인 후 이용하세요!</div>
       ) : (
-        <Nav
-          id={id}
-          topics={topics}
-          deleteItems={inputId => {
-            const newTopics = [];
-            for (let i = 0; i < topics.length; i++) {
-              if (topics[i].id !== inputId) {
-                newTopics.push(topics[i]);
+        <>
+          <div>
+            {/* <hr className="headHR" /> */}
+            <hr className="specialHR" />
+            <div className="container-dday">
+              <span className="item-dday">{headerItem.btn}</span>
+              <span className="item-dday">{headerItem.dday}</span>
+              <span className="item-dday">{headerItem.date}</span>
+              <span className="item-dday">{headerItem.title}</span>
+              <span className="item-dday">{headerItem.comment}</span>
+            </div>
+            {/* <hr className="headHR" /> */}
+            <hr className="specialHR" />
+          </div>
+          <Nav
+            id={id}
+            topics={topics}
+            deleteItems={inputId => {
+              const newTopics = [];
+              for (let i = 0; i < topics.length; i++) {
+                if (topics[i].id !== inputId) {
+                  newTopics.push(topics[i]);
+                }
               }
-            }
-            setTopics(newTopics);
-            localStorage.setItem('localDday', JSON.stringify(newTopics));
-            setMode('none');
-            // // on Delete
-            // setTopics(arrInput);
-            // localStorage.setItem('localDday', JSON.stringify(arrInput));
-            // setMode('none');
-            // // console.log('moved!');
-          }}
-          onChangeMode={_id => {
-            setMode('read');
-            setId(_id);
-          }}></Nav>
+              setTopics(newTopics);
+              localStorage.setItem('localDday', JSON.stringify(newTopics));
+              setMode('none');
+              // // on Delete
+              // setTopics(arrInput);
+              // localStorage.setItem('localDday', JSON.stringify(arrInput));
+              // setMode('none');
+              // // console.log('moved!');
+            }}
+            onChangeMode={_id => {
+              setMode('read');
+              setId(_id);
+            }}></Nav>
+        </>
       )}
       {/* <Nav
         topics={topics}

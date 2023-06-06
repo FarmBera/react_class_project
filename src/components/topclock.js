@@ -8,7 +8,7 @@ import Clock from 'react-live-clock';
 
 export default function Topclock(props) {
   // const [date, setDate] = useState(new Date());
-  const loginState = JSON.parse(localStorage.getItem("isLogin"));
+  const loginState = JSON.parse(localStorage.getItem('isLogin'));
   return (
     <div>
       {/* <span>{date.toLocaleTimeString()}</span> */}
