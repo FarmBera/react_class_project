@@ -1,7 +1,9 @@
+import '../css/todo.css';
+import '../css/checkBox.css';
+// import '../scss/checkBtn.scss';
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-import '../css/todo.css';
 
 export default function TodoNew(props) {
   const [task, setTask] = useState('');
@@ -115,7 +117,10 @@ export default function TodoNew(props) {
           className="input-box"
           onChange={event => setTask(event.target.value)}
         />
-        <button className="input-addBtn" onClick={addTask}>
+        <button
+          className="input-addBtn"
+          // className="custom-btn btn-3"
+          onClick={addTask}>
           add
         </button>
       </div>
@@ -126,11 +131,26 @@ export default function TodoNew(props) {
           <React.Fragment key={task.id}>
             <div className="outer">
               <div className="container-todo">
-                <button
+                <div class="grid">
+                  <label class="checkbox bounce">
+                    <input type="checkbox" />
+                    <svg viewBox="0 0 21 21">
+                      <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                    </svg>
+                  </label>
+                </div>
+                {/* <div class="wrapper">
+                  <div class="checkbox checkbox-alt">
+                    <input type="checkbox" id="cb-alt" name="cb-alt" />
+                    <label for="cb-alt"></label>
+                  </div>
+                </div> */}
+                {/* <button
                   className="custom-btn btn-3"
+                  // className="input-addBtn"
                   onClick={() => DeleteContent(task)}>
                   <span></span>
-                </button>
+                </button> */}
                 <span className="innertext fromLeft">{task.title}</span>
               </div>
             </div>
