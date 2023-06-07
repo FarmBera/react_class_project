@@ -46,8 +46,9 @@ export default function App() {
   const [userpw, setUserpw] = useState(''); // userPw 저장
 
   useEffect(() => {
-    // if (!localStorage.getItem('isLogin')) return;
-    if (!localStorage.getItem('userInfo')) return;
+    if (!localStorage.getItem('isLogin'))
+      localStorage.setItem('isLogin', 'false');
+    // if (!localStorage.getItem('userInfo')) return;
 
     const getIsLogin = localStorage.getItem('isLogin');
     setIsLogin(getIsLogin);
@@ -56,7 +57,7 @@ export default function App() {
     setUserid(gotUserInfo.userid);
     setUserpw(gotUserInfo.userpw);
   }, []);
-  // console.log('<APP>');
+  // console.log('<APP Area>');
   // console.log(`userid>>"${userid}"`);
   // console.log(`userpw>>"${userpw}"`);
 
@@ -80,13 +81,17 @@ export default function App() {
             <Route
               path="/"
               element={<Home isLogin={isLogin} userid={userid} />}></Route>
-            <Route path="/diary_new" element={<DiaryEditor isLogin={isLogin} />}></Route>
+            <Route
+              path="/diary_new"
+              element={<DiaryEditor isLogin={isLogin} />}></Route>
             <Route path="/diary" element={<Diary isLogin={isLogin} />}></Route>
             {/* <Route path="/todo" element={<Todo isLogin={isLogin} />}></Route> */}
             <Route path="/todo" element={<TodoNew isLogin={isLogin} />}></Route>
             <Route path="/dday" element={<Dday isLogin={isLogin} />}></Route>
 
-            <Route path="/support" element={<Support isLogin={isLogin} />}></Route>
+            <Route
+              path="/support"
+              element={<Support isLogin={isLogin} />}></Route>
             <Route
               path="/login"
               element={
