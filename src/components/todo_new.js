@@ -133,18 +133,17 @@ export default function TodoNew(props) {
               <div className="container-todo">
                 <div class="grid">
                   <label class="checkbox bounce">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      onClick={() => {
+                        DeleteContent(task);
+                      }}
+                    />
                     <svg viewBox="0 0 21 21">
                       <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                     </svg>
                   </label>
                 </div>
-                {/* <div class="wrapper">
-                  <div class="checkbox checkbox-alt">
-                    <input type="checkbox" id="cb-alt" name="cb-alt" />
-                    <label for="cb-alt"></label>
-                  </div>
-                </div> */}
                 {/* <button
                   className="custom-btn btn-3"
                   // className="input-addBtn"

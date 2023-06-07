@@ -1,5 +1,13 @@
 import '../css/diary.css';
-import { useState, useRef } from 'react';
+
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+const ErrMsg = () => {
+  const msg = `로그인 후에 이용하세요!`;
+  alert(msg);
+  console.log(msg);
+};
 
 function DiaryBox(props) {
   const lis = [];
@@ -9,11 +17,32 @@ function DiaryBox(props) {
     lis.push(
       <div key={t.id}>
         <hr />
-        <div className="diary-input-title">{t.title}</div>
+        <div
+          className="diary-input-title"
+          onClick={() => {
+            console.log('clicked');
+          }}>
+          {t.title}
+        </div>
         <div className="diary-input-date">{t.date}</div>
+        <div className="diary-input-control">
+          <button className="diary-input-button" 
+          onClick={currId => {
+            props.onUpdate(t.id)
+          }
+        }>
+          수정</button>
+          <button
+            className="diary-input-button"
+            onClick={() => {
+              props.onDelete(t.id)}
+              }>
+            삭제
+          </button>
+        </div>
         <div className="diary-input-text">{t.body}</div>
         <hr />
-      </div>,
+      </div>
     );
   }
   return (
@@ -47,18 +76,34 @@ export default function Diary(props) {
 
   return (
     <div>
-      <h2>Today's Note</h2>
+      <h2>나의 다이어리</h2>
       <div className="diary-input">
         <h2>Write Article</h2>
         <form
+          className="input-container"
           onSubmit={event => {
             event.preventDefault();
-            const convDate = JSON.stringify(event.target.date.value);
+            if (props.isLogin === 'false') {
+              ErrMsg();
+              return;
+            }
+            const title = event.target.title.value;
+            const date = event.target.date.value;
+            const body = event.target.body.value;
+            // console.log(title, date, body);
+            if (title === '' || body === '' || date === '') {
+              alert('모든 항목을 입력해주세요!');
+              return;
+            }
+            event.target.title.value = '';
+            event.target.date.value = '';
+            event.target.body.value = '';
+            // const convDate = JSON.stringify(event.target.date.value);
             const newArticle = {
               id: nextId,
-              title: event.target.title.value,
-              date: convDate,
-              body: event.target.body.value,
+              title: title,
+              date: date,
+              body: body,
             };
             const newArticles = [...article];
             newArticles.push(newArticle);
@@ -77,8 +122,18 @@ export default function Diary(props) {
       <div className="diary-body">
         <DiaryBox
           article={article}
-          onClickInfo={() => {
-            console.log('asdfasdfa');
+          onUpdate={(currId) => {
+
+          }}
+          onDelete={(currId) => {
+            const newArticle = []
+            for (let i = 0; i < article.length; i++) {
+              if (article[i].id !== currId) {
+                newArticle.push(article[i]);
+              }
+            }
+            setArticle(newArticle);
+            localStorage.setItem("localDiary", JSON.stringify(newArticle));
           }}
           onChangeMode={_id => {
             // setMode('read');

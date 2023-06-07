@@ -6,8 +6,9 @@ import Clock from 'react-live-clock';
 
 // 오류 메시지 띄우기
 const ErrMsg = () => {
-  alert('로그인 후에 이용하세요!asd');
-  console.log('로그인 후에 이용하세요!');
+  const msg = `로그인 후에 이용하세요!`
+  alert(msg);
+  console.log(msg);
 };
 
 function Inputs(props) {
