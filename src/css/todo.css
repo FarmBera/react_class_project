@@ -21,6 +21,8 @@ body {
   min-width: 500px;
 }
 
+/* input Area */
+
 .input-area {
   /* border: 3px dotted #f0f; */
   height: 50px;
@@ -87,126 +89,6 @@ body {
   transition: 1s ease-in-out;
 }
 
-
-
-
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-/* Custom Buttonnnnnnnnnnnnnnnnnnnnnnnn */
-.custom-btn {
-  justify-content: center;
-  align-content: center;
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  /* border-radius: 5px; */
-  /* padding: 10px 25px; */
-  /* font-weight: 500; */
-  background: transparent;
-  /* cursor: pointer; */
-  transition: all 0.5s ease;
-  position: relative;
-  display: inline-block;
-  /* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1); */
-  outline: none;
-}
-
-.btn-3 {
-  background-color: #494949;
-
-  /* background: radial-gradient(#a3c9fd 0%,#11151a 70%); */
-  width: 70px;
-  height: 70px;
-  line-height: 42px;
-  padding: 0;
-  border: none;
-
-}
-
-.btn-3 span {
-  /* border: 3px solid #ffffff; */
-  justify-content: right;
-  align-items: right;
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.btn-3:before,
-.btn-3:after {
-  position: absolute;
-  content: "";
-  right: 0;
-  top: 0;
-  background: #0ff;
-  transition: all 0.5s ease;
-}
-
-.btn-3:before {
-  height: 0%;
-  width: 2px;
-}
-
-.btn-3:after {
-  width: 0%;
-  height: 2px;
-}
-
-.btn-3:hover {
-  background: transparent;
-  box-shadow: none;
-}
-
-.btn-3:hover:before {
-  height: 100%;
-  font-size: 1px;
-}
-
-.btn-3:hover:after {
-  width: 100%;
-  content: "완료!";
-  font-size: 20px;
-}
-
-.btn-3 span:hover {
-  color: #0ff;
-}
-
-.btn-3 span:before,
-.btn-3 span:after {
-  position: absolute;
-  content: '';
-  left: 0;
-  bottom: 0;
-  background: #0ff;
-  transition: all 0.5s ease;
-}
-
-.btn-3 span:before {
-  width: 2px;
-  height: 0%;
-}
-
-.btn-3 span:after {
-  width: 0%;
-  height: 2px;
-}
-
-.btn-3 span:hover:before {
-  height: 100%;
-}
-
-.btn-3 span:hover:after {
-  width: 100%;
-}
-
-
-
-/* InnerText tttttttttttttttttttttttttt */
-/* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
@@ -214,19 +96,23 @@ body {
 .container-todo>.innertext {
   font-size: 30px;
   color: #fff;
-  display: inline-block;
+  /* display: inline-block; */
   /* margin: 0; */
   /* text-decoration: underline; */
 }
+
+/* .innertext {
+
+} */
 
 .innertext:after {
   display: block;
   content: '';
   border-bottom: solid 3px #ffffff;
   transform: scaleX(1);
+  /* transition: transform 250ms ease-in-out; */
   /* transform: scaleX(0); */
-  transition: transform 250ms ease-in-out;
-  transform-origin: 0% 50%;
+  /* transform-origin: 0% 50%; */
 }
 
 .innertext:hover {
@@ -242,10 +128,3 @@ body {
 /*.innertext.fromLeft:after {
   transform-origin: 0% 50%;
 } */
-
-
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */

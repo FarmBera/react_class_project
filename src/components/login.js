@@ -1,4 +1,4 @@
-import '../css/login.css';
+import '../css/register.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,30 +23,34 @@ export default function Login(props) {
   // }
   // });
   return (
-    <div className="Login">
+    <div className="login-box">
       <h1>Login Page</h1>
-      <form id="redister">
-        <div className="user_box">
+      <form id="register">
+        <div className="user-box">
           <h2>username</h2>
           <input
-            type="text"
             id="userId"
-            placeholder="아이디를 입력해주세요"
+            type="text"
+            // placeholder="아이디를 입력해주세요"
             onChange={event => {
               setInputId(event.target.value);
             }}
           />
+          <label>아이디를 입력해주세요</label>
+        </div>{' '}
+        <div className="user-box">
           <h2>password</h2>
           <input
-            type="password"
             id="userPw"
-            placeholder="비밀번호를 입력해주세요"
+            type="password"
+            // placeholder="비밀번호를 입력해주세요"
             onChange={event => {
               setInputPw(event.target.value);
             }}
           />
+          <label>비밀번호를 입력해주세요</label>
         </div>
-        <div className="button_box">
+        <div className="button-box">
           <a
             id="submit"
             href="/"

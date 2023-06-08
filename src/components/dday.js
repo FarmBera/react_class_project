@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import Clock from 'react-live-clock';
 
 // 오류 메시지 띄우기
-const ErrMsg = () => {
-  const msg = `로그인 후에 이용하세요!`
-  alert(msg);
-  console.log(msg);
+const ErrMsg = inputMsg => {
+  // const msg = `로그인 후에 이용하세요!`
+  alert(inputMsg);
+  console.log(inputMsg);
 };
 
 function Inputs(props) {
@@ -20,7 +20,7 @@ function Inputs(props) {
           event.preventDefault();
           // console.log(props.isLogin);
           if (props.isLogin === 'false') {
-            ErrMsg();
+            ErrMsg(`로그인 후에 이용하세요!`);
             return;
           } else {
             const title = event.target.inputTitle.value;
@@ -33,8 +33,9 @@ function Inputs(props) {
               event.target.inputDate.value = '';
               props.onCreate(title, body, date);
             } else {
-              alert('모든 항목을 입력하세요!');
-              console.log(`미입력 항목 존재!`);
+              ErrMsg(`모든 항목을 입력하세요!`);
+              // alert('모든 항목을 입력하세요!');
+              // console.log(`미입력 항목 존재!`);
               return;
             }
           }
@@ -98,8 +99,8 @@ export default function Dday(props) {
     },
   ]);
 
-  const ErrMsg = () => {
-    const msg = `로그인 후에 이용하세요!`;
+  const ErrMsg = msg => {
+    // const msg = `로그인 후에 이용하세요!`;
     alert(msg);
     console.log(msg);
     setMode('none');
@@ -128,7 +129,7 @@ export default function Dday(props) {
   //         onClick={event => {
   //           event.preventDefault();
   //           if (props.isLogin === 'false') {
-  //             ErrMsg();
+  //             ErrMsg(`로그인 후 이용하세요!`);
   //             return;
   //           } else {
   //           }
@@ -138,7 +139,7 @@ export default function Dday(props) {
   //       <button
   //         onClick={() => {
   //           if (props.isLogin === 'false') {
-  //             ErrMsg();
+  //             ErrMsg(`로그인 후 이용하세요!`);
   //             return;
   //           } else {
   //             const newTopics = [];
@@ -177,7 +178,7 @@ export default function Dday(props) {
         isLogin={props.isLogin}
         onCreate={(inputTitle, inputBody, inputDate) => {
           if (props.isLogin === 'false') {
-            ErrMsg();
+            ErrMsg(`로그인 후 이용하세요`);
             return;
           }
           if (mode === 'update') {

@@ -1,17 +1,24 @@
 body {
+  --BGColor1: #262d41;
+  --BGcolor2: #313a50;
+  --Cyans: #21ebff;
+  --DarkCyans: #17a9b3;
+  --Blue: #2456ff;
+  --YelGreen: #21ff30;
+  --Green: #17b322;
   margin: 0;
 }
 
 .header {
   overflow: hidden;
-  background-color: #a3c9fd;
+  background-color: var(--DarkCyans);
   padding: 10px 10px;
   /* padding: 20px 10px; */
 }
 
 .header a {
   float: left;
-  color: #000;
+  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -26,20 +33,20 @@ body {
 }
 
 .header a:hover {
-  background-color: #ddd;
+  background-color: var(--YelGreen);
   color: black;
 }
 
-.header a.active {
+/* .header a.active {
   background-color: rgb(11, 75, 139);
   color: white;
-}
+} */
 
 .header-right {
   float: right;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .header a {
     float: none;
     display: block;
@@ -49,4 +56,4 @@ body {
   .header-right {
     float: none;
   }
-}
+} */

@@ -20,8 +20,8 @@ export default function Head(props) {
     <header className="header">
       <div className="header">
         <a href="/" className="logo">
-          <img src="../../public/img/logo.png" alt="logo" width="30px" />
-          React
+          {/* <img src="../img/logo.png" alt="logo" width="30px" /> */}
+          X-Diary
         </a>
         <div className="header-right">
           <a href="/diary">Diary</a>

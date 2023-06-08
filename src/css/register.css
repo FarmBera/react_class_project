@@ -1,0 +1,94 @@
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25rem;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background-color: #282529;
+  box-shadow: 0 15px 25px rbga(143, 124, 236, 0.7);
+  border-radius: 10px;
+  transform: 0.5s;
+  box-shadow: 0 0 0px #21ebffaa, 0 0 0px #21ebffaa, 0 0 00px #21ebffaa, 0 0 100px #21ebffaa;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: left;
+}
+
+.login-box .user-box input {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: relative;
+  /* left: 0; */
+  text-align: left;
+  top: -60px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transform: 0.5s;
+}
+
+.login-box .user-box input:focus~label {
+  top: -85px;
+  left: 0;
+  color: #21ebff;
+  font-size: 12px;
+  transition: 0.5s ease-in-out;
+}
+
+#submit {
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 1s;
+  letter-spacing: 4px;
+  border: 1px solid #21ebff;
+  margin: auto;
+}
+
+#submit:hover {
+  background-color: #21ebff;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #21ebff55, 0 0 25px #21ebff, 0 0 50px #21ebff, 0 0 100px #21ebff;
+}
+
+.button-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+#register {
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+}
+
+#register a {
+  margin: auto;
+  color: #21ebff;
+  text-decoration: none;
+}

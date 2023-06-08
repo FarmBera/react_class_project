@@ -4,11 +4,24 @@
   color: #282c34;
   color: #61dafb;
   color: #32d3ff;
+  color: #a3c9fd;
   color: #8c8cff;
 }
 
 body {
-  background-color: #11151a;
+  --VSCodeBG: #11151a;
+  --BGColor1: #262d41;
+  --BGColor2: #313a50;
+  --Cyans: #21ebff;
+  --DarkCyans: #17a9b3;
+  --Blue: #2456ff;
+  --YelGreen: #21ff30;
+  --Green: #17b322;
+}
+
+body {
+  font-family: "SF Mono", monaco, menlo, sans-serif;
+  background-color: var(--BGColor1);
   color: #fff;
 }
 
@@ -20,6 +33,14 @@ a:hover {
   transition: all 0.2s;
   color: yellow;
   font-weight: bold;
+}
+
+/* 오류 메시지 스타일 */
+.err-msg {
+  margin-top: 50px;
+  font-size: 30pt;
+  color: red;
+  text-align: center;
 }
 
 /* .body {

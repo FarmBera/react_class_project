@@ -1,6 +1,5 @@
 import '../css/todo.css';
 import '../css/checkBox.css';
-// import '../scss/checkBtn.scss';
 
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import '../css/diary_new.css';
+import './diary_new.css';
 
 export default function DiaryEditor({ onCreate }) {
   // const DiaryEditor = ({ onCreate }) => {

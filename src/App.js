@@ -15,7 +15,7 @@ import Dday from './components/dday';
 import Support from './components/support';
 import Login from './components/login';
 import Register from './components/register';
-import DiaryEditor from './components/diary_new';
+import DiaryEditor from './(deprecated)/diary_new';
 import { useEffect, useState } from 'react';
 
 function Home(props) {
