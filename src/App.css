@@ -9,9 +9,13 @@
 }
 
 body {
+  --black: #000;
+  --white: #fff;
   --VSCodeBG: #11151a;
+  --BGColor: #282828;
   --BGColor1: #262d41;
   --BGColor2: #313a50;
+  --SkyBlue: #61dafb;
   --Cyans: #21ebff;
   --DarkCyans: #17a9b3;
   --Blue: #2456ff;
@@ -25,9 +29,9 @@ body {
   color: #fff;
 }
 
-a {
-  color: #61dafb;
-}
+/* a {
+  color: var(--SkyBlue);
+} */
 
 a:hover {
   transition: all 0.2s;
@@ -37,6 +41,7 @@ a:hover {
 
 /* 오류 메시지 스타일 */
 .err-msg {
+  background-color: var(--VSCodeBG);
   margin-top: 50px;
   font-size: 30pt;
   color: red;

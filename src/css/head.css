@@ -1,11 +1,19 @@
 body {
+  --black: #000;
+  --white: #fff;
+  --VSCodeBG: #11151a;
+  --BGColor: #282828;
   --BGColor1: #262d41;
-  --BGcolor2: #313a50;
+  --BGColor2: #313a50;
+  --SkyBlue: #61dafb;
   --Cyans: #21ebff;
   --DarkCyans: #17a9b3;
   --Blue: #2456ff;
   --YelGreen: #21ff30;
   --Green: #17b322;
+}
+
+body {
   margin: 0;
 }
 
@@ -18,7 +26,7 @@ body {
 
 .header a {
   float: left;
-  color: black;
+  color: var(--black);
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -33,14 +41,9 @@ body {
 }
 
 .header a:hover {
-  background-color: var(--YelGreen);
+  background-color: var(--Cyans);
   color: black;
 }
-
-/* .header a.active {
-  background-color: rgb(11, 75, 139);
-  color: white;
-} */
 
 .header-right {
   float: right;
