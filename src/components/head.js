@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import '../css/head.css';
 import logo from '../img/logo.png';
 // import logo from "img/logo.png";
@@ -14,7 +14,6 @@ export default function Head(props) {
   //   }
   // });
   // console.log(props.isLogin);
-  console.log(props.isLogin);
   return (
     <header className="header">
       <div className="header">

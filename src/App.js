@@ -1,15 +1,16 @@
 import './App.css';
 
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import styled from 'styled-components';
 
 import Head from './components/head';
-import Foot from './components/foot';
+// import Foot from './components/foot';
 import Main from './components/main';
 
 import Topclock from './components/topclock';
 import Diary from './components/diary';
-// import Todo from './components/todo';
 import TodoNew from './components/todo_new';
 import Dday from './components/dday';
 
@@ -17,9 +18,8 @@ import Support from './components/support';
 import Login from './components/login';
 import Register from './components/register';
 import DiaryEditor from './(deprecated)/diary_new';
-import { useEffect, useState } from 'react';
 
-function Home(props) {
+function PreviousHome(props) {
   return (
     <div>
       <Topclock isLogin={props.isLogin} userid={props.userid} />
@@ -77,16 +77,17 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route
-              path="/"
-              element={<Home isLogin={isLogin} userid={userid} />}></Route>
+              path="/home"
+              element={
+                <PreviousHome isLogin={isLogin} userid={userid} />
+              }></Route>
             <Route
-              path="/main"
+              path="/"
               element={<Main isLogin={isLogin} userid={userid} />}></Route>
             <Route
               path="/diary_new"
               element={<DiaryEditor isLogin={isLogin} />}></Route>
             <Route path="/diary" element={<Diary isLogin={isLogin} />}></Route>
-            {/* <Route path="/todo" element={<Todo isLogin={isLogin} />}></Route> */}
             <Route path="/todo" element={<TodoNew isLogin={isLogin} />}></Route>
             <Route path="/dday" element={<Dday isLogin={isLogin} />}></Route>
 

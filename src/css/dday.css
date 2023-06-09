@@ -24,7 +24,6 @@ body {
 /* input area ---------------- */
 
 .top_input {
-  /* border: 3px solid #0ff; */
   display: flex;
   justify-content: center;
 }
@@ -34,21 +33,11 @@ body {
   margin-right: 10px;
 }
 
-#inputBody {
-  width: 300px;
-}
+#inputBody { width: 300px; }
+#inputDate { height: 32px; }
+#inputSubmit { height: 34px; }
 
-#inputDate {
-  height: 32px;
-}
-
-#inputSubmit {
-  height: 34px;
-}
-
-#inputTitle,
-#inputDate,
-#inputBody {
+#inputTitle, #inputDate, #inputBody {
   color: var(--white);
   background-color: var(--VSCodeBG);
   outline: none;
@@ -72,8 +61,36 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-
 #inputSubmit {
+  border: 1px solid var(--LightBlue);
+  background-color: var(--VSCodeBG);
+  color: var(--white);
+  font-size: 15px;
+  letter-spacing: 2px;
+  width: 50px;
+  /* height: 50px; */
+  /* margin-left: 20px; */
+  margin-bottom: 1px;
+  transition: 1s;
+}
+
+#inputSubmit:hover {
+  background-color: var(--YelGreen);
+  border-color: var(--YelGreen);
+  color: #000;
+  border-radius: 0px;
+  transition: all 0.5s;
+}
+
+#inputSubmit:active {
+  background-color: var(--Cyans);
+  color: #000;
+  border-radius: 0px;
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px var(--Cyans), 0 0 8px var(--Cyans), 0 0 16px var(--Cyans);
+  transition: 0s;
+}
+
+/* #inputSubmit {
   padding: 10px;
   color: var(--white);
   background-color: var(--VSCodeBG);
@@ -90,16 +107,11 @@ body {
   color: #000;
   box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
   transition: all 0.2s;
-}
+} */
 
 /* Visible Area -------------- */
 /* Visible Area -------------- */
 /* Visible Area -------------- */
-/* .dday-cent {
-  margin: auto;
-  justify-content: center;
-  align-content: center;
-} */
 
 .headHR {
   margin-left: 40px;
@@ -149,25 +161,26 @@ body {
 .container-dday {
   margin-left: 40px;
   min-width: 500px;
-  max-width: 1000px;
   height: 35px;
   display: flex;
   flex-direction: row;
-  text-align: center;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .delbtn {
-  /* border: 2px solid var(--LightBlue); */
   border: none;
   outline: none;
   background-color: var(--BGColor1);
   color: var(--white);
-  margin-left: 20px;
-  /* width: 200px; */
+  /* margin-left: 20px; */
+  text-align: center;
+  align-items: center;
+  width: 42px;
   height: 35px;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
   transition: 1s;
 }
 
@@ -180,15 +193,21 @@ body {
 }
 
 .item-dday:nth-child(1) {
+  display: flex;
+  /* justify-content: center; */
   flex-basis: 50px;
 }
 
+/* .item-dday:nth-child(1)>button {
+  width: 60px;
+} */
+
 .item-dday:nth-child(2) {
-  flex-basis: 50px;
+  flex-basis: 100px;
 }
 
 .item-dday:nth-child(3) {
-  flex-basis: 100px;
+  flex-basis: 110px;
 }
 
 .item-dday:nth-child(4) {
@@ -196,5 +215,5 @@ body {
 }
 
 .item-dday:nth-child(5) {
-  flex-basis: 250px;
+  flex-basis: 300px;
 }

@@ -116,9 +116,7 @@ export default function TodoNew(props) {
           className="input-box"
           onChange={event => setTask(event.target.value)}
         />
-        <button
-          className="input-addBtn"
-          onClick={addTask}>
+        <button className="input-addBtn" onClick={addTask}>
           추가
         </button>
       </div>
@@ -129,8 +127,8 @@ export default function TodoNew(props) {
           <React.Fragment key={task.id}>
             <div className="outer">
               <div className="container-todo">
-                <div class="grid">
-                  <label class="checkbox bounce">
+                <div className="grid">
+                  <label className="checkbox bounce">
                     <input
                       type="checkbox"
                       onClick={() => {

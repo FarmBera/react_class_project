@@ -3,7 +3,6 @@ import '../css/diary.css';
 import { useState, useEffect } from 'react';
 
 // const Msg = `로그인 후에 이용하세요!`;
-
 const ErrMsg = inputMsg => {
   // const msg = `${input}`;
   alert(inputMsg);
@@ -52,7 +51,12 @@ function DiaryInput(props) {
           <textarea id="body" placeholder="내용을 입력하세요"></textarea>
         </p>
         <p>
-          <input id="submit" type="submit" value="글쓰기" />
+          <input
+            // id="submit"
+            className="diary-submit"
+            type="submit"
+            value="글쓰기"
+          />
         </p>
       </form>
     </div>
@@ -108,7 +112,11 @@ function DiaryUpdate(props) {
               }}></textarea>
           </p>
           <p>
-            <input id="submit" type="submit" value="수정하기"></input>
+            <input
+              // id="submit"
+              className="diary-submit"
+              type="submit"
+              value="수정하기"></input>
           </p>
         </form>
       </div>

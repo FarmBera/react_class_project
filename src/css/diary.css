@@ -18,13 +18,13 @@ body {
   --inputHeight: 30px;
 }
 
-.diary {
+/* .diary {
   margin: 10px 20px 20px 20px;
   flex: 0.9;
   overflow-y: scroll;
-}
+} */
 
-/* input 창에 커서 가져다놓았을 때 */
+/* input area */
 #title,
 #date,
 #body {
@@ -67,8 +67,7 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-
-#submit {
+.diary-submit {
   padding: 10px 20px;
   color: var(--white);
   background-color: var(--VSCodeBG);
@@ -76,19 +75,30 @@ body {
   letter-spacing: 4px;
   border: 1px solid var(--LightBlue);
   margin: auto;
+  transition: 1s;
 }
 
-#submit:hover {
-  background-color: var(--Cyans);
+.diary-submit:hover {
+  background-color: var(--YelGreen);
+  border-color: var(--YelGreen);
   color: #000;
   border-radius: 0px;
-  box-shadow: 0 0 5px #21ebff55, 0 0 25px #21ebff, 0 0 50px #21ebff, 0 0 100px #21ebff;
+  /* box-shadow: 0 0 2px var(--YelGreen), 0 0 4px var(--YelGreen), 0 0 8px var(--YelGreen), 0 0 16px var(--YelGreen); */
   transition: all 0.5s;
 }
 
+.diary-submit:active {
+  background-color: var(--Cyans);
+  color: #000;
+  border-radius: 0px;
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px var(--Cyans), 0 0 8px var(--Cyans), 0 0 16px var(--Cyans);
+  transition: 0s;
+}
+
 /* //////////////////// */
 /* //////////////////// */
 /* //////////////////// */
+/* visible content area */
 
 .diary-container {
   display: flex;
@@ -104,22 +114,24 @@ body {
 }
 
 .diary-box {
-  /* border: 1px solid #0f0; */
-  /* border-left: 1px solid #fff; */
-  /* border-right: 1px solid #fff; */
   border: 1px solid;
   border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
   border-image-slice: 1;
-  /* margin: 20px; */
   margin: var(--paddingVal);
   padding: var(--paddingVal);
   width: 650px;
-  /* transition: all 1s; */
+  transition: all 1s;
 }
 
 .diary-box:hover {
   border: 1px solid var(--YelGreen);
-  /* transition: all 0.5s ease-in-out; */
+  transition: all 0.5;
+}
+
+.diary-box:active {
+  border: 1px solid var(--Cyans);
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
+  transition: all 0s;
 }
 
 .diary-box>hr {
@@ -127,6 +139,7 @@ body {
   margin-right: 30px;
   border: 0;
   height: 2px;
+  border-radius: 5px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
 }
 

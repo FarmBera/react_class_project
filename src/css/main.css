@@ -1,13 +1,55 @@
+body {
+  --black: #000;
+  --white: #fff;
+  --VSCodeBG: #11151a;
+  --BGColor: #282828;
+  --BGColor1: #262d41;
+  --BGColor2: #313a50;
+  --SkyBlue: #61dafb;
+  --Cyans: #21ebff;
+  --DarkCyans: #17a9b3;
+  --Blue: #2456ff;
+  --LightBlue: #69a5f8;
+  --YelGreen: #21ff30;
+  --Green: #17b322;
+}
+
 .main-container {
-  display: grid;
-  grid-template: 32.7% 32.7% 32.7% / 32.7% 32.7% 32.7%;
+  display: flex;
+  justify-content: space-evenly;
   grid-gap: 10px;
   overflow: hidden;
 }
 
-.main-container>[class *=box] {
+.main-box>h2 {
+  color: var(--white);
+  outline: none;
+  border: 1px solid var(--BGColor1);
+  transition: 1s;
+}
+
+.main-box>h2:hover {
+  transition: 10ms;
+  border: 1px solid var(--YelGreen);
+}
+
+.main-box>h2:active {
+  outline: none !important;
+  border: 1px solid var(--Cyans);
+  box-shadow: 0 0 20px var(--Cyans);
+  transition: all 0.5s ease-in-out;
+}
+
+/* .main-container {
+  display: grid;
+  grid-template: 32.6% 32.6% 32.6% / 32.6% 32.6% 32.6%;
+  grid-gap: 10px;
+  overflow: hidden;
+} */
+
+/* .main-container>[class *=box] {
   box-sizing: border-box;
   border: 5px solid rgb(168, 168, 168);
   border-radius: 10px;
   padding: 10px;
-}
+} */
