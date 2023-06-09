@@ -1,8 +1,6 @@
 // import { useState, useEffect } from 'react';
 import '../css/head.css';
 import logo from '../img/logo.png';
-// import logo from "img/logo.png";
-// import search_ico from "img/search-icon.png";
 
 export default function Head(props) {
   // useEffect(() => {
@@ -38,8 +36,9 @@ export default function Head(props) {
               }
               // console.log(event.target.value)
               // if (event.target.value === "")
-              console.log(props.isLogin);
+              // console.log(props.isLogin);
             }}>
+              {/* 로그인 여부에 따라서 보여지는 값 달라지게 설정 */}
             {props.isLogin === 'true' ? 'LogOut' : 'LogIn'}
             {/* {isLoginlog} */}
             {/* <span>{loginStat}</span> */}

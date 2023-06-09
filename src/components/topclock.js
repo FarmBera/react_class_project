@@ -1,17 +1,22 @@
 import '../css/topclock.css';
 
 // import { useState } from "react";
-// import { Component, useEffect, useMemo, useCallback } from "react";
+// import { Component, useEffect, useMemo, useCallback } from "react"; // 사용하지 않음
 
+/** react-live-clock
+ * 시계 관련 node-modules 중 하나
+ * npm install react-live-clock
+ */
 import Clock from 'react-live-clock';
 // import Date from "react-live-clock"; // ERROR
 
 export default function Topclock(props) {
-  // const [date, setDate] = useState(new Date());
+  // const [date, setDate] = useState(new Date()); // Deprecated
   const loginState = JSON.parse(localStorage.getItem('isLogin'));
   // console.log(props.userid);
   return (
     <div>
+      {/* comments area ALL Deprecated */}
       {/* <span>{date.toLocaleTimeString()}</span> */}
       {/* <h2>Topclock Area</h2> */}
       {/* <h2>Hello [Username]</h2> */}

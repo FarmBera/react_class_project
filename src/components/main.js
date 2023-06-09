@@ -5,10 +5,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import Topclock from './topclock';
-import Todo from '../components/todo_new';
-import Diary from '../components/diary';
-import Dday from '../components/dday';
+// import Todo from '../components/todo_new';
+// import Diary from '../components/diary';
+// import Dday from '../components/dday';
 
+// 다이어리 부분 출력
 function MainDiary(props) {
   let output = [];
   if (props.diary === 'null') {
@@ -30,6 +31,8 @@ function MainDiary(props) {
   }
   return <div className="diary-container">{output}</div>;
 }
+
+// 투두 리스트 부분 출력
 function MainTodo(props) {
   let lis = [];
   // console.log(props.task);
@@ -49,6 +52,8 @@ function MainTodo(props) {
   }
   return <div>{lis}</div>;
 }
+
+// 디데이 부분 출력
 function MainDday(props) {
   let lis = [];
   if (props.dday === 'null') {
@@ -70,6 +75,7 @@ function MainDday(props) {
   return <div>{lis}</div>;
 }
 
+// main.js 메인 코드
 export default function Main(props) {
   let [diary, setDiary] = useState('null');
   let [dday, setDday] = useState('null');
@@ -86,7 +92,7 @@ export default function Main(props) {
 
   return (
     <div className="MainTemp">
-      <Topclock userid={props.userid}/>
+      <Topclock userid={props.userid} />
       <hr></hr>
       <div className="main-container">
         <div className="main-box">

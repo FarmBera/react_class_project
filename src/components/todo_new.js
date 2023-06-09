@@ -34,7 +34,7 @@ export default function TodoNew(props) {
     }
     if (task) {
       const newTask = { id: new Date().getTime().toString(), title: task };
-      console.log(newTask);
+      // console.log(newTask);
       setTasks([...tasks, newTask]);
       localStorage.setItem('localTasks', JSON.stringify([...tasks, newTask]));
       setTask('');

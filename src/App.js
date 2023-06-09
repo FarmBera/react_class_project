@@ -6,10 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import styled from 'styled-components';
 
 import Head from './components/head';
-// import Foot from './components/foot';
 import Main from './components/main';
 
-import Topclock from './components/topclock';
+// import Topclock from './components/topclock';
 import Diary from './components/diary';
 import TodoNew from './components/todo_new';
 import Dday from './components/dday';
@@ -19,7 +18,9 @@ import Login from './components/login';
 import Register from './components/register';
 import DiaryEditor from './(deprecated)/diary_new';
 
-function PreviousHome(props) {
+
+// deprecated
+/* function PreviousHome(props) {
   return (
     <div>
       <Topclock isLogin={props.isLogin} userid={props.userid} />
@@ -36,7 +37,7 @@ function PreviousHome(props) {
       </div>
     </div>
   );
-}
+} */
 
 export default function App() {
   const [isLogin, setIsLogin] = useState('false'); // 로그인 상태
@@ -69,13 +70,15 @@ export default function App() {
     localStorage.setItem('isLogin', 'false');
   };
 
-  let content = null;
+  // let content = null; // Deprecated
+
   return (
     <div className="App">
       <Head isLogin={isLogin} userid={userid} setLogoutOK={setLogoutOK} />
       <div className="grid">
         <BrowserRouter>
           <Routes>
+            {/* Deprecated */}
             {/* <Route
               path="/home"
               element={
@@ -84,18 +87,14 @@ export default function App() {
             <Route
               path="/"
               element={<Main isLogin={isLogin} userid={userid} />}></Route>
-            <Route
-              path="/diary_new"
+            <Route path="/diary_new"
               element={<DiaryEditor isLogin={isLogin} />}></Route>
             <Route path="/diary" element={<Diary isLogin={isLogin} />}></Route>
             <Route path="/todo" element={<TodoNew isLogin={isLogin} />}></Route>
             <Route path="/dday" element={<Dday isLogin={isLogin} />}></Route>
-
-            <Route
-              path="/support"
+            <Route path="/support"
               element={<Support isLogin={isLogin} />}></Route>
-            <Route
-              path="/login"
+            <Route path="/login"
               element={
                 <Login
                   userid={userid}
