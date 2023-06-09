@@ -70,7 +70,7 @@ function MainDday(props) {
   return <div>{lis}</div>;
 }
 
-export default function Main() {
+export default function Main(props) {
   let [diary, setDiary] = useState('null');
   let [dday, setDday] = useState('null');
   let [task, setTask] = useState('null');
@@ -86,7 +86,7 @@ export default function Main() {
 
   return (
     <div className="MainTemp">
-      <Topclock />
+      <Topclock userid={props.userid}/>
       <hr></hr>
       <div className="main-container">
         <div className="main-box">

@@ -76,11 +76,11 @@ export default function App() {
       <div className="grid">
         <BrowserRouter>
           <Routes>
-            <Route
+            {/* <Route
               path="/home"
               element={
                 <PreviousHome isLogin={isLogin} userid={userid} />
-              }></Route>
+              }></Route> */}
             <Route
               path="/"
               element={<Main isLogin={isLogin} userid={userid} />}></Route>

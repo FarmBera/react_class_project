@@ -27,7 +27,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
 .top_input>input {
   height: 30px;
   margin-right: 10px;
@@ -36,7 +35,6 @@ body {
 #inputBody { width: 300px; }
 #inputDate { height: 32px; }
 #inputSubmit { height: 34px; }
-
 #inputTitle, #inputDate, #inputBody {
   color: var(--white);
   background-color: var(--VSCodeBG);
@@ -44,23 +42,16 @@ body {
   border: 1px solid var(--LightBlue);
   transition: 1s;
 }
-
-#inputTitle:hover,
-#inputDate:hover,
-#inputBody:hover {
+#inputTitle:hover, #inputDate:hover, #inputBody:hover {
   transition: 10ms;
   border: 1px solid var(--YelGreen);
 }
-
-#inputTitle:focus,
-#inputDate:focus,
-#inputBody:focus {
+#inputTitle:focus, #inputDate:focus, #inputBody:focus {
   outline: none !important;
   border: 1px solid var(--Cyans);
   box-shadow: 0 0 20px var(--Cyans);
   transition: all 0.5s ease-in-out;
 }
-
 #inputSubmit {
   border: 1px solid var(--LightBlue);
   background-color: var(--VSCodeBG);
@@ -73,7 +64,6 @@ body {
   margin-bottom: 1px;
   transition: 1s;
 }
-
 #inputSubmit:hover {
   background-color: var(--YelGreen);
   border-color: var(--YelGreen);
@@ -81,7 +71,6 @@ body {
   border-radius: 0px;
   transition: all 0.5s;
 }
-
 #inputSubmit:active {
   background-color: var(--Cyans);
   color: #000;
@@ -89,7 +78,6 @@ body {
   box-shadow: 0 0 2px #21ebff55, 0 0 4px var(--Cyans), 0 0 8px var(--Cyans), 0 0 16px var(--Cyans);
   transition: 0s;
 }
-
 /* #inputSubmit {
   padding: 10px;
   color: var(--white);
@@ -112,7 +100,6 @@ body {
 /* Visible Area -------------- */
 /* Visible Area -------------- */
 /* Visible Area -------------- */
-
 .headHR {
   margin-left: 40px;
   margin-right: 40px;
@@ -120,7 +107,6 @@ body {
   height: 2px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
 }
-
 .specialHR {
   margin-left: 40px;
   margin-right: 40px;
@@ -183,7 +169,6 @@ body {
   justify-content: space-between;
   transition: 1s;
 }
-
 .delbtn:hover {
   /* border: 1px solid var(--Cyans); */
   background-color: var(--Cyans);
@@ -197,23 +182,7 @@ body {
   /* justify-content: center; */
   flex-basis: 50px;
 }
-
-/* .item-dday:nth-child(1)>button {
-  width: 60px;
-} */
-
-.item-dday:nth-child(2) {
-  flex-basis: 100px;
-}
-
-.item-dday:nth-child(3) {
-  flex-basis: 110px;
-}
-
-.item-dday:nth-child(4) {
-  flex-basis: 100px;
-}
-
-.item-dday:nth-child(5) {
-  flex-basis: 300px;
-}
+.item-dday:nth-child(2) { flex-basis: 100px; }
+.item-dday:nth-child(3) { flex-basis: 110px; }
+.item-dday:nth-child(4) { flex-basis: 100px; }
+.item-dday:nth-child(5) { flex-basis: 300px; }

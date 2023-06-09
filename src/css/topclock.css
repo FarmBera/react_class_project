@@ -5,5 +5,11 @@
 
 .date {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
+  margin: -40px;
+}
+
+.helloMsg {
+  font-size: 2rem;
+  margin: 10px;
 }

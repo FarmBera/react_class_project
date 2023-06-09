@@ -9,13 +9,14 @@ import Clock from 'react-live-clock';
 export default function Topclock(props) {
   // const [date, setDate] = useState(new Date());
   const loginState = JSON.parse(localStorage.getItem('isLogin'));
+  // console.log(props.userid);
   return (
     <div>
       {/* <span>{date.toLocaleTimeString()}</span> */}
       {/* <h2>Topclock Area</h2> */}
       {/* <h2>Hello [Username]</h2> */}
       {/* <h2>Hello {props.userid}</h2> */}
-      <h2>Hello {loginState ? props.userid : 'Guest'}</h2>
+      <h2 className="helloMsg">Hello, {loginState ? props.userid : 'Guest'}</h2>
       <div className="clock">
         <Clock format="HH:mm:ss" ticking={true} timezone={'Asia/Seoul'} />
       </div>

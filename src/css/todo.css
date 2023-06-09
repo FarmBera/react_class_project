@@ -14,14 +14,8 @@ body {
   --Green: #17b322;
 }
 
-body {
-  text-align: center;
-}
-
-.badge {
-  font-size: 30px;
-}
-
+body { text-align: center; }
+.badge { font-size: 30px; }
 .badge>span {
   font-size: 50px;
   color: var(--Cyans);
@@ -37,6 +31,9 @@ body {
 }
 
 /* input Area */
+/* input Area */
+/* input Area */
+
 .input-area {
   height: 50px;
   border-radius: 0px;
@@ -52,13 +49,11 @@ body {
   font-size: 20px;
   transition: 1s;
 }
-
 .input-area>.input-box:hover {
   outline: none;
   border: 2px solid var(--YelGreen);
   transition: all 10ms;
 }
-
 .input-area>.input-box:focus {
   outline: none !important;
   border: 2px solid var(--Cyans);
@@ -66,37 +61,6 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-/* imported style */
-/* .input-area>.input-addBtn {
-  border: 2px solid var(--LightBlue);
-  background-color: var(--VSCodeBG);
-  color: var(--white);
-  font-size: 20px;
-  letter-spacing: 4px;
-  width: 80px;
-  height: 50px;
-  margin-left: 20px;
-  margin-bottom: 1px;
-  transition: 1s;
-}
-
-.input-area>.input-addBtn:hover {
-  background-color: var(--YelGreen);
-  border-color: var(--YelGreen);
-  color: #000;
-  border-radius: 0px;
-  transition: all 0.5s;
-}
-
-.input-area>.input-addBtn:active {
-  background-color: var(--Cyans);
-  color: #000;
-  border-radius: 0px;
-  box-shadow: 0 0 2px #21ebff55, 0 0 4px var(--Cyans), 0 0 8px var(--Cyans), 0 0 16px var(--Cyans);
-  transition: 0s;
-} */
-
-/* previous style */
 .input-addBtn {
   border: 2px solid #69a5f8;
   background-color: var(--VSCodeBG);
@@ -109,12 +73,10 @@ body {
   margin-bottom: 1px;
   transition: all 0.5s;
 }
-
 .input-addBtn:hover {
   border: 2px solid var(--YelGreen);
   transition: all 0.5s;
 }
-
 .input-addBtn:active {
   border: 2px solid var(--Cyans);
   background-color: var(--Cyans);
@@ -123,8 +85,6 @@ body {
   transition: 0s
 }
 
-
-/* Output Area */
 .container-todo {
   margin: 0 auto;
   text-align: left;
@@ -136,7 +96,6 @@ body {
   grid-template-columns: 1fr 4fr;
   /* grid-template-rows: repeat(1, 1fr); */
 }
-
 
 /* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
 /* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
@@ -153,7 +112,6 @@ body {
   align-content: center;
   background-color: #a9f;
 }
-
 .delBtn:hover {
   justify-content: center;
   align-content: center;
@@ -165,7 +123,6 @@ body {
 /* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
 /* InnerText tttttttttttttttttttttttttt */
-
 .container-todo>.innertext {
   font-size: 30px;
   color: #fff;
@@ -173,7 +130,6 @@ body {
   /* margin: 0; */
   /* text-decoration: underline; */
 }
-
 .innertext:after {
   display: block;
   content: '';
@@ -183,12 +139,10 @@ body {
   /* transform: scaleX(0); */
   /* transform-origin: 0% 50%; */
 }
-
 .innertext:hover {
   transition: font-weight 0.2s ease-in-out;
   font-weight: bold;
 }
-
 .innertext:active {
   text-transform: uppercase;
 }
@@ -210,7 +164,6 @@ body {
   height: 50px;
   font-size: 20px;
 }
-
 .clearBtn:hover {
   border: 1px solid var(--Cyans);
   background-color: var(--Cyans);
