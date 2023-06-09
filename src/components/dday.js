@@ -20,7 +20,7 @@ function Inputs(props) {
           event.preventDefault();
           // console.log(props.isLogin);
           if (props.isLogin === 'false') {
-            ErrMsg(`로그인 후에 이용하세요!`);
+            ErrMsg(`로그인 후 이용하세요!`);
             return;
           } else {
             const title = event.target.inputTitle.value;
@@ -52,18 +52,18 @@ function Inputs(props) {
 
 function Nav(props) {
   const lis = [];
-  for (let i = 0; i < props.topics.length; i++) {
-    let t = props.topics[i];
+  for (let i = 0; i < props.ddays.length; i++) {
+    let t = props.ddays[i];
     lis.push(
       <div key={t.id} className="">
         <hr className="headHR" />
         <div key={t.id} className="container-dday">
           <button
-            className="item-dday"
+            className="item-dday delbtn"
             onClick={event => {
               props.deleteItems(t.id);
             }}>
-            삭제!
+            삭제
           </button>
           {/* <span> </span> */}
           <span className="item-dday">D-{t.date_finish}</span>
@@ -88,8 +88,8 @@ export default function Dday(props) {
   //     : 0,
   // );
   // console.log(`from LocalStorage>>${nextId}`);
-  // const [topics, setTopics] = useState([]);
-  const [topics, setTopics] = useState([
+  // const [ddays, setDdays] = useState([]);
+  const [ddays, setDdays] = useState([
     {
       id: 0,
       date_current: 'Date sample',
@@ -106,13 +106,10 @@ export default function Dday(props) {
     setMode('none');
   };
 
-  // let content = null;
-  // let contextControl = null;
-
   useEffect(() => {
     if (props.isLogin !== false && localStorage.getItem('localDday')) {
       const storedList = JSON.parse(localStorage.getItem('localDday'));
-      setTopics(storedList);
+      setDdays(storedList);
       setNextId(storedList.length);
       // setMode('none');
     }
@@ -142,14 +139,14 @@ export default function Dday(props) {
   //             ErrMsg(`로그인 후 이용하세요!`);
   //             return;
   //           } else {
-  //             const newTopics = [];
-  //             for (let i = 0; i < topics.length; i++) {
-  //               if (topics[i].id !== id) {
-  //                 newTopics.push(topics[i]);
+  //             const newDdays = [];
+  //             for (let i = 0; i < ddays.length; i++) {
+  //               if (ddays[i].id !== id) {
+  //                 newDdays.push(ddays[i]);
   //               }
   //             }
-  //             setTopics(newTopics);
-  //             localStorage.setItem('localDday', JSON.stringify(newTopics));
+  //             setDdays(newDdays);
+  //             localStorage.setItem('localDday', JSON.stringify(newDdays));
   //             setMode('none');
   //           }
   //         }}>
@@ -200,20 +197,20 @@ export default function Dday(props) {
           }
 
           const conDDay = JSON.stringify(temp);
-          const newTopic = {
+          const newDday = {
             id: nextId,
             title: inputTitle,
             body: inputBody,
             date_current: inputDate,
             date_finish: conDDay.replace('"', ''),
           };
-          const newTopics = [...topics];
-          newTopics.push(newTopic);
-          setTopics(newTopics);
-          // console.log(topics);
+          const newDdays = [...ddays];
+          newDdays.push(newDday);
+          setDdays(newDdays);
+          // console.log(ddays);
           setId(nextId);
           setNextId(nextId + 1);
-          localStorage.setItem('localDday', JSON.stringify(newTopics));
+          localStorage.setItem('localDday', JSON.stringify(newDdays));
           // localStorage.setItem('len', nextId);
           // }
         }}></Inputs>
@@ -223,8 +220,9 @@ export default function Dday(props) {
       ) : (
         <>
           <div>
-            {/* <hr className="headHR" /> */}
+            <hr className="headHR" />
             <hr className="specialHR" />
+            {/* <hr className="headHR" /> */}
             <div className="container-dday">
               <span className="item-dday">{headerItem.btn}</span>
               <span className="item-dday">{headerItem.dday}</span>
@@ -232,36 +230,32 @@ export default function Dday(props) {
               <span className="item-dday">{headerItem.title}</span>
               <span className="item-dday">{headerItem.comment}</span>
             </div>
-            {/* <hr className="headHR" /> */}
+            <hr className="headHR" />
             <hr className="specialHR" />
           </div>
           <Nav
             id={id}
-            topics={topics}
+            ddays={ddays}
             deleteItems={inputId => {
-              const newTopics = [];
-              for (let i = 0; i < topics.length; i++) {
-                if (topics[i].id !== inputId) {
-                  newTopics.push(topics[i]);
+              const newDdays = [];
+              for (let i = 0; i < ddays.length; i++) {
+                if (ddays[i].id !== inputId) {
+                  newDdays.push(ddays[i]);
                 }
               }
-              setTopics(newTopics);
-              localStorage.setItem('localDday', JSON.stringify(newTopics));
+              setDdays(newDdays);
+              localStorage.setItem('localDday', JSON.stringify(newDdays));
               setMode('none');
               // // on Delete
-              // setTopics(arrInput);
+              // setDdays(arrInput);
               // localStorage.setItem('localDday', JSON.stringify(arrInput));
               // setMode('none');
               // // console.log('moved!');
-            }}
-            onChangeMode={_id => {
-              setMode('read');
-              setId(_id);
             }}></Nav>
         </>
       )}
       {/* <Nav
-        topics={topics}
+        ddays={ddays}
         onChangeMode={_id => {
           setMode('read');
           setId(_id);

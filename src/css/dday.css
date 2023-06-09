@@ -1,11 +1,23 @@
+body {
+  --black: #000;
+  --white: #fff;
+  --VSCodeBG: #11151a;
+  --BGColor: #282828;
+  --BGColor1: #262d41;
+  --BGColor2: #313a50;
+  --SkyBlue: #61dafb;
+  --Cyans: #21ebff;
+  --DarkCyans: #17a9b3;
+  --Blue: #2456ff;
+  --LightBlue: #69a5f8;
+  --YelGreen: #21ff30;
+  --Green: #17b322;
+}
+
 .big {
   color: #0ff;
   font-size: 25px;
 }
-
-
-
-
 
 /* input area ---------------- */
 /* input area ---------------- */
@@ -18,22 +30,67 @@
 }
 
 .top_input>input {
-  height: 25px;
+  height: 30px;
   margin-right: 10px;
 }
 
 #inputBody {
-  width: 200px;
+  width: 300px;
 }
 
 #inputDate {
-  height: 27px;
+  height: 32px;
 }
 
 #inputSubmit {
-  height: 31px;
+  height: 34px;
 }
 
+#inputTitle,
+#inputDate,
+#inputBody {
+  color: var(--white);
+  background-color: var(--VSCodeBG);
+  outline: none;
+  border: 1px solid var(--LightBlue);
+  transition: 1s;
+}
+
+#inputTitle:hover,
+#inputDate:hover,
+#inputBody:hover {
+  transition: 10ms;
+  border: 1px solid var(--YelGreen);
+}
+
+#inputTitle:focus,
+#inputDate:focus,
+#inputBody:focus {
+  outline: none !important;
+  border: 1px solid var(--Cyans);
+  box-shadow: 0 0 20px var(--Cyans);
+  transition: all 0.5s ease-in-out;
+}
+
+
+#inputSubmit {
+  padding: 10px;
+  color: var(--white);
+  background-color: var(--VSCodeBG);
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid var(--LightBlue);
+  transition: 1s;
+}
+
+#inputSubmit:hover {
+  background-color: var(--Cyans);
+  border: 1px solid var(--Cyans);
+  color: #000;
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
+  transition: all 0.2s;
+}
 
 /* Visible Area -------------- */
 /* Visible Area -------------- */
@@ -53,10 +110,10 @@
 }
 
 .specialHR {
-  /* margin-bottom: 20px; */
   margin-left: 40px;
   margin-right: 40px;
   border: 0;
+  border-radius: 10px;
   height: 5px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
 }
@@ -91,19 +148,35 @@
 
 .container-dday {
   margin-left: 40px;
-  /* border: 3px solid #0ff; */
   min-width: 500px;
   max-width: 1000px;
   height: 35px;
   display: flex;
+  flex-direction: row;
   text-align: center;
   align-items: center;
-  flex-direction: row;
   justify-content: space-between;
-  /* display: grid; */
-  /* justify-content: center; */
-  /* grid-template-columns: 1fr 1fr 1fr 2fr 4fr; */
-  /* grid-template-rows: repeat(1, 1fr); */
+}
+
+.delbtn {
+  /* border: 2px solid var(--LightBlue); */
+  border: none;
+  outline: none;
+  background-color: var(--BGColor1);
+  color: var(--white);
+  margin-left: 20px;
+  /* width: 200px; */
+  height: 35px;
+  font-size: 16px;
+  transition: 1s;
+}
+
+.delbtn:hover {
+  /* border: 1px solid var(--Cyans); */
+  background-color: var(--Cyans);
+  color: #000;
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
+  transition: all 0.5s;
 }
 
 .item-dday:nth-child(1) {

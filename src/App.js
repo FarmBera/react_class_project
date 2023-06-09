@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Head from './components/head';
 import Foot from './components/foot';
+import Main from './components/main';
 
 import Topclock from './components/topclock';
 import Diary from './components/diary';
@@ -21,7 +22,6 @@ import { useEffect, useState } from 'react';
 function Home(props) {
   return (
     <div>
-      {/* <StyledHome> */}
       <Topclock isLogin={props.isLogin} userid={props.userid} />
       <div className="BoxContainer">
         <div className="box-a">
@@ -34,14 +34,12 @@ function Home(props) {
           <Dday />
         </div>
       </div>
-      {/* </StyledHome> */}
     </div>
   );
 }
 
 export default function App() {
   const [isLogin, setIsLogin] = useState('false'); // 로그인 상태
-  // const [username, setUsername] = useState(''); // userName 저장
   const [userid, setUserid] = useState(''); // userId 저장
   const [userpw, setUserpw] = useState(''); // userPw 저장
 
@@ -49,10 +47,10 @@ export default function App() {
     if (!localStorage.getItem('isLogin'))
       localStorage.setItem('isLogin', 'false');
     // if (!localStorage.getItem('userInfo')) return;
-
     const getIsLogin = localStorage.getItem('isLogin');
     setIsLogin(getIsLogin);
     const gotUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (!gotUserInfo) return;
     // console.log(`gotUserInfo>>"${gotUserInfo}"`);
     setUserid(gotUserInfo.userid);
     setUserpw(gotUserInfo.userpw);
@@ -81,6 +79,9 @@ export default function App() {
             <Route
               path="/"
               element={<Home isLogin={isLogin} userid={userid} />}></Route>
+            <Route
+              path="/main"
+              element={<Main isLogin={isLogin} userid={userid} />}></Route>
             <Route
               path="/diary_new"
               element={<DiaryEditor isLogin={isLogin} />}></Route>

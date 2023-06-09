@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import '../css/head.css';
+import logo from '../img/logo.png';
 // import logo from "img/logo.png";
 // import search_ico from "img/search-icon.png";
 
 export default function Head(props) {
-  // const [isLoginlog, setIsLoginlog] = useState('false');
-  // let [loginStat, setLoginStat] = useState('false');
-
   // useEffect(() => {
   //   if (!localStorage.getItem('isLogin')) {
   //     return;
@@ -16,11 +14,12 @@ export default function Head(props) {
   //   }
   // });
   // console.log(props.isLogin);
+  console.log(props.isLogin);
   return (
     <header className="header">
       <div className="header">
         <a href="/" className="logo">
-          {/* <img src="../img/logo.png" alt="logo" width="30px" /> */}
+          <img src={logo} alt="logo" width="30px" />
           X-Diary
         </a>
         <div className="header-right">
@@ -49,26 +48,6 @@ export default function Head(props) {
           <a href="/register">Register</a>
         </div>
       </div>
-      {/* <nav>
-        <ul>
-          <li className="">
-            <a href="/diary">Diary</a>
-          </li>
-          <li className="">
-            <a href="/todo">ToDo</a>
-          </li>
-          <li className="">
-            <a href="/dday">D-Day</a>
-          </li>
-          <li className="">
-            <a href="#">LogIn</a>
-          </li>
-          {/* <li className="">
-                <input type="text" placeholder="Search..." />
-                <img src="search_ico" alt="search Icon" />
-              </li>
-        </ul>
-      </nav> */}
     </header>
   );
 }

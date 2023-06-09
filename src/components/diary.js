@@ -52,7 +52,7 @@ function DiaryInput(props) {
           <textarea id="body" placeholder="내용을 입력하세요"></textarea>
         </p>
         <p>
-          <input type="submit" />
+          <input id="submit" type="submit" value="글쓰기" />
         </p>
       </form>
     </div>
@@ -108,7 +108,7 @@ function DiaryUpdate(props) {
               }}></textarea>
           </p>
           <p>
-            <input type="submit" value="수정하기"></input>
+            <input id="submit" type="submit" value="수정하기"></input>
           </p>
         </form>
       </div>
@@ -127,6 +127,7 @@ function DiaryBox(props) {
         <div className="diary-body-title">{t.title}</div>
         <div className="diary-body-date">
           <button
+            id="btn"
             className="diary-body-button"
             onClick={currId => {
               props.onUpdate(t.id);
@@ -134,6 +135,7 @@ function DiaryBox(props) {
             수정
           </button>
           <button
+            id="btn"
             className="diary-body-button"
             onClick={() => {
               props.onDelete(t.id);
@@ -147,7 +149,7 @@ function DiaryBox(props) {
       </div>,
     );
   }
-  return <div className='diary-container'>{output}</div>;
+  return <div className="diary-container">{output}</div>;
 }
 
 export default function Diary(props) {

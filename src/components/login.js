@@ -7,6 +7,8 @@ export default function Login(props) {
   // const [isLogin, setIsLogin] = useState('no');
   let [inputId, setInputId] = useState('');
   let [inputPw, setInputPw] = useState('');
+  // let [savedId, setSavedId] = useState('');
+  // let [savedPw, setSavedPw] = useState('');
 
   // useEffect(() => {
   // const loginState = JSON.parse(localStorage.getItem('isLogin'));
@@ -22,6 +24,25 @@ export default function Login(props) {
   // if (localInfo) {
   // }
   // });
+
+  // useEffect(() => {
+  //   const info = localStorage.getItem('userInfo');
+  //   if (!info) return;
+  //   const savedInfo = JSON.parse(info);
+  //   // console.log(savedInfo);
+  //   setSavedId(savedInfo.userid);
+  //   setSavedPw(savedInfo.userpw);
+  //   // console.log(savedInfo.userid);
+  // });
+
+  const ErrMsg = inputMsg => {
+    if (!inputMsg) alert(`Undefined ERR`);
+    else {
+      console.log(`${inputMsg}`);
+      alert(`${inputMsg}`);
+    }
+    return;
+  };
   return (
     <div className="login-box">
       <h1>Login Page</h1>
@@ -30,6 +51,7 @@ export default function Login(props) {
           <h2>username</h2>
           <input
             id="userId"
+            name="id"
             type="text"
             // placeholder="아이디를 입력해주세요"
             onChange={event => {
@@ -42,6 +64,7 @@ export default function Login(props) {
           <h2>password</h2>
           <input
             id="userPw"
+            name="pw"
             type="password"
             // placeholder="비밀번호를 입력해주세요"
             onChange={event => {
@@ -56,17 +79,20 @@ export default function Login(props) {
             href="/"
             onClick={event => {
               event.preventDefault();
-              console.log(`props.userid>>"${props.userid}"`);
+              // console.log(`props.userid>>"${props.userid}"`);
 
               if (props.userid === null && props.userpw === null) {
-                console.log(`NO Saved Info`);
+                // console.log(`NO Saved Info`);
                 return;
               }
               if (props.userid !== inputId || props.userpw !== inputPw) {
-                alert('일치하는 정보가 없습니다. ');
-                console.log(`일치하는 정보가 없습니다. `);
+                ErrMsg(`일치하는 정보가 없습니다.`);
                 return;
               }
+              // console.log(`savedId>>${savedId}`);
+              // console.log(`savedPw>>${savedPw}`);
+              // console.log(`inputId>>${inputId}`);
+              // console.log(`inputPw>>${inputPw}`);
               console.log(`login SUCCESS!`);
               props.setLoginStatOK(); // 로그인 성공 함수 호출
               navigate('/');

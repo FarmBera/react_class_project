@@ -1,15 +1,30 @@
 body {
+  --black: #000;
+  --white: #fff;
+  --VSCodeBG: #11151a;
+  --BGColor: #282828;
+  --BGColor1: #262d41;
+  --BGColor2: #313a50;
+  --SkyBlue: #61dafb;
+  --Cyans: #21ebff;
+  --DarkCyans: #17a9b3;
+  --Blue: #2456ff;
+  --LightBlue: #69a5f8;
+  --YelGreen: #21ff30;
+  --Green: #17b322;
+}
+
+body {
   text-align: center;
 }
 
 .badge {
   font-size: 30px;
-  /* border: 1px solid #f0f; */
 }
 
 .badge>span {
   font-size: 50px;
-  color: aqua;
+  color: var(--Cyans);
 }
 
 .body {
@@ -22,12 +37,9 @@ body {
 }
 
 /* input Area */
-
 .input-area {
-  /* border: 3px dotted #f0f; */
   height: 50px;
   border-radius: 0px;
-
 }
 
 .input-area>.input-box {
@@ -38,7 +50,22 @@ body {
   width: 300px;
   height: 45px;
   font-size: 20px;
+  transition: 1s;
 }
+
+.input-area>.input-box:hover {
+  outline: none;
+  border: 2px solid var(--YelGreen);
+  transition: all 10ms;
+}
+
+.input-area>.input-box:focus {
+  outline: none !important;
+  border: 2px solid var(--Cyans);
+  box-shadow: 0 0 20px var(--Cyans);
+  transition: all 0.5s ease-in-out;
+}
+
 
 .input-area>.input-addBtn {
   border: 2px solid #69a5f8;
@@ -47,13 +74,21 @@ body {
   width: 80px;
   height: 50px;
   font-size: 20px;
+  transition: 1s;
+}
 
+.input-area>.input-addBtn:hover {
+  border: 1px solid var(--Cyans);
+  background-color: var(--Cyans);
+  color: #000;
+  /* box-shadow: 0 0 5px #21ebff55, 0 0 25px var(--Cyans), 0 0 50px var(--Cyans), 0 0 100px var(--Cyans); */
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
+  transition: all 0.5s;
 }
 
 /* Output Area */
 .container-todo {
   margin: 0 auto;
-  /* border: 3px solid #0ff; */
   text-align: left;
   max-width: 700px;
   height: 100px;
@@ -101,10 +136,6 @@ body {
   /* text-decoration: underline; */
 }
 
-/* .innertext {
-
-} */
-
 .innertext:after {
   display: block;
   content: '';
@@ -128,3 +159,21 @@ body {
 /*.innertext.fromLeft:after {
   transform-origin: 0% 50%;
 } */
+
+.clearBtn {
+  border: 2px solid var(--LightBlue);
+  background-color: var(--VSCodeBG);
+  color: var(--white);
+  margin-left: 20px;
+  width: 80px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.clearBtn:hover {
+  border: 1px solid var(--Cyans);
+  background-color: var(--Cyans);
+  color: #000;
+  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
+  transition: all 0.5s;
+}

@@ -118,9 +118,8 @@ export default function TodoNew(props) {
         />
         <button
           className="input-addBtn"
-          // className="custom-btn btn-3"
           onClick={addTask}>
-          add
+          추가
         </button>
       </div>
       {props.isLogin === 'false' ? (
@@ -157,7 +156,7 @@ export default function TodoNew(props) {
       )}
       {props.isLogin === 'false' || !tasks.length ? null : (
         <div className="item-bottom">
-          <button className="body-clearBtn" onClick={() => clearContent()}>
+          <button className="clearBtn" onClick={() => clearContent()}>
             Clear
           </button>
         </div>
