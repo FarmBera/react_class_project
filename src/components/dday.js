@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import Clock from 'react-live-clock';
 
 // 오류 메시지 띄우기
-const ErrMsg = inputMsg => {
+const ErrMsg = Msg => {
   // const msg = `로그인 후에 이용하세요!`
-  alert(inputMsg);
-  console.log(inputMsg);
+  alert(Msg);
+  console.log(Msg);
 };
 
 function Inputs(props) {
@@ -43,6 +43,8 @@ function Inputs(props) {
         <input id="inputTitle" type="text" placeholder="제목" />
         <input id="inputBody" type="text" placeholder="추가 내용" />
         <input id="inputDate" type="date" />
+        {/* Below code is for TEST */}
+        {/* <input id="inputDate" type="date" value="2023-06-23" /> */}
         <input id="inputSubmit" type="submit" value="추가" />
       </form>
     </div>
@@ -114,7 +116,7 @@ function Nav(props) {
       <div key={t.id} className="">
         <hr className="headHR" />
         <div key={t.id} className="container-dday">
-          <div className="item-dday">
+          <div className="item-dday delbtn-container">
             <button
               className="delbtn"
               onClick={event => {
@@ -147,6 +149,15 @@ export default function Dday(props) {
   const [mode, setMode] = useState('none');
   const [id, setId] = useState(null);
   let [nextId, setNextId] = useState('0');
+  const [ddays, setDdays] = useState([
+    // {
+    //   id: 0,
+    //   date_current: 'Date sample',
+    //   date_finish: 'Sample"',
+    //   title: 'Sample Title',
+    //   body: 'Sample Body',
+    // },
+  ]);
   // let [nextId, setNextId] = useState(
   //   localStorage.getItem('localDday')
   //     ? JSON.parse(localStorage.getItem('localDday')).length
@@ -154,15 +165,6 @@ export default function Dday(props) {
   // );
   // console.log(`from LocalStorage>>${nextId}`);
   // const [ddays, setDdays] = useState([]);
-  const [ddays, setDdays] = useState([
-    {
-      id: 0,
-      date_current: 'Date sample',
-      date_finish: 'Sample"',
-      title: 'Sample Title',
-      body: 'Sample Body',
-    },
-  ]);
   // let [titleMsg, setTitleMsg] = useState('나의 D-Day')
 
   useEffect(() => {
@@ -199,6 +201,15 @@ export default function Dday(props) {
     return JSON.stringify(temp).replace('"', '');
   };
 
+  const headerItem = {
+    // Header 제목
+    btn: '관리',
+    dday: 'D-Day',
+    date: '날짜',
+    title: '제목',
+    comment: '추가 내용',
+  };
+
   let editContent = null;
   let titleMsg = '나의 D-Day';
 
@@ -231,7 +242,6 @@ export default function Dday(props) {
           setId(nextId);
           setNextId(nextId + 1);
           localStorage.setItem('localDday', JSON.stringify(newDdays));
-          // localStorage.setItem('len', nextId);
         }}></Inputs>
     );
   } else if (mode === 'edit') {
@@ -276,15 +286,7 @@ export default function Dday(props) {
         }}></EditDday>
     );
   }
-
-  const headerItem = {
-    btn: 'control',
-    dday: 'D-Day',
-    date: 'Date',
-    title: 'Title',
-    comment: 'Comment',
-  };
-
+  // console.log(ddays);
   return (
     <div className="hover">
       <h2>{titleMsg}</h2>
@@ -297,44 +299,50 @@ export default function Dday(props) {
         <div className="err-msg">로그인 후 이용하세요!</div>
       ) : (
         <>
-          <div>
-            {/* <hr className="headHR" /> */}
-            <hr className="specialHR" />
-            {/* <hr className="headHR" /> */}
-            <div className="container-dday">
-              <span className="item-dday">{headerItem.btn}</span>
-              <span className="item-dday">{headerItem.dday}</span>
-              <span className="item-dday">{headerItem.date}</span>
-              <span className="item-dday">{headerItem.title}</span>
-              <span className="item-dday">{headerItem.comment}</span>
+          {ddays.length <= 0 ? (
+            <div className="info">예정된 일정이 없습니다!</div>
+          ) : (
+            <div>
+              {/* <hr className="headHR" /> */}
+              <hr className="specialHR" />
+              {/* <hr className="headHR" /> */}
+              <div className="container-dday">
+                <span className="item-dday">{headerItem.btn}</span>
+                <span className="item-dday">{headerItem.dday}</span>
+                <span className="item-dday">{headerItem.date}</span>
+                <span className="item-dday">{headerItem.title}</span>
+                <span className="item-dday">{headerItem.comment}</span>
+              </div>
+              {/* <hr className="headHR" /> */}
+              <hr className="specialHR" />
             </div>
-            {/* <hr className="headHR" /> */}
-            <hr className="specialHR" />
-          </div>
-          <Nav
-            id={id}
-            ddays={ddays}
-            deleteItems={inputId => {
-              const newDdays = [];
-              for (let i = 0; i < ddays.length; i++) {
-                if (ddays[i].id !== inputId) {
-                  newDdays.push(ddays[i]);
+          )}
+          <div className='dday-container-body'>
+            <Nav
+              id={id}
+              ddays={ddays}
+              deleteItems={inputId => {
+                const newDdays = [];
+                for (let i = 0; i < ddays.length; i++) {
+                  if (ddays[i].id !== inputId) {
+                    newDdays.push(ddays[i]);
+                  }
                 }
-              }
-              setDdays(newDdays);
-              localStorage.setItem('localDday', JSON.stringify(newDdays));
-              setMode('none');
-              // // on Delete
-              // setDdays(arrInput);
-              // localStorage.setItem('localDday', JSON.stringify(arrInput));
-              // setMode('none');
-              // // console.log('moved!');
-            }}
-            editItem={inputId => {
-              // console.log('editItem!');
-              setId(inputId);
-              setMode('edit');
-            }}></Nav>
+                setDdays(newDdays);
+                localStorage.setItem('localDday', JSON.stringify(newDdays));
+                setMode('none');
+                // // on Delete
+                // setDdays(arrInput);
+                // localStorage.setItem('localDday', JSON.stringify(arrInput));
+                // setMode('none');
+                // // console.log('moved!');
+              }}
+              editItem={inputId => {
+                // console.log('editItem!');
+                setId(inputId);
+                setMode('edit');
+              }}></Nav>
+          </div>
         </>
       )}
     </div>

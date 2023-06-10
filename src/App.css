@@ -25,7 +25,8 @@ body {
 }
 
 body {
-  font-family: "SF Mono", monaco, menlo, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* font-family: "SF Mono", monaco, menlo, sans-serif; */
   background-color: var(--BGColor1);
   color: #fff;
   transition: all 1s;
@@ -47,5 +48,15 @@ a:hover {
   margin-top: 50px;
   font-size: 30pt;
   color: red;
+  text-align: center;
+}
+
+/* 정보 메시지 스타일 */
+.info {
+  /* background-color: var(--VSCodeBG); */
+  margin-top: 50px;
+  font-size: 30pt;
+  color: yellow;
+  content: '항목이 없습니다. ';
   text-align: center;
 }

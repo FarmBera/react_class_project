@@ -20,11 +20,11 @@ function MainDiary(props) {
       // console.log(t);
       output.push(
         <div className="main-diary-container" key={t.id}>
-          <hr />
+          <hr className="main-body-hr" />
           <div className="main-diary-title">{t.title}</div>
           <div className="main-diary-date">{t.date}</div>
           <div className="main-diary-body">{t.body}</div>
-          <hr />
+          <hr className="main-body-hr" />
         </div>,
       );
     }
@@ -43,9 +43,9 @@ function MainTodo(props) {
       let t = props.task[i];
       lis.push(
         <div key={t.id} className="">
-          <hr className="headHR" />
+          <hr className="main-body-hr" />
           <span className="item-dday">{t.title}</span>
-          <hr className="headHR" />
+          <hr className="main-body-hr" />
         </div>,
       );
     }
@@ -63,11 +63,11 @@ function MainDday(props) {
       let t = props.dday[i];
       lis.push(
         <div key={t.id} className="">
-          <hr className="headHR" />
+          <hr className="main-body-hr" />
           <span className="item-dday">D-{t.date_finish}</span>
           <span className="space"> </span>
           <span className="item-dday">{t.title}</span>
-          <hr className="headHR" />
+          <hr className="main-body-hr" />
         </div>,
       );
     }
@@ -93,7 +93,7 @@ export default function Main(props) {
   return (
     <div className="MainTemp">
       <Topclock userid={props.userid} />
-      <hr></hr>
+      <hr className="headHR" />
       <div className="main-container">
         <div className="main-box">
           {/* <Diary /> */}

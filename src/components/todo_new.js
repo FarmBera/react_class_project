@@ -101,7 +101,7 @@ export default function TodoNew(props) {
       </div>
     );
   }
-
+  // console.log(tasks);
   // Output area
   return (
     <div className="">
@@ -123,34 +123,40 @@ export default function TodoNew(props) {
       {props.isLogin === 'false' ? (
         <div></div>
       ) : (
-        tasks.map(task => (
-          <React.Fragment key={task.id}>
-            <div className="outer">
-              <div className="container-todo">
-                <div className="grid">
-                  <label className="checkbox bounce">
-                    <input
-                      type="checkbox"
-                      onClick={() => {
-                        DeleteContent(task);
-                      }}
-                    />
-                    <svg viewBox="0 0 21 21">
-                      <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                    </svg>
-                  </label>
-                </div>
-                {/* <button
+        <>
+          {tasks.length === 0 ? (
+            <div className="info">할 일이 없습니다!</div>
+          ) : (
+            tasks.map(task => (
+              <React.Fragment key={task.id}>
+                <div className="outer">
+                  <div className="container-todo">
+                    <div className="grid">
+                      <label className="checkbox bounce">
+                        <input
+                          type="checkbox"
+                          onClick={() => {
+                            DeleteContent(task);
+                          }}
+                        />
+                        <svg viewBox="0 0 21 21">
+                          <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                        </svg>
+                      </label>
+                    </div>
+                    {/* <button
                   className="custom-btn btn-3"
                   // className="input-addBtn"
                   onClick={() => DeleteContent(task)}>
                   <span></span>
                 </button> */}
-                <span className="innertext fromLeft">{task.title}</span>
-              </div>
-            </div>
-          </React.Fragment>
-        ))
+                    <span className="innertext fromLeft">{task.title}</span>
+                  </div>
+                </div>
+              </React.Fragment>
+            ))
+          )}
+        </>
       )}
       {props.isLogin === 'false' || !tasks.length ? null : (
         <div className="item-bottom">

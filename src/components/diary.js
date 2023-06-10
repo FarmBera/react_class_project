@@ -3,10 +3,10 @@ import '../css/diary.css';
 import { useState, useEffect } from 'react';
 
 // const Msg = `로그인 후에 이용하세요!`;
-const ErrMsg = inputMsg => {
+const ErrMsg = Msg => {
   // const msg = `${input}`;
-  alert(inputMsg);
-  console.log(inputMsg);
+  alert(Msg);
+  console.log(Msg);
 };
 
 function DiaryInput(props) {
@@ -46,6 +46,8 @@ function DiaryInput(props) {
         <p>
           <input id="title" dtype="text" placeholder="제목을 입력하세요" />
           <input id="date" type="date" />
+          {/* Below code is for TEST */}
+          {/* <input id="date" type="date" value="2023-06-23" /> */}
         </p>
         <p>
           <textarea id="body" placeholder="내용을 입력하세요"></textarea>
@@ -162,14 +164,14 @@ function DiaryBox(props) {
 
 export default function Diary(props) {
   const [id, setId] = useState(null);
-  let [nextId, setNextId] = useState(1);
+  let [nextId, setNextId] = useState(0);
   const [article, setArticle] = useState([
-    {
-      id: 0,
-      title: 'title1',
-      date: '2021-05-06',
-      body: 'body1',
-    },
+    // {
+    //   id: 0,
+    //   title: 'title1',
+    //   date: '2021-05-06',
+    //   body: 'body1',
+    // },
   ]);
   const [mode, setMode] = useState('none');
   // const [diary_date, setDiary_date] = useState('2023-06-01');
@@ -265,22 +267,31 @@ export default function Diary(props) {
         {props.isLogin === 'false' ? (
           <span className="err-msg">로그인 후 이용하세요!</span>
         ) : (
-          <DiaryBox
-            article={article}
-            onDelete={currId => {
-              const newArticle = [];
-              for (let i = 0; i < article.length; i++) {
-                if (article[i].id !== currId) {
-                  newArticle.push(article[i]);
-                }
-              }
-              setArticle(newArticle);
-              localStorage.setItem('localDiary', JSON.stringify(newArticle));
-            }}
-            onUpdate={currId => {
-              setMode('update');
-              setId(currId);
-            }}></DiaryBox>
+          <>
+            {article.length <= 0 ? (
+              <div className="info">작성된 글이 없습니다!</div>
+            ) : (
+              <DiaryBox
+                article={article}
+                onDelete={currId => {
+                  const newArticle = [];
+                  for (let i = 0; i < article.length; i++) {
+                    if (article[i].id !== currId) {
+                      newArticle.push(article[i]);
+                    }
+                  }
+                  setArticle(newArticle);
+                  localStorage.setItem(
+                    'localDiary',
+                    JSON.stringify(newArticle),
+                  );
+                }}
+                onUpdate={currId => {
+                  setMode('update');
+                  setId(currId);
+                }}></DiaryBox>
+            )}
+          </>
         )}
       </div>
     </div>
