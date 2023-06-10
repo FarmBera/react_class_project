@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  const [isLogin, setIsLogin] = useState('no');
+  // const [isLogin, setIsLogin] = useState('no');
   let [inputId, setInputId] = useState('');
   let [inputPw, setInputPw] = useState('');
 
@@ -23,32 +23,22 @@ export default function Register() {
       <form id="register">
         <div className="user-box">
           <h2>username</h2>
-          <input
-            id="userId"
-            type="text"
-            // placeholder="아이디를 입력해주세요"
+          <input id="userId" type="text"
             onChange={event => {
               setInputId(event.target.value);
             }}
-          />
-          <label>아이디를 입력해주세요</label>
+          /><label>아이디를 입력해주세요</label>
         </div>
         <div className="user-box">
           <h2>password</h2>
-          <input
-            id="userPw"
-            type="password"
-            // placeholder="비밀번호를 입력해주세요"
+          <input id="userPw" type="password"
             onChange={event => {
               setInputPw(event.target.value);
             }}
-          />
-          <label>비밀번호를 입력해주세요</label>
+          /><label>비밀번호를 입력해주세요</label>
         </div>
         <div className="button-form">
-          <a
-            id="submit"
-            href="/"
+          <a id="submit" href="/"
             onClick={event => {
               event.preventDefault();
               let userObj = {
@@ -58,7 +48,7 @@ export default function Register() {
               console.log(userObj);
               userObj = JSON.stringify(userObj);
               localStorage.setItem('userInfo', userObj);
-              navigate('/');
+              navigate('/'); // 메인 화면으로 이동
             }}>
             전송
           </a>

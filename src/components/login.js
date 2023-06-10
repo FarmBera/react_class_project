@@ -43,17 +43,14 @@ export default function Login(props) {
     }
     return;
   };
+
   return (
     <div className="login-box">
       <h1>Login Page</h1>
       <form id="register">
         <div className="user-box">
           <h2>username</h2>
-          <input
-            id="userId"
-            name="id"
-            type="text"
-            // placeholder="아이디를 입력해주세요"
+          <input id="userId" name="id" type="text"
             onChange={event => {
               setInputId(event.target.value);
             }}
@@ -62,11 +59,7 @@ export default function Login(props) {
         </div>{' '}
         <div className="user-box">
           <h2>password</h2>
-          <input
-            id="userPw"
-            name="pw"
-            type="password"
-            // placeholder="비밀번호를 입력해주세요"
+          <input id="userPw" name="pw" type="password"
             onChange={event => {
               setInputPw(event.target.value);
             }}
@@ -74,13 +67,10 @@ export default function Login(props) {
           <label>비밀번호를 입력해주세요</label>
         </div>
         <div className="button-box">
-          <a
-            id="submit"
-            href="/"
+          <a id="submit" href="/"
             onClick={event => {
               event.preventDefault();
               // console.log(`props.userid>>"${props.userid}"`);
-
               if (props.userid === null && props.userpw === null) {
                 // console.log(`NO Saved Info`);
                 return;
@@ -95,7 +85,7 @@ export default function Login(props) {
               // console.log(`inputPw>>${inputPw}`);
               console.log(`login SUCCESS!`);
               props.setLoginStatOK(); // 로그인 성공 함수 호출
-              navigate('/');
+              navigate('/'); // 메인 페이지로 이동
 
               // if (props.userid === '' && props.userpw === '') {
               //   if (props.userid !== inputId || props.userpw !== inputPw) {

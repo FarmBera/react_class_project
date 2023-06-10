@@ -13,22 +13,19 @@ function DiaryInput(props) {
   return (
     <div className="diary-input">
       <h2>글쓰기</h2>
-      <form
-        className="input-container"
+      <form className="input-container"
         onSubmit={event => {
           event.preventDefault();
           // console.log(`Login State: ${props.isLogin}`);
-          if (props.isLogin === 'false') {
-            ErrMsg('로그인 후 이용하세요');
-            return;
-          } else {
+          if (props.isLogin === 'false') { ErrMsg('로그인 후 이용하세요'); return; }
+          else {
             const title = event.target.title.value;
             const date = event.target.date.value;
             const body = event.target.body.value;
             // console.log(title, date, body);
-            if (title === '' || body === '' || date === '') {
+            if (title === '' || body === '' || date === '') { 
               ErrMsg(`모든 항목을 입력해주세요!`);
-              return;
+              return; 
             }
             event.target.title.value = '';
             event.target.date.value = '';
@@ -53,12 +50,7 @@ function DiaryInput(props) {
           <textarea id="body" placeholder="내용을 입력하세요"></textarea>
         </p>
         <p>
-          <input
-            // id="submit"
-            className="diary-submit"
-            type="submit"
-            value="글쓰기"
-          />
+          <input  className="diary-submit" type="submit" value="글쓰기" />
         </p>
       </form>
     </div>
@@ -69,6 +61,7 @@ function DiaryUpdate(props) {
   const [title, setTitle] = useState(props.title);
   const [date, setDate] = useState(props.date);
   const [body, setBody] = useState(props.body);
+  
   return (
     <div className="diary-input">
       <h2>글 수정하기</h2>
@@ -82,21 +75,13 @@ function DiaryUpdate(props) {
             props.onUpdate(title, date, body);
           }}>
           <p>
-            <input
-              id="title"
-              type="text"
-              name="title"
-              placeholder="수정할 제목을 입력하세요"
+            <input id="title" type="text" name="title" placeholder="수정할 제목을 입력하세요"
               value={title}
               onChange={event => {
                 setTitle(event.target.value);
               }}
             />
-            <input
-              id="date"
-              type="date"
-              name="date"
-              placeholder="수정할 날짜를 입력하세요"
+            <input id="date" type="date" name="date" placeholder="수정할 날짜를 입력하세요"
               value={date}
               onChange={event => {
                 setDate(event.target.value);
@@ -104,20 +89,14 @@ function DiaryUpdate(props) {
             />
           </p>
           <p>
-            <textarea
-              id="body"
-              name="body"
-              placeholder="수정할 내용을 입력하세요"
+            <textarea id="body" name="body" placeholder="수정할 내용을 입력하세요"
               value={body}
               onChange={event => {
                 setBody(event.target.value);
               }}></textarea>
           </p>
           <p>
-            <input
-              // id="submit"
-              className="diary-submit"
-              type="submit"
+            <input className="diary-submit" type="submit"
               value="수정하기"></input>
           </p>
         </form>
@@ -136,22 +115,16 @@ function DiaryBox(props) {
         <hr />
         <div className="diary-body-title">{t.title}</div>
         <div className="diary-body-date">
-          <button
-            id="btn"
-            className="diary-body-button"
+          <button id="btn" className="diary-body-button"
             onClick={currId => {
               props.onUpdate(t.id);
-            }}>
-            수정
-          </button>
-          <button
-            id="btn"
-            className="diary-body-button"
+            }}>수정
+            </button>
+          <button id="btn" className="diary-body-button"
             onClick={() => {
               props.onDelete(t.id);
-            }}>
-            삭제
-          </button>
+            }}>삭제
+            </button>
           {t.date}
         </div>
         <div className="diary-body-text">{t.body}</div>
@@ -192,10 +165,7 @@ export default function Diary(props) {
 
   if (mode === 'none') {
     editContent = (
-      <DiaryInput
-        isLogin={props.isLogin}
-        article={article}
-        nextId={nextId}
+      <DiaryInput isLogin={props.isLogin} article={article} nextId={nextId}
         setArticle={prop => {
           setArticle(prop);
         }}
@@ -220,9 +190,7 @@ export default function Diary(props) {
   }
   // Update
   else if (mode === 'update') {
-    let title,
-      body,
-      date = null;
+    let title, body, date = null;
     for (let i = 0; i < article.length; i++) {
       if (article[i].id === id) {
         // console.log(article[i]);
@@ -233,10 +201,7 @@ export default function Diary(props) {
       }
     }
     editContent = (
-      <DiaryUpdate
-        title={title}
-        date={date}
-        body={body}
+      <DiaryUpdate title={title} date={date} body={body}
         onUpdate={(title, date, body) => {
           // console.log(title, body);
           const newArticles = [...article];
@@ -271,20 +236,14 @@ export default function Diary(props) {
             {article.length <= 0 ? (
               <div className="info">작성된 글이 없습니다!</div>
             ) : (
-              <DiaryBox
-                article={article}
+              <DiaryBox article={article}
                 onDelete={currId => {
                   const newArticle = [];
                   for (let i = 0; i < article.length; i++) {
-                    if (article[i].id !== currId) {
-                      newArticle.push(article[i]);
-                    }
+                    if (article[i].id !== currId) newArticle.push(article[i]);
                   }
                   setArticle(newArticle);
-                  localStorage.setItem(
-                    'localDiary',
-                    JSON.stringify(newArticle),
-                  );
+                  localStorage.setItem('localDiary', JSON.stringify(newArticle));
                 }}
                 onUpdate={currId => {
                   setMode('update');

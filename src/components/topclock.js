@@ -7,6 +7,7 @@ import '../css/topclock.css';
  * 시계 관련 node-modules 중 하나
  * npm install react-live-clock
  */
+
 import Clock from 'react-live-clock';
 // import Date from "react-live-clock"; // ERROR
 
@@ -28,30 +29,15 @@ export default function Topclock(props) {
       <div className="date">
         <p>
           <span className="month">
-            <Clock
-              id="month"
-              format={'MMM'}
-              ticking={false}
-              timezone={'Asia/Seoul'}
-            />
+            <Clock id="month" format={'MMM'} ticking={false} timezone={'Asia/Seoul'} />
           </span>
           {/* &nbsp; */}/
           <span className="second">
-            <Clock
-              id="second"
-              format={'DD'}
-              ticking={false}
-              timezone={'Asia/Seoul'}
-            />
+            <Clock id="second" format={'DD'} ticking={false} timezone={'Asia/Seoul'} />
           </span>
           {/* &nbsp; */}/
           <span className="year">
-            <Clock
-              id="year"
-              format={'YYYY'}
-              ticking={false}
-              timezone={'Asia/Seoul'}
-            />
+            <Clock id="year" format={'YYYY'} ticking={false} timezone={'Asia/Seoul'} />
           </span>
         </p>
       </div>

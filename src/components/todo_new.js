@@ -20,16 +20,16 @@ export default function TodoNew(props) {
   }, []);
 
   // 오류 메시지
-  const ErrMsg = props => {
-    alert('로그인 후에 이용하세요!');
-    console.log('로그인 후에 이용하세요!');
+  const ErrMsg = Msg => {
+    alert(Msg);
+    console.log(Msg);
     return;
   };
 
   // 작업 추가하기
   const addTask = event => {
     if (props.isLogin === 'false') {
-      ErrMsg();
+      ErrMsg(`로그인 후 이용하세요!`);
       return;
     }
     if (task) {
@@ -39,6 +39,7 @@ export default function TodoNew(props) {
       localStorage.setItem('localTasks', JSON.stringify([...tasks, newTask]));
       setTask('');
     }
+    else ErrMsg(`Nothing Executed...`);
   };
 
   // 삭제하기
@@ -54,7 +55,7 @@ export default function TodoNew(props) {
     localStorage.removeItem('localTasks');
   };
 
-  // 경고 메시지 스타일
+  // 경고 메시지 스타일 컴포넌트
   const WarningStyle = styled.div`
     span {
       font-size: 35pt;
@@ -72,7 +73,8 @@ export default function TodoNew(props) {
         </div>
       </WarningStyle>
     );
-  } else {
+  } 
+  else {
     badgeInfo = (
       <div className="badge">
         해야 할 일 개수:
@@ -108,17 +110,10 @@ export default function TodoNew(props) {
       <h1 className="title">TODO List</h1>
       {badgeInfo}
       <div className="input-area ">
-        <input
-          name="task"
-          type="text"
-          value={task}
-          placeholder="Write your task..."
-          className="input-box"
+        <input className="input-box" name="task" type="text" value={task} placeholder="Write your task..."
           onChange={event => setTask(event.target.value)}
         />
-        <button className="input-addBtn" onClick={addTask}>
-          추가
-        </button>
+        <button className="input-addBtn" onClick={addTask}>추가</button>
       </div>
       {props.isLogin === 'false' ? (
         <div></div>
@@ -133,8 +128,7 @@ export default function TodoNew(props) {
                   <div className="container-todo">
                     <div className="grid">
                       <label className="checkbox bounce">
-                        <input
-                          type="checkbox"
+                        <input type="checkbox"
                           onClick={() => {
                             DeleteContent(task);
                           }}
@@ -160,9 +154,7 @@ export default function TodoNew(props) {
       )}
       {props.isLogin === 'false' || !tasks.length ? null : (
         <div className="item-bottom">
-          <button className="clearBtn" onClick={() => clearContent()}>
-            Clear
-          </button>
+          <button className="clearBtn" onClick={() => clearContent()}>Clear</button>
         </div>
       )}
     </div>

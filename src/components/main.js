@@ -12,9 +12,8 @@ import Topclock from './topclock';
 // 다이어리 부분 출력
 function MainDiary(props) {
   let output = [];
-  if (props.diary === 'null') {
-    output = null;
-  } else {
+  if (props.diary === 'null') output = null;
+  else {
     for (let i = 0; i < props.diary.length; i++) {
       let t = props.diary[i];
       // console.log(t);
@@ -36,9 +35,8 @@ function MainDiary(props) {
 function MainTodo(props) {
   let lis = [];
   // console.log(props.task);
-  if (props.task === 'null') {
-    lis = null;
-  } else {
+  if (props.task === 'null') lis = null;
+  else {
     for (let i = 0; i < props.task.length; i++) {
       let t = props.task[i];
       lis.push(
@@ -56,9 +54,8 @@ function MainTodo(props) {
 // 디데이 부분 출력
 function MainDday(props) {
   let lis = [];
-  if (props.dday === 'null') {
-    lis = null;
-  } else {
+  if (props.dday === 'null') lis = null;
+  else {
     for (let i = 0; i < props.dday.length; i++) {
       let t = props.dday[i];
       lis.push(
@@ -82,12 +79,9 @@ export default function Main(props) {
   let [task, setTask] = useState('null');
 
   useEffect(() => {
-    if (localStorage.getItem('localDday'))
-      setDday(JSON.parse(localStorage.getItem('localDday')));
-    if (localStorage.getItem('localDiary'))
-      setDiary(JSON.parse(localStorage.getItem('localDiary')));
-    if (localStorage.getItem('localTasks'))
-      setTask(JSON.parse(localStorage.getItem('localTasks')));
+    if (localStorage.getItem('localDday')) setDday(JSON.parse(localStorage.getItem('localDday')));
+    if (localStorage.getItem('localDiary')) setDiary(JSON.parse(localStorage.getItem('localDiary')));
+    if (localStorage.getItem('localTasks')) setTask(JSON.parse(localStorage.getItem('localTasks')));
   }, []);
 
   return (
@@ -97,8 +91,7 @@ export default function Main(props) {
       <div className="main-container">
         <div className="main-box">
           {/* <Diary /> */}
-          <h2
-            className="main-title"
+          <h2 className="main-title"
             onClick={() => {
               window.location.href = '/diary';
             }}>
@@ -108,8 +101,7 @@ export default function Main(props) {
         </div>
         <div className="main-box">
           {/* <Todo /> */}
-          <h2
-            className="main-title"
+          <h2 className="main-title"
             onClick={() => {
               window.location.href = '/todo';
             }}>
@@ -119,8 +111,7 @@ export default function Main(props) {
         </div>
         <div className="main-box">
           {/* <Dday /> */}
-          <h2
-            className="main-title"
+          <h2 className="main-title"
             onClick={() => {
               window.location.href = '/dday';
             }}>

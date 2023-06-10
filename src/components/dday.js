@@ -11,18 +11,16 @@ const ErrMsg = Msg => {
   console.log(Msg);
 };
 
+// 입력 전용 컴포넌트
 function Inputs(props) {
   return (
     <div>
-      <form
-        className="top_input"
+      <form className="top_input"
         onSubmit={event => {
           event.preventDefault();
           // console.log(props.isLogin);
-          if (props.isLogin === 'false') {
-            ErrMsg(`로그인 후 이용하세요!`);
-            return;
-          } else {
+          if (props.isLogin === 'false') { ErrMsg(`로그인 후 이용하세요!`); return; } 
+          else {
             const title = event.target.inputTitle.value;
             const body = event.target.inputBody.value;
             const date = event.target.inputDate.value;
@@ -32,12 +30,8 @@ function Inputs(props) {
               event.target.inputBody.value = '';
               event.target.inputDate.value = '';
               props.onCreate(title, body, date);
-            } else {
-              ErrMsg(`모든 항목을 입력하세요!`);
-              // alert('모든 항목을 입력하세요!');
-              // console.log(`미입력 항목 존재!`);
-              return;
             }
+            else { ErrMsg(`모든 항목을 입력하세요!`); return; }
           }
         }}>
         <input id="inputTitle" type="text" placeholder="제목" />
@@ -51,6 +45,7 @@ function Inputs(props) {
   );
 }
 
+// 수정 전용 컴포넌트
 function EditDday(props) {
   const [title, setTitle] = useState(props.title);
   const [date, setDate] = useState(props.date);
@@ -59,10 +54,10 @@ function EditDday(props) {
   // console.log(props.date);
   // console.log(props.body);
   return (
-    <div className="">
+    <div>
       {/* <h2>D-Day 수정하기</h2> */}
-      <form
-        className="top_input"
+      <form className="top_input"
+        // 전송버튼 눌렀을 때
         onSubmit={event => {
           event.preventDefault();
           const title = event.target.inputTitle.value;
@@ -71,38 +66,23 @@ function EditDday(props) {
           // console.log(title, date, body);
           props.onEdit(title, date, body);
         }}>
-        <input
-          id="inputTitle"
-          type="text"
-          placeholder="수정 할 제목"
-          value={title}
-          onChange={event => {
+        <input id="inputTitle" type="text" placeholder="수정 할 제목" value={title} 
+        onChange={event => {
             setTitle(event.target.value);
           }}
         />
-        <input
-          id="inputBody"
-          type="text"
-          placeholder="수정 할 추가 내용"
-          value={body}
-          onChange={event => {
+        <input id="inputBody" type="text" placeholder="수정 할 추가 내용" value={body} 
+        onChange={event => {
             setBody(event.target.value);
           }}
         />
-        <input
-          id="inputDate"
-          type="date"
-          value={date}
-          onChange={event => {
+        <input id="inputDate" type="date" value={date} 
+        onChange={event => {
             setDate(event.target.value);
           }}
         />
-        <input
-          id="inputSubmit"
-          className="dday-submit"
-          type="submit"
-          value="수정"
-        />
+        <input id="inputSubmit" className="dday-submit" type="submit"
+          value="수정" />
       </form>
     </div>
   );
@@ -117,19 +97,15 @@ function Nav(props) {
         <hr className="headHR" />
         <div key={t.id} className="container-dday">
           <div className="item-dday delbtn-container">
-            <button
-              className="delbtn"
+            <button className="delbtn"
               onClick={event => {
                 props.editItem(t.id);
-              }}>
-              수정
+              }}>수정
             </button>
-            <button
-              className="delbtn"
+            <button className="delbtn"
               onClick={event => {
                 props.deleteItems(t.id);
-              }}>
-              삭제
+              }}>삭제
             </button>
           </div>
           {/* <span> </span> */}
@@ -177,6 +153,7 @@ export default function Dday(props) {
     }
   }, []);
 
+  //  오류 메시지 띄우기
   const ErrMsg = msg => {
     // const msg = `로그인 후에 이용하세요!`;
     alert(msg);
@@ -184,6 +161,7 @@ export default function Dday(props) {
     setMode('none');
   };
 
+  // D-Day 계산하는 함수
   const calculateDDAY = inputDate => {
     const date1 = new Date();
     const date2 = new Date(inputDate);
@@ -192,17 +170,12 @@ export default function Dday(props) {
     if (temp < 0) temp = `${Math.abs(temp)}`;
     else if (temp > 0) temp = `-${temp}`;
     else if (temp === 0) temp = `Day`;
-    else {
-      const msg = `D-Day Convertion ERR`;
-      alert(msg);
-      console.log(msg);
-      return;
-    }
+    else { ErrMsg(`D-Day Convertion ERR`); return; }
     return JSON.stringify(temp).replace('"', '');
   };
 
+  // Header 제목 이름 저장 되어있는 객체
   const headerItem = {
-    // Header 제목
     btn: '관리',
     dday: 'D-Day',
     date: '날짜',
@@ -210,9 +183,10 @@ export default function Dday(props) {
     comment: '추가 내용',
   };
 
-  let editContent = null;
-  let titleMsg = '나의 D-Day';
+  let editContent = null; // 컨텐츠 수정 부분
+  let titleMsg = '나의 D-Day'; // h2 요소에 보여질 메시지
 
+  // 기본 모드 (삽입모드)
   if (mode === 'none') {
     // console.log('mode: none');
     titleMsg = '나의 D-Day';
@@ -220,13 +194,8 @@ export default function Dday(props) {
       <Inputs
         isLogin={props.isLogin}
         onCreate={(inputTitle, inputBody, inputDate) => {
-          if (props.isLogin === 'false') {
-            ErrMsg(`로그인 후 이용하세요`);
-            return;
-          }
-          if (mode === 'update') {
-            return;
-          }
+          if (props.isLogin === 'false') { ErrMsg(`로그인 후 이용하세요`); return; }
+          if (mode === 'update') return;
           const conDDay = calculateDDAY(inputDate);
           const newDday = {
             id: nextId,
@@ -244,10 +213,10 @@ export default function Dday(props) {
           localStorage.setItem('localDday', JSON.stringify(newDdays));
         }}></Inputs>
     );
-  } else if (mode === 'edit') {
-    let title,
-      body,
-      date = null;
+  } 
+  // 수정할 때 (항목 편집할 때)
+  else if (mode === 'edit') {
+    let title, body, date = null;
     for (let i = 0; i < ddays.length; i++) {
       if (ddays[i].id === id) {
         // console.log(ddays[i]);
@@ -260,10 +229,7 @@ export default function Dday(props) {
     // console.log('mode: edit');
     titleMsg = `D-Day 수정하기`;
     editContent = (
-      <EditDday
-        title={title}
-        date={date}
-        body={body}
+      <EditDday title={title} date={date} body={body}
         onEdit={(inputtitle, inputdate, inputbody) => {
           const newDdays = [...ddays];
           const conDDay = calculateDDAY(inputdate);
@@ -290,10 +256,7 @@ export default function Dday(props) {
   return (
     <div className="hover">
       <h2>{titleMsg}</h2>
-      <p>
-        Today is "
-        <Clock className="big" format="YYYY-MM-DD" ticking={false}></Clock>"
-      </p>
+      <p>Today is "<Clock className="big" format="YYYY-MM-DD" ticking={false}></Clock>"</p>
       {editContent}
       {props.isLogin === 'false' ? (
         <div className="err-msg">로그인 후 이용하세요!</div>
@@ -318,15 +281,11 @@ export default function Dday(props) {
             </div>
           )}
           <div className='dday-container-body'>
-            <Nav
-              id={id}
-              ddays={ddays}
+            <Nav id={id} ddays={ddays}
               deleteItems={inputId => {
                 const newDdays = [];
                 for (let i = 0; i < ddays.length; i++) {
-                  if (ddays[i].id !== inputId) {
-                    newDdays.push(ddays[i]);
-                  }
+                  if (ddays[i].id !== inputId) newDdays.push(ddays[i]);
                 }
                 setDdays(newDdays);
                 localStorage.setItem('localDday', JSON.stringify(newDdays));
