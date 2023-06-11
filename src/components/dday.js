@@ -122,18 +122,18 @@ function Nav(props) {
 }
 
 export default function Dday(props) {
+  /** 삽입/수정 모드 여부 */
   const [mode, setMode] = useState('none');
+  /** 삽입/수정할 때 고유 id값 */
   const [id, setId] = useState(null);
+  /** 다음에 삽입할 때 고유 id값 */
   let [nextId, setNextId] = useState('0');
+  /** 내용이 저장된 항목 */
   const [ddays, setDdays] = useState([
-    // {
-    //   id: 0,
-    //   date_current: 'Date sample',
-    //   date_finish: 'Sample"',
-    //   title: 'Sample Title',
-    //   body: 'Sample Body',
-    // },
+    // { id: 0, date_current: 'Date sample', date_finish: 'Sample"', title: 'Sample Title', body: 'Sample Body', },
   ]);
+
+  /** id값 설정하는 곳에서 localStorage 불러오기를 하려고 했으나, 뭔가 꼬임 */
   // let [nextId, setNextId] = useState(
   //   localStorage.getItem('localDday')
   //     ? JSON.parse(localStorage.getItem('localDday')).length
@@ -143,6 +143,7 @@ export default function Dday(props) {
   // const [ddays, setDdays] = useState([]);
   // let [titleMsg, setTitleMsg] = useState('나의 D-Day')
 
+  // 첫 실행 시, 
   useEffect(() => {
     if (props.isLogin !== false && localStorage.getItem('localDday')) {
       const storedList = JSON.parse(localStorage.getItem('localDday'));
@@ -161,20 +162,21 @@ export default function Dday(props) {
     setMode('none');
   };
 
-  // D-Day 계산하는 함수
+  /** D-Day 계산하는 함수 * (해당 날짜부터 몇일 남았는지 계산) */
   const calculateDDAY = inputDate => {
-    const date1 = new Date();
-    const date2 = new Date(inputDate);
-    const DateDiff = date1.getTime() - date2.getTime();
+    const date1 = new Date(); // 오늘 날짜
+    const date2 = new Date(inputDate); // 입력한 날짜
+    const DateDiff = date1.getTime() - date2.getTime(); // 차이점 계산
     let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
+    // 계산 결과가 음수가 나와서, 양수로 변환
     if (temp < 0) temp = `${Math.abs(temp)}`;
     else if (temp > 0) temp = `-${temp}`;
-    else if (temp === 0) temp = `Day`;
+    else if (temp === 0) temp = `Day`; // 당일이면 'D-Day' 처럼 표시
     else { ErrMsg(`D-Day Convertion ERR`); return; }
     return JSON.stringify(temp).replace('"', '');
   };
 
-  // Header 제목 이름 저장 되어있는 객체
+  /** Header 표시될 제목 이름이 저장되어 있는 객체 */
   const headerItem = {
     btn: '관리',
     dday: 'D-Day',
@@ -183,16 +185,17 @@ export default function Dday(props) {
     comment: '추가 내용',
   };
 
-  let editContent = null; // 컨텐츠 수정 부분
-  let titleMsg = '나의 D-Day'; // h2 요소에 보여질 메시지
+  /** 컨텐츠 수정 컨트롤 부분 */
+  let editContent = null;
+  /** h2 요소에 보여질 메시지 */
+  let titleMsg = '나의 D-Day';
 
   // 기본 모드 (삽입모드)
   if (mode === 'none') {
     // console.log('mode: none');
     titleMsg = '나의 D-Day';
     editContent = (
-      <Inputs
-        isLogin={props.isLogin}
+      <Inputs isLogin={props.isLogin}
         onCreate={(inputTitle, inputBody, inputDate) => {
           if (props.isLogin === 'false') { ErrMsg(`로그인 후 이용하세요`); return; }
           if (mode === 'update') return;
@@ -213,7 +216,7 @@ export default function Dday(props) {
           localStorage.setItem('localDday', JSON.stringify(newDdays));
         }}></Inputs>
     );
-  } 
+  }
   // 수정할 때 (항목 편집할 때)
   else if (mode === 'edit') {
     let title, body, date = null;
@@ -283,21 +286,16 @@ export default function Dday(props) {
           <div className='dday-container-body'>
             <Nav id={id} ddays={ddays}
               deleteItems={inputId => {
+                // console.log(`on Delete Method!`);
                 const newDdays = [];
-                for (let i = 0; i < ddays.length; i++) {
+                for (let i = 0; i < ddays.length; i++)
                   if (ddays[i].id !== inputId) newDdays.push(ddays[i]);
-                }
                 setDdays(newDdays);
                 localStorage.setItem('localDday', JSON.stringify(newDdays));
                 setMode('none');
-                // // on Delete
-                // setDdays(arrInput);
-                // localStorage.setItem('localDday', JSON.stringify(arrInput));
-                // setMode('none');
-                // // console.log('moved!');
               }}
               editItem={inputId => {
-                // console.log('editItem!');
+                // console.log(`Edit Method!`);
                 setId(inputId);
                 setMode('edit');
               }}></Nav>

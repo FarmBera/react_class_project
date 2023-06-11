@@ -9,6 +9,7 @@ const ErrMsg = Msg => {
   console.log(Msg);
 };
 
+// 다이어리에 값 삽입하는 컴포넌트
 function DiaryInput(props) {
   return (
     <div className="diary-input">
@@ -57,6 +58,7 @@ function DiaryInput(props) {
   );
 }
 
+// 다이어리 내용 수정하는 컴포넌트
 function DiaryUpdate(props) {
   const [title, setTitle] = useState(props.title);
   const [date, setDate] = useState(props.date);
@@ -79,14 +81,12 @@ function DiaryUpdate(props) {
               value={title}
               onChange={event => {
                 setTitle(event.target.value);
-              }}
-            />
+              }}/>
             <input id="date" type="date" name="date" placeholder="수정할 날짜를 입력하세요"
               value={date}
               onChange={event => {
                 setDate(event.target.value);
-              }}
-            />
+              }}/>
           </p>
           <p>
             <textarea id="body" name="body" placeholder="수정할 내용을 입력하세요"
@@ -96,8 +96,7 @@ function DiaryUpdate(props) {
               }}></textarea>
           </p>
           <p>
-            <input className="diary-submit" type="submit"
-              value="수정하기"></input>
+            <input className="diary-submit" type="submit" value="수정하기"></input>
           </p>
         </form>
       </div>
@@ -105,6 +104,7 @@ function DiaryUpdate(props) {
   );
 }
 
+// 내용 출력 컴포넌트
 function DiaryBox(props) {
   const output = [];
   for (let i = 0; i < props.article.length; i++) {
@@ -118,13 +118,11 @@ function DiaryBox(props) {
           <button id="btn" className="diary-body-button"
             onClick={currId => {
               props.onUpdate(t.id);
-            }}>수정
-            </button>
+            }}>수정</button>
           <button id="btn" className="diary-body-button"
             onClick={() => {
               props.onDelete(t.id);
-            }}>삭제
-            </button>
+            }}>삭제</button>
           {t.date}
         </div>
         <div className="diary-body-text">{t.body}</div>
@@ -139,17 +137,11 @@ export default function Diary(props) {
   const [id, setId] = useState(null);
   let [nextId, setNextId] = useState(0);
   const [article, setArticle] = useState([
-    // {
-    //   id: 0,
-    //   title: 'title1',
-    //   date: '2021-05-06',
-    //   body: 'body1',
-    // },
+    // { id: 0, title: 'title1', date: '2021-05-06', body: 'body1', }, // 임시 데이터
+    // { id: 1, title: 'title2', date: '2021-06-08', body: 'body2', }, // 임시 데이터
+    // { id: 2, title: 'title3', date: '2021-07-10', body: 'body3', }, // 임시 데이터
   ]);
   const [mode, setMode] = useState('none');
-  // const [diary_date, setDiary_date] = useState('2023-06-01');
-  // const [diary_title, setDiary_title] = useState(null);
-  // const [diary_body, setDiary_body] = useState(null);
   // console.log(mode);
 
   let editContent = null;
