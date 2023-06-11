@@ -11,13 +11,15 @@ import Topclock from './topclock';
 
 // 다이어리 부분 출력
 function MainDiary(props) {
-  let output = [];
-  if (props.diary === 'null') output = null;
+  let outDiary = [];
+  const od = props.diary;
+  if (od === null || od === '')
+    outDiary = <div className="main-info">저장된 항목이 없습니다!</div>;
   else {
     for (let i = 0; i < props.diary.length; i++) {
       let t = props.diary[i];
       // console.log(t);
-      output.push(
+      outDiary.push(
         <div className="main-diary-container" key={t.id}>
           <hr className="main-body-hr" />
           <div className="main-diary-title">{t.title}</div>
@@ -28,48 +30,51 @@ function MainDiary(props) {
       );
     }
   }
-  return <div className="diary-container">{output}</div>;
+  // console.log(outDiary);
+  return <div className="diary-container">{outDiary}</div>;
 }
 
 // 투두 리스트 부분 출력
 function MainTodo(props) {
-  let lis = [];
+  let outTodo = [];
   // console.log(props.task);
-  if (props.task === 'null') lis = null;
+  if (props.task === 'null' || props.task === '')
+    outTodo = <div className="main-info">저장된 항목이 없습니다!</div>;
   else {
     for (let i = 0; i < props.task.length; i++) {
       let t = props.task[i];
-      lis.push(
+      outTodo.push(
         <div key={t.id} className="">
           <hr className="main-body-hr" />
           <span className="item-dday">{t.title}</span>
           <hr className="main-body-hr" />
-        </div>,
+        </div>
       );
     }
   }
-  return <div>{lis}</div>;
+  return <div>{outTodo}</div>;
 }
 
 // 디데이 부분 출력
 function MainDday(props) {
-  let lis = [];
-  if (props.dday === 'null') lis = null;
+  let outDday = [];
+  if (props.dday === 'null')
+    outDday = <div className="main-info">저장된 항목이 없습니다!</div>;
   else {
     for (let i = 0; i < props.dday.length; i++) {
       let t = props.dday[i];
-      lis.push(
+      outDday.push(
         <div key={t.id} className="">
           <hr className="main-body-hr" />
           <span className="item-dday">D-{t.date_finish}</span>
           <span className="space"> </span>
           <span className="item-dday">{t.title}</span>
           <hr className="main-body-hr" />
-        </div>,
+        </div>
       );
     }
   }
-  return <div>{lis}</div>;
+  return <div>{outDday}</div>;
 }
 
 // main.js 메인 코드
@@ -84,42 +89,45 @@ export default function Main(props) {
     if (localStorage.getItem('localTasks')) setTask(JSON.parse(localStorage.getItem('localTasks')));
   }, []);
 
+  // console.log(props.isLogin);
+  let OutputArea = (
+    <div className="main-container">
+      <div className="main-box">
+        {/* <Diary /> */}
+        <h2 className="main-title"
+          onClick={() => {
+            window.location.href = '/diary';
+          }}>Diary</h2>
+        <MainDiary diary={diary}></MainDiary>
+      </div>
+      <div className="main-box">
+        {/* <Todo /> */}
+        <h2 className="main-title"
+          onClick={() => {
+            window.location.href = '/todo';
+          }}>ToDo</h2>
+        <MainTodo task={task}></MainTodo>
+      </div>
+      <div className="main-box">
+        {/* <Dday /> */}
+        <h2 className="main-title"
+          onClick={() => {
+            window.location.href = '/dday';
+          }}>D-Day</h2>
+        <MainDday dday={dday}></MainDday>
+      </div>
+    </div>
+  );
+
   return (
     <div className="MainTemp">
       <Topclock userid={props.userid} />
       <hr className="headHR" />
-      <div className="main-container">
-        <div className="main-box">
-          {/* <Diary /> */}
-          <h2 className="main-title"
-            onClick={() => {
-              window.location.href = '/diary';
-            }}>
-            Diary
-          </h2>
-          <MainDiary diary={diary}></MainDiary>
-        </div>
-        <div className="main-box">
-          {/* <Todo /> */}
-          <h2 className="main-title"
-            onClick={() => {
-              window.location.href = '/todo';
-            }}>
-            ToDo
-          </h2>
-          <MainTodo task={task}></MainTodo>
-        </div>
-        <div className="main-box">
-          {/* <Dday /> */}
-          <h2 className="main-title"
-            onClick={() => {
-              window.location.href = '/dday';
-            }}>
-            D-Day
-          </h2>
-          <MainDday dday={dday}></MainDday>
-        </div>
-      </div>
+      {props.isLogin === 'false' ? (
+        <div className="err-msg">로그인 후 이용하세요!</div>
+      ) : (
+        OutputArea
+      )}
     </div>
   );
 }

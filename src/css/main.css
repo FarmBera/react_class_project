@@ -14,7 +14,15 @@ body {
   --Green: #17b322;
 }
 
+.main-info {
+  /* background-color: var(--VSCodeBG); */
+  margin-top: 50px;
+  font-size: 15pt;
+  color: yellow;
+  content: '항목이 없습니다. ';
+  text-align: center;
 
+}
 /* S Shape HR */
 .main-hr {
   margin: 40px;
