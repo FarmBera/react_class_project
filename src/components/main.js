@@ -11,11 +11,18 @@ import Topclock from './topclock';
 
 // 다이어리 부분 출력
 function MainDiary(props) {
-  let outDiary = [];
-  const od = props.diary;
-  if (od === null || od === '')
-    outDiary = <div className="main-info">저장된 항목이 없습니다!</div>;
+  // let outDiary = null;
+  let outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
+  console.log(props.diary);
+  console.log(props.diary.length);
+  if (props.diary.length === 0 || props.diary === null || props.diary === '') {
+    outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
+    return <div>{outDiary}</div>
+  }
   else {
+  // if (props.diary !== null || props.diary !== '') {
+    outDiary = 
+    outDiary = [];
     for (let i = 0; i < props.diary.length; i++) {
       let t = props.diary[i];
       // console.log(t);
@@ -26,12 +33,12 @@ function MainDiary(props) {
           <div className="main-diary-date">{t.date}</div>
           <div className="main-diary-body">{t.body}</div>
           <hr className="main-body-hr" />
-        </div>,
+        </div>
       );
     }
+    return <div className="diary-container">{outDiary}</div>;
   }
   // console.log(outDiary);
-  return <div className="diary-container">{outDiary}</div>;
 }
 
 // 투두 리스트 부분 출력
@@ -39,7 +46,7 @@ function MainTodo(props) {
   let outTodo = [];
   // console.log(props.task);
   if (props.task === 'null' || props.task === '')
-    outTodo = <div className="main-info">저장된 항목이 없습니다!</div>;
+    outTodo = <div className="main-info">저장된 Todo 리스트가 없습니다!</div>;
   else {
     for (let i = 0; i < props.task.length; i++) {
       let t = props.task[i];
@@ -59,7 +66,7 @@ function MainTodo(props) {
 function MainDday(props) {
   let outDday = [];
   if (props.dday === 'null')
-    outDday = <div className="main-info">저장된 항목이 없습니다!</div>;
+    outDday = <div className="main-info">저장된 D-Day가 없습니다!</div>;
   else {
     for (let i = 0; i < props.dday.length; i++) {
       let t = props.dday[i];
