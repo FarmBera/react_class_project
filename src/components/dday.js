@@ -1,17 +1,16 @@
 import '../css/dday.css';
 
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 import Clock from 'react-live-clock';
 
-// 오류 메시지 띄우기
+/** 오류 메시지 띄우기 */
 const ErrMsg = Msg => {
-  // const msg = `로그인 후에 이용하세요!`
   alert(Msg);
   console.log(Msg);
 };
 
-// 입력 전용 컴포넌트
+/** 입력 전용 컴포넌트 */
 function Inputs(props) {
   return (
     <div>
@@ -21,9 +20,11 @@ function Inputs(props) {
           // console.log(props.isLogin);
           if (props.isLogin === 'false') { ErrMsg(`로그인 후 이용하세요!`); return; } 
           else {
+            // 입력값 저장
             const title = event.target.inputTitle.value;
             const body = event.target.inputBody.value;
             const date = event.target.inputDate.value;
+            // 유효성 검사 시작
             if (title !== '' && body !== '' && date !== '') {
               // console.log(`${title}, ${body}, ${date}`);
               event.target.inputTitle.value = '';
@@ -31,7 +32,10 @@ function Inputs(props) {
               event.target.inputDate.value = '';
               props.onCreate(title, body, date);
             }
-            else { ErrMsg(`모든 항목을 입력하세요!`); return; }
+            else {
+              ErrMsg(`모든 항목을 입력하세요!`);
+              return;
+            }
           }
         }}>
         <input id="inputTitle" type="text" placeholder="제목" />
@@ -45,10 +49,13 @@ function Inputs(props) {
   );
 }
 
-// 수정 전용 컴포넌트
+/** 수정 전용 컴포넌트 */
 function EditDday(props) {
+  /** 수정중인 제목 저장 */
   const [title, setTitle] = useState(props.title);
+  /** 수정 중인 닐짜 저장 */
   const [date, setDate] = useState(props.date);
+  /** 수정 중인 내용 저장 */
   const [body, setBody] = useState(props.body);
   // console.log(props.title);
   // console.log(props.date);
@@ -88,25 +95,25 @@ function EditDday(props) {
   );
 }
 
+/** D-Day 출력하는 컴포넌트 */
 function Nav(props) {
-  const lis = [];
+  /** 저장된 D-Day 값들을 배열에 저장 & 출력 */
+  const ddayList = [];
   for (let i = 0; i < props.ddays.length; i++) {
     let t = props.ddays[i];
-    lis.push(
+    ddayList.push(
       <div key={t.id} className="">
         <hr className="headHR" />
         <div key={t.id} className="container-dday">
           <div className="item-dday delbtn-container">
             <button className="delbtn"
-              onClick={event => {
-                props.editItem(t.id);
-              }}>수정
-            </button>
+              onClick={() => {
+                props.editItem(t.id); // 수정 모드 진입
+              }}>수정</button>
             <button className="delbtn"
-              onClick={event => {
-                props.deleteItems(t.id);
-              }}>삭제
-            </button>
+              onClick={() => {
+                props.deleteItems(t.id); // 삭제 수행
+              }}>삭제</button>
           </div>
           {/* <span> </span> */}
           <span className="item-dday">D-{t.date_finish}</span>
@@ -118,7 +125,7 @@ function Nav(props) {
       </div>,
     );
   }
-  return <div>{lis}</div>;
+  return <div>{ddayList}</div>;
 }
 
 export default function Dday(props) {
@@ -143,7 +150,7 @@ export default function Dday(props) {
   // const [ddays, setDdays] = useState([]);
   // let [titleMsg, setTitleMsg] = useState('나의 D-Day')
 
-  // 첫 실행 시, 
+  // 첫 실행 시, localStorage에서 저장된 값 불러오기
   useEffect(() => {
     if (props.isLogin !== false && localStorage.getItem('localDday')) {
       const storedList = JSON.parse(localStorage.getItem('localDday'));
@@ -154,9 +161,8 @@ export default function Dday(props) {
     }
   }, []);
 
-  //  오류 메시지 띄우기
+  // 오류 메시지 띄우기
   const ErrMsg = msg => {
-    // const msg = `로그인 후에 이용하세요!`;
     alert(msg);
     console.log(msg);
     setMode('none');
@@ -168,7 +174,7 @@ export default function Dday(props) {
     const date2 = new Date(inputDate); // 입력한 날짜
     const DateDiff = date1.getTime() - date2.getTime(); // 차이점 계산
     let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
-    // 계산 결과가 음수가 나와서, 양수로 변환
+    // 계산 결과 음수로 나와서 양수로 변환, 및 당일 날짜이면 'Day' 로 출력
     if (temp < 0) temp = `${Math.abs(temp)}`;
     else if (temp > 0) temp = `-${temp}`;
     else if (temp === 0) temp = `Day`; // 당일이면 'D-Day' 처럼 표시
@@ -176,7 +182,7 @@ export default function Dday(props) {
     return JSON.stringify(temp).replace('"', '');
   };
 
-  /** Header 표시될 제목 이름이 저장되어 있는 객체 */
+  /** Header 표시될 제목이름이 저장되어 있는 객체 */
   const headerItem = {
     btn: '관리',
     dday: 'D-Day',
@@ -187,32 +193,38 @@ export default function Dday(props) {
 
   /** 컨텐츠 수정 컨트롤 부분 */
   let editContent = null;
-  /** h2 요소에 보여질 메시지 */
+  /** h2 요소(최상단 제목)에 보여질 메시지 */
   let titleMsg = '나의 D-Day';
 
-  // 기본 모드 (삽입모드)
+  // 기본 모드 (삽입 모드)
   if (mode === 'none') {
     // console.log('mode: none');
     titleMsg = '나의 D-Day';
     editContent = (
       <Inputs isLogin={props.isLogin}
         onCreate={(inputTitle, inputBody, inputDate) => {
-          if (props.isLogin === 'false') { ErrMsg(`로그인 후 이용하세요`); return; }
+          if (props.isLogin === 'false') { // 로그인 안했다면
+            ErrMsg(`로그인 후 이용하세요`);
+            return;
+          }
           if (mode === 'update') return;
+          /** 입력한 날짜를 D-Day로 변환 */
           const conDDay = calculateDDAY(inputDate);
-          const newDday = {
+          const newDday = { // 저장 할 객체 생성
             id: nextId,
             title: inputTitle,
             body: inputBody,
             date_current: inputDate,
             date_finish: conDDay.replace('"', ''),
           };
-          const newDdays = [...ddays];
-          newDdays.push(newDday);
+          // 배열 복사 및 신규 항목 추가
+          const newDdays = [...ddays, newDday];
+          // newDdays.push(newDday);
           setDdays(newDdays);
           // console.log(ddays);
           setId(nextId);
           setNextId(nextId + 1);
+          // localStorage에 항목 저장
           localStorage.setItem('localDday', JSON.stringify(newDdays));
         }}></Inputs>
     );

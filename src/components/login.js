@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
   const navigate = useNavigate(); // 페이지 이동을 위한 navigate 객체
-  let [inputId, setInputId] = useState('');
-  let [inputPw, setInputPw] = useState('');
+  let [inputId, setInputId] = useState(''); // 입력받은 id 값 저장
+  let [inputPw, setInputPw] = useState(''); // 입력받은 pw 값 저장
 
   /** 로그인 상태 가져오기 (from localStorage) Comment
    * localStorage에서 직접 가져오는 것보다, 
-   * props로 가져오는 것이 더 좋을 것 같아서 해당 코드는 Deprecate
+   * props로 가져오는 것이 더 좋을 것 같아서 해당 코드는 deprecated
    */
   // const [isLogin, setIsLogin] = useState('no');
   // let [savedId, setSavedId] = useState('');
@@ -44,20 +44,28 @@ export default function Login(props) {
   // });
 
   // 메시지 출력
+  /** 오류 메시지 출력 함수
+   * input: 출력할 String
+   * output: 입력한 String, alert로 출력
+   */
   const ErrMsg = inputMsg => {
     if (!inputMsg) alert(`Undefined ERR`);
     else alert(`${inputMsg}`);
     return;
   };
 
+  // 로그인 화면 render
   return (
     <div className="login-box">
+      {/* 상단 제목 */}
       <h1>Login Page</h1>
+      {/* 로그인 form */}
       <form id="register">
         <div className="user-box">
           <h2>username</h2>
           <input id="userId" name="id" type="text"
             onChange={event => {
+              // 입력 할 때 마다 inputId 에 입력한 값 저장
               setInputId(event.target.value);
             }}/>
             <label>아이디를 입력해주세요</label>
@@ -66,6 +74,7 @@ export default function Login(props) {
           <h2>password</h2>
           <input id="userPw" name="pw" type="password"
             onChange={event => {
+              // 입력 할 때 마다 inputPw 에 입력한 값 저장
               setInputPw(event.target.value);
             }}/>
             <label>비밀번호를 입력해주세요</label>

@@ -8,15 +8,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Head from './components/head';
 import Main from './components/main';
 
-// import Topclock from './components/topclock';
 import Diary from './components/diary';
 import TodoNew from './components/todo_new';
 import Dday from './components/dday';
 
-import Support from './components/support';
 import Login from './components/login';
 import Register from './components/register';
-import DiaryEditor from './(deprecated)/diary_new';
 
 
 // deprecated
@@ -47,7 +44,6 @@ export default function App() {
   useEffect(() => {
     if (!localStorage.getItem('isLogin'))
       localStorage.setItem('isLogin', 'false');
-    // if (!localStorage.getItem('userInfo')) return;
     const getIsLogin = localStorage.getItem('isLogin');
     setIsLogin(getIsLogin);
     const gotUserInfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -60,11 +56,13 @@ export default function App() {
   // console.log(`userid>>"${userid}"`);
   // console.log(`userpw>>"${userpw}"`);
 
+  // 로그인 상태 True 로 변경
   const setLoginStatOK = () => {
     setIsLogin('true');
     localStorage.setItem('isLogin', 'true');
   };
 
+  // 로그인 상태 False 로 변경
   const setLogoutOK = () => {
     setIsLogin('false');
     localStorage.setItem('isLogin', 'false');
@@ -72,6 +70,7 @@ export default function App() {
 
   // let content = null; // Deprecated
 
+  // 본문 render
   return (
     <div className="App">
       <Head isLogin={isLogin} userid={userid} setLogoutOK={setLogoutOK} />
@@ -84,28 +83,23 @@ export default function App() {
               element={
                 <PreviousHome isLogin={isLogin} userid={userid} />
               }></Route> */}
-            <Route
-              path="/"
+            <Route path="/"
               element={<Main isLogin={isLogin} userid={userid} />}></Route>
-            <Route path="/diary_new"
-              element={<DiaryEditor isLogin={isLogin} />}></Route>
             <Route path="/diary" element={<Diary isLogin={isLogin} />}></Route>
             <Route path="/todo" element={<TodoNew isLogin={isLogin} />}></Route>
             <Route path="/dday" element={<Dday isLogin={isLogin} />}></Route>
-            <Route path="/support"
-              element={<Support isLogin={isLogin} />}></Route>
             <Route path="/login"
-              element={
-                <Login
-                  userid={userid}
-                  userpw={userpw}
-                  isLogin={isLogin}
-                  setIsLogin={setIsLogin}
-                  setLogintOK={setLogoutOK}
-                  setLoginStatOK={setLoginStatOK}
+              element={ <Login
+                userid={userid} userpw={userpw}
+                isLogin={isLogin}
+                // setIsLogin={setIsLogin}
+                setLogintOK={setLogoutOK} setLoginStatOK={setLoginStatOK}
                 />
               }></Route>
             <Route path="/register" element={<Register />}></Route>
+            {/* <Route path="/diary_new"
+              element={<DiaryEditor isLogin={isLogin} />}></Route> */}
+            {/* <Route path="/support" element={<Support isLogin={isLogin} />}></Route> */}
           </Routes>
         </BrowserRouter>
       </div>

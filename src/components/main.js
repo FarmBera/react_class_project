@@ -1,15 +1,11 @@
-import '../css/main.css'; // main.css import
+import '../css/main.css';
 
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import Topclock from './topclock';
-// import Todo from '../components/todo_new';
-// import Diary from '../components/diary';
-// import Dday from '../components/dday';
 
-// 다이어리 부분 출력
+/** 다이어리 부분 출력하는 컴포넌트 */
 function MainDiary(props) {
   let outDiary = null;
   outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
@@ -38,9 +34,8 @@ function MainDiary(props) {
   // console.log(outDiary);
 }
 
-// 투두 리스트 부분 출력
+/** ToDo 리스트 부분 출력하는 컴포넌트 */
 function MainTodo(props) {
-  // let outTodo = [];
   let outTodo = <div className="main-info">저장된 Todo 리스트가 없습니다!</div>;
   // console.log(props.task);
   if (!localStorage.getItem("localTasks") || props.task.length === 0)
@@ -61,7 +56,7 @@ function MainTodo(props) {
   }
 }
 
-// 디데이 부분 출력
+/** D-Day 부분 출력하는 컴포넌트 */
 function MainDday(props) {
   // let outDday = [];
   let outDday = <div className="main-info">저장된 D-Day가 없습니다!</div>;
@@ -85,7 +80,7 @@ function MainDday(props) {
   }
 }
 
-// main.js 메인 코드
+/** Main.js 메인 코드 */
 export default function Main(props) {
   let [diary, setDiary] = useState('null');
   let [dday, setDday] = useState('null');
@@ -98,12 +93,11 @@ export default function Main(props) {
   }, []);
 
   // console.log(`from localStorage >> ${props.diary}`);
-
   // console.log(props.isLogin);
+  /** 출력되는 부분 변수 */
   let OutputArea = (
     <div className="main-container">
       <div className="main-box">
-        {/* <Diary /> */}
         <h2 className="main-title"
           onClick={() => {
             window.location.href = '/diary';
@@ -111,7 +105,6 @@ export default function Main(props) {
         <MainDiary diary={diary}></MainDiary>
       </div>
       <div className="main-box">
-        {/* <Todo /> */}
         <h2 className="main-title"
           onClick={() => {
             window.location.href = '/todo';
@@ -119,7 +112,6 @@ export default function Main(props) {
         <MainTodo task={task}></MainTodo>
       </div>
       <div className="main-box">
-        {/* <Dday /> */}
         <h2 className="main-title"
           onClick={() => {
             window.location.href = '/dday';
@@ -129,6 +121,7 @@ export default function Main(props) {
     </div>
   );
 
+  /** Main Render 부분 */
   return (
     <div className="MainTemp">
       <Topclock userid={props.userid} />

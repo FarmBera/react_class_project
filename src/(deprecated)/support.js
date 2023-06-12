@@ -1,4 +1,5 @@
-import '../css/support.css';
+// import '../css/support.css';
+import '../(deprecated)/support.css';
 
 export default function Support() {
   return (
