@@ -1,4 +1,4 @@
-import '../css/main.css';
+import '../css/main.css'; // main.css import
 
 import React from 'react';
 import { useState } from 'react';
@@ -15,9 +15,7 @@ function MainDiary(props) {
   outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
   // console.log(props.diary);
   // console.log(props.diary.length);
-  if (props.diary.length === 0 || props.diary === null || props.diary === '')
-    return <div>{outDiary}</div>;
-  else if (localStorage.getItem('localDiary') === null)
+  if (!localStorage.getItem('localDiary') || props.diary.length === 0)
     return <div>{outDiary}</div>;
   else {
     // if (props.diary.length > 0) {
@@ -45,9 +43,7 @@ function MainTodo(props) {
   // let outTodo = [];
   let outTodo = <div className="main-info">저장된 Todo 리스트가 없습니다!</div>;
   // console.log(props.task);
-  if (props.task === 'null' || props.task.length === 0)
-    return <div>{outTodo}</div>;
-  else if (!localStorage.getItem("localTasks"))
+  if (!localStorage.getItem("localTasks") || props.task.length === 0)
     return <div>{outTodo}</div>;
   else {
     outTodo = [];
@@ -69,9 +65,7 @@ function MainTodo(props) {
 function MainDday(props) {
   // let outDday = [];
   let outDday = <div className="main-info">저장된 D-Day가 없습니다!</div>;
-  if (props.dday === 'null' || props.dday.length === 0)
-    return <div>{outDday}</div>;
-  else if (!localStorage.getItem('localDday'))
+  if (!localStorage.getItem('localDday') || props.dday.length === 0)
     return <div>{outDday}</div>;
   else {
     outDday = [];
