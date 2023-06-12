@@ -39,7 +39,7 @@ export default function TodoNew(props) {
       localStorage.setItem('localTasks', JSON.stringify([...tasks, newTask]));
       setTask('');
     }
-    else ErrMsg(`Nothing Executed...`);
+    else ErrMsg(`항목을 입력하세요!`);
   };
 
   // 삭제하기

@@ -11,17 +11,16 @@ import Topclock from './topclock';
 
 // 다이어리 부분 출력
 function MainDiary(props) {
-  // let outDiary = null;
-  let outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
-  console.log(props.diary);
-  console.log(props.diary.length);
-  if (props.diary.length === 0 || props.diary === null || props.diary === '') {
-    outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
-    return <div>{outDiary}</div>
-  }
+  let outDiary = null;
+  outDiary = <div className="main-info">저장된 다이어리가 없습니다!</div>;
+  // console.log(props.diary);
+  // console.log(props.diary.length);
+  if (props.diary.length === 0 || props.diary === null || props.diary === '')
+    return <div>{outDiary}</div>;
+  else if (localStorage.getItem('localDiary') === null)
+    return <div>{outDiary}</div>;
   else {
-  // if (props.diary !== null || props.diary !== '') {
-    outDiary = 
+    // if (props.diary.length > 0) {
     outDiary = [];
     for (let i = 0; i < props.diary.length; i++) {
       let t = props.diary[i];
@@ -33,7 +32,7 @@ function MainDiary(props) {
           <div className="main-diary-date">{t.date}</div>
           <div className="main-diary-body">{t.body}</div>
           <hr className="main-body-hr" />
-        </div>
+        </div>,
       );
     }
     return <div className="diary-container">{outDiary}</div>;
@@ -43,11 +42,15 @@ function MainDiary(props) {
 
 // 투두 리스트 부분 출력
 function MainTodo(props) {
-  let outTodo = [];
+  // let outTodo = [];
+  let outTodo = <div className="main-info">저장된 Todo 리스트가 없습니다!</div>;
   // console.log(props.task);
-  if (props.task === 'null' || props.task === '')
-    outTodo = <div className="main-info">저장된 Todo 리스트가 없습니다!</div>;
+  if (props.task === 'null' || props.task.length === 0)
+    return <div>{outTodo}</div>;
+  else if (!localStorage.getItem("localTasks"))
+    return <div>{outTodo}</div>;
   else {
+    outTodo = [];
     for (let i = 0; i < props.task.length; i++) {
       let t = props.task[i];
       outTodo.push(
@@ -58,30 +61,34 @@ function MainTodo(props) {
         </div>
       );
     }
+    return <div>{outTodo}</div>;
   }
-  return <div>{outTodo}</div>;
 }
 
 // 디데이 부분 출력
 function MainDday(props) {
-  let outDday = [];
-  if (props.dday === 'null')
-    outDday = <div className="main-info">저장된 D-Day가 없습니다!</div>;
+  // let outDday = [];
+  let outDday = <div className="main-info">저장된 D-Day가 없습니다!</div>;
+  if (props.dday === 'null' || props.dday.length === 0)
+    return <div>{outDday}</div>;
+  else if (!localStorage.getItem('localDday'))
+    return <div>{outDday}</div>;
   else {
+    outDday = [];
     for (let i = 0; i < props.dday.length; i++) {
       let t = props.dday[i];
       outDday.push(
         <div key={t.id} className="">
           <hr className="main-body-hr" />
           <span className="item-dday">D-{t.date_finish}</span>
-          <span className="space"> </span>
+          <span className="space"> / </span>
           <span className="item-dday">{t.title}</span>
           <hr className="main-body-hr" />
         </div>
       );
     }
+    return <div>{outDday}</div>;
   }
-  return <div>{outDday}</div>;
 }
 
 // main.js 메인 코드
@@ -95,6 +102,8 @@ export default function Main(props) {
     if (localStorage.getItem('localDiary')) setDiary(JSON.parse(localStorage.getItem('localDiary')));
     if (localStorage.getItem('localTasks')) setTask(JSON.parse(localStorage.getItem('localTasks')));
   }, []);
+
+  // console.log(`from localStorage >> ${props.diary}`);
 
   // console.log(props.isLogin);
   let OutputArea = (
