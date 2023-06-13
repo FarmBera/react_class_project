@@ -152,7 +152,7 @@ export default function Diary(props) {
       const storedList = JSON.parse(localStorage.getItem('localDiary'));
       setArticle(storedList);
       setNextId(storedList.length);
-      // setMode('none');
+      setMode('none');
     }
   }, []);
 

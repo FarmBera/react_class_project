@@ -56,6 +56,7 @@ The React Project for Final Exam
 ### 메인 화면
 
 > JS파일 위치: components/main.js
+
 > localhost:3000/
 
 - 저장된 _Diary_, _ToDo_, _D-Day_ 항목이 보임
@@ -69,6 +70,7 @@ The React Project for Final Exam
 ### 다이어리 화면
 
 > JS파일 위치: components/diary.js
+
 > localhost:3000/diary
 
 - 상단에는 글을 쓸 수 있는 부분이 있음
@@ -82,6 +84,7 @@ The React Project for Final Exam
 ### ToDo List 화면
 
 > JS파일 위치: components/todo_new.js
+
 > localhost:3000/todo
 
 - 값을 입력하고 '추가' 버튼을 누르면 하단에 항목이 추가됨
@@ -93,6 +96,7 @@ The React Project for Final Exam
 ### D-Day 화면
 
 > JS파일 위치: components/dday.js
+
 > localhost:3000/dday
 
 - 값을 입력하고 `추가` 버튼을 누르면 하단에 항목이 추가됨
@@ -105,6 +109,7 @@ The React Project for Final Exam
 ### Login 페이지
 
 > JS파일 위치: components/login.js
+
 > localhost:3000/login
 
 - 아이디 & 비번을 입력할 수 있는 input 란이 있음
@@ -114,6 +119,7 @@ The React Project for Final Exam
 ### Register 페이지
 
 > JS파일 위치: components/register.js
+
 > localhost:3000/register
 
 - Register 페이지
