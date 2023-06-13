@@ -6,6 +6,9 @@ import logo from '../img/logo.png';
 
 // 헤더 영역
 export default function Head(props) {
+  /** useEffect 이용하여 localStorage에서 값 불러오려고 하였으나, 
+   * props 로 불러오는게 더 효율적이라고 판단하여 deprecated
+   */
   // useEffect(() => {
   //   if (!localStorage.getItem('isLogin')) {
   //     return;
@@ -15,6 +18,8 @@ export default function Head(props) {
   //   }
   // });
   // console.log(props.isLogin);
+
+  /** 헤더 출력 부분 */
   return (
     <header className="header">
       <div className="header">
@@ -34,7 +39,7 @@ export default function Head(props) {
               else window.location.href = '/login';
               // console.log(props.isLogin);
             }}>
-            {/* 로그인 여부에 따라서 보여지는 값 달라지게 설정 */}
+            {/* 삼항 연산자: 로그인 여부에 따라서 보여지는 값 달라지게 설정 */}
             {props.isLogin === 'true' ? 'LogOut' : 'LogIn'}
             {/* {isLoginlog} */}
           </a>

@@ -2,14 +2,14 @@ import '../css/diary.css';
 
 import { useState, useEffect } from 'react';
 
-// const Msg = `로그인 후에 이용하세요!`;
+/** 오류 메시지 띄우기 */
 const ErrMsg = Msg => {
   // const msg = `${input}`;
   alert(Msg);
   console.log(Msg);
 };
 
-// 다이어리에 값 삽입하는 컴포넌트
+/** 다이어리에 값 삽입하는 컴포넌트 */
 function DiaryInput(props) {
   return (
     <div className="diary-input">
@@ -19,7 +19,7 @@ function DiaryInput(props) {
           event.preventDefault();
           // console.log(`Login State: ${props.isLogin}`);
           if (props.isLogin === 'false') { ErrMsg('로그인 후 이용하세요'); return; }
-          else {
+          else { 
             const title = event.target.title.value;
             const date = event.target.date.value;
             const body = event.target.body.value;
@@ -58,12 +58,13 @@ function DiaryInput(props) {
   );
 }
 
-// 다이어리 내용 수정하는 컴포넌트
+/** 다이어리 내용 수정하는 컴포넌트 */
 function DiaryUpdate(props) {
   const [title, setTitle] = useState(props.title);
   const [date, setDate] = useState(props.date);
   const [body, setBody] = useState(props.body);
   
+  // 최종 출력
   return (
     <div className="diary-input">
       <h2>글 수정하기</h2>
