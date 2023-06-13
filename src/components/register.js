@@ -48,6 +48,7 @@ export default function Register() {
               console.log(userObj);
               userObj = JSON.stringify(userObj);
               localStorage.setItem('userInfo', userObj);
+              alert('회원가입 성공!');
               navigate('/'); // 메인 화면으로 이동
             }}>
             전송

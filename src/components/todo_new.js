@@ -19,21 +19,24 @@ export default function TodoNew(props) {
     // console.log(props.isLogin);
   }, []);
 
-  // 오류 메시지
+  /** 오류 메시지 */
   const ErrMsg = Msg => {
     alert(Msg);
     console.log(Msg);
     return;
   };
 
-  // 작업 추가하기
+  /** 작업 추가하기 */
   const addTask = event => {
     if (props.isLogin === 'false') {
       ErrMsg(`로그인 후 이용하세요!`);
       return;
     }
     if (task) {
-      const newTask = { id: new Date().getTime().toString(), title: task };
+      const newTask = { 
+        id: new Date().getTime().toString(),
+        title: task
+      };
       // console.log(newTask);
       setTasks([...tasks, newTask]);
       localStorage.setItem('localTasks', JSON.stringify([...tasks, newTask]));
@@ -42,20 +45,21 @@ export default function TodoNew(props) {
     else ErrMsg(`항목을 입력하세요!`);
   };
 
-  // 삭제하기
+  /** 삭제하기 */
   const DeleteContent = task => {
     const deleted = tasks.filter(t => t.id !== task.id);
     setTasks(deleted);
     localStorage.setItem('localTasks', JSON.stringify(deleted));
   };
 
-  // 모두 제거하기
+  /** 모두 제거하기 */
   const clearContent = () => {
     setTasks([]);
     localStorage.removeItem('localTasks');
   };
 
   // 경고 메시지 스타일 컴포넌트
+  /** 경고 메시지 스타일 컴포넌트 */
   const WarningStyle = styled.div`
     span {
       font-size: 35pt;
@@ -64,9 +68,13 @@ export default function TodoNew(props) {
   `;
 
   // 할 일 개수 보여주는 곳
+  /** badgeInf
+   * / 할 일 개수 보여줌 / 
+   */
   let badgeInfo = null;
   if (props.isLogin === 'false') {
     badgeInfo = (
+      // 스타일 컴포넌트 사용
       <WarningStyle>
         <div className="badge">
           <span className="">로그인 후 이용하세요!</span>
@@ -79,6 +87,7 @@ export default function TodoNew(props) {
       <div className="badge">
         해야 할 일 개수:
         <span>
+          {/* 삼항 연산자를 이용하여 저장된 값에 따라 분기 */}
           {!tasks.length
             ? ' 없음 '
             : tasks.length === 1
@@ -87,19 +96,6 @@ export default function TodoNew(props) {
             ? ` ${tasks.length} `
             : null}
         </span>
-        {/* <div className="badge">
-        해야 할 일이
-        {!tasks.length ? (
-          <span>없습니다.</span>
-        ) : tasks.length === 1 ? (
-          <div>
-            <span>{tasks.length}</span>
-            <p>개 있습니다. </p>
-          </div>
-        ) : tasks.length > 1 ? (
-          ` ${tasks.length} `
-        ) : null}
-        개 있습니다. */}
       </div>
     );
   }
@@ -115,7 +111,9 @@ export default function TodoNew(props) {
         />
         <button className="input-addBtn" onClick={addTask}>추가</button>
       </div>
+      {/* 로그인 상태에 따라서 분기 */}
       {props.isLogin === 'false' ? (
+        // 비어있는 element 출력
         <div></div>
       ) : (
         <>
@@ -152,6 +150,10 @@ export default function TodoNew(props) {
           )}
         </>
       )}
+      {/** 초기화 버튼 부분
+       * 로그인 상태가 false 라면, 버튼이 보이지 않음
+       * 로그인 상태가 true 라면, 버튼이 보여짐
+       */}
       {props.isLogin === 'false' || !tasks.length ? null : (
         <div className="item-bottom">
           <button className="clearBtn" onClick={() => clearContent()}>Clear</button>

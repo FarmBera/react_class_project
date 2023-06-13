@@ -97,6 +97,7 @@ export default function Login(props) {
               // console.log(`inputId>>${inputId}`);
               // console.log(`inputPw>>${inputPw}`);
               props.setLoginStatOK(); // 로그인 성공 함수 호출
+              alert('로그인 성공');
               navigate('/'); // 메인 페이지로 이동
             }}>전송</a>
         </div>

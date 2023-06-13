@@ -87,6 +87,9 @@ export default function Main(props) {
   let [task, setTask] = useState('null');
 
   useEffect(() => {
+    /** localStorage에서 import
+     * 저장된 D-day, Diary, ToDo 목록 가져와서 state 변수에 저장
+     */
     if (localStorage.getItem('localDday')) setDday(JSON.parse(localStorage.getItem('localDday')));
     if (localStorage.getItem('localDiary')) setDiary(JSON.parse(localStorage.getItem('localDiary')));
     if (localStorage.getItem('localTasks')) setTask(JSON.parse(localStorage.getItem('localTasks')));

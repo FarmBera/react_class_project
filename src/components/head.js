@@ -31,7 +31,7 @@ export default function Head(props) {
           <a href="/diary">Diary</a>
           <a href="/todo">TODO</a>
           <a href="/dday">D-Day</a>
-          <a href="/support">About</a>
+          {/* <a href="/support">About</a> */}
           <a href="/login"
             onClick={event => {
               event.preventDefault();
