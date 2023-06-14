@@ -44,8 +44,6 @@ function DiaryInput(props) {
         <p>
           <input id="title" dtype="text" placeholder="제목을 입력하세요" />
           <input id="date" type="date" />
-          {/* Below code is for TEST */}
-          {/* <input id="date" type="date" value="2023-06-23" /> */}
         </p>
         <p>
           <textarea id="body" placeholder="내용을 입력하세요"></textarea>

@@ -41,8 +41,6 @@ function Inputs(props) {
         <input id="inputTitle" type="text" placeholder="제목" />
         <input id="inputBody" type="text" placeholder="추가 내용" />
         <input id="inputDate" type="date" />
-        {/* Below code is for TEST */}
-        {/* <input id="inputDate" type="date" value="2023-06-23" /> */}
         <input id="inputSubmit" type="submit" value="추가" />
       </form>
     </div>
@@ -115,7 +113,6 @@ function Nav(props) {
                 props.deleteItems(t.id); // 삭제 수행
               }}>삭제</button>
           </div>
-          {/* <span> </span> */}
           <span className="item-dday">D-{t.date_finish}</span>
           <span className="item-dday">{t.date_current}</span>
           <span className="item-dday">{t.title}</span>
@@ -140,16 +137,6 @@ export default function Dday(props) {
     // { id: 0, date_current: 'Date sample', date_finish: 'Sample"', title: 'Sample Title', body: 'Sample Body', },
   ]);
 
-  /** id값 설정하는 곳에서 localStorage 불러오기를 하려고 했으나, 뭔가 꼬임 */
-  // let [nextId, setNextId] = useState(
-  //   localStorage.getItem('localDday')
-  //     ? JSON.parse(localStorage.getItem('localDday')).length
-  //     : 0,
-  // );
-  // console.log(`from LocalStorage>>${nextId}`);
-  // const [ddays, setDdays] = useState([]);
-  // let [titleMsg, setTitleMsg] = useState('나의 D-Day')
-
   // 첫 실행 시, localStorage에서 저장된 값 불러오기
   useEffect(() => {
     if (props.isLogin !== false && localStorage.getItem('localDday')) {
@@ -173,7 +160,7 @@ export default function Dday(props) {
     const date1 = new Date(); // 오늘 날짜
     const date2 = new Date(inputDate); // 입력한 날짜
     const DateDiff = date1.getTime() - date2.getTime(); // 차이점 계산
-    let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24));
+    let temp = Math.floor(DateDiff / (1000 * 60 * 60 * 24)); // 시간 계산
     // 계산 결과 음수로 나와서 양수로 변환, 및 당일 날짜이면 'Day' 로 출력
     if (temp < 0) temp = `${Math.abs(temp)}`;
     else if (temp > 0) temp = `-${temp}`;
@@ -281,9 +268,7 @@ export default function Dday(props) {
             <div className="info">예정된 일정이 없습니다!</div>
           ) : (
             <div>
-              {/* <hr className="headHR" /> */}
               <hr className="specialHR" />
-              {/* <hr className="headHR" /> */}
               <div className="container-dday">
                 <span className="item-dday">{headerItem.btn}</span>
                 <span className="item-dday">{headerItem.dday}</span>
@@ -291,7 +276,6 @@ export default function Dday(props) {
                 <span className="item-dday">{headerItem.title}</span>
                 <span className="item-dday">{headerItem.comment}</span>
               </div>
-              {/* <hr className="headHR" /> */}
               <hr className="specialHR" />
             </div>
           )}

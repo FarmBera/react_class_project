@@ -17,7 +17,6 @@ export default function Topclock(props) {
   // console.log(props.userid);
   return (
     <div>
-      {/* comments area ALL Deprecated */}
       {/* <span>{date.toLocaleTimeString()}</span> */}
       {/* <h2>Topclock Area</h2> */}
       {/* <h2>Hello [Username]</h2> */}
@@ -31,11 +30,11 @@ export default function Topclock(props) {
           <span className="month">
             <Clock id="month" format={'MMM'} ticking={false} timezone={'Asia/Seoul'} />
           </span>
-          {/* &nbsp; */}/
+          /
           <span className="second">
             <Clock id="second" format={'DD'} ticking={false} timezone={'Asia/Seoul'} />
           </span>
-          {/* &nbsp; */}/
+          /
           <span className="year">
             <Clock id="year" format={'YYYY'} ticking={false} timezone={'Asia/Seoul'} />
           </span>

@@ -136,12 +136,6 @@ export default function TodoNew(props) {
                         </svg>
                       </label>
                     </div>
-                    {/* <button
-                  className="custom-btn btn-3"
-                  // className="input-addBtn"
-                  onClick={() => DeleteContent(task)}>
-                  <span></span>
-                </button> */}
                     <span className="innertext fromLeft">{task.title}</span>
                   </div>
                 </div>
