@@ -19,10 +19,10 @@ export default function Register() {
   }, []);
   return (
     <div className="login-box">
-      <h1>Register</h1>
+      <h1>회원 등록</h1>
       <form id="register">
         <div className="user-box">
-          <h2>username</h2>
+          <h2>user ID</h2>
           <input id="userId" type="text"
             onChange={event => {
               setInputId(event.target.value);
@@ -30,7 +30,7 @@ export default function Register() {
           /><label>아이디를 입력해주세요</label>
         </div>
         <div className="user-box">
-          <h2>password</h2>
+          <h2>Password</h2>
           <input id="userPw" type="password"
             onChange={event => {
               setInputPw(event.target.value);
@@ -51,7 +51,7 @@ export default function Register() {
               alert('회원가입 성공!');
               navigate('/'); // 메인 화면으로 이동
             }}>
-            전송
+            회원가입
           </a>
         </div>
       </form>

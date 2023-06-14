@@ -58,7 +58,7 @@ export default function Login(props) {
   return (
     <div className="login-box">
       {/* 상단 제목 */}
-      <h1>Login Page</h1>
+      <h1>로그인</h1>
       {/* 로그인 form */}
       <form id="register">
         <div className="user-box">
@@ -99,7 +99,7 @@ export default function Login(props) {
               props.setLoginStatOK(); // 로그인 성공 함수 호출
               alert('로그인 성공');
               navigate('/'); // 메인 페이지로 이동
-            }}>전송</a>
+            }}>로그인</a>
         </div>
       </form>
     </div>
