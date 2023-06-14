@@ -30,15 +30,12 @@ body { text-align: center; }
   min-width: 500px;
 }
 
-/* input Area */
-/* input Area */
-/* input Area */
 
+/* 입력하는 부분 */
 .input-area {
   height: 50px;
   border-radius: 0px;
 }
-
 .input-area>.input-box {
   border: 2px solid #69a5f8;
   background-color: #11151a;
@@ -92,22 +89,16 @@ body { text-align: center; }
   height: 100px;
   display: grid;
   align-items: center;
-  /* justify-content: center; */
   grid-template-columns: 1fr 4fr;
-  /* grid-template-rows: repeat(1, 1fr); */
 }
 
-/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
-/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
-/* DelBtn  nnnnnnnnnnnnnnnnnnnnnnnnn */
+/* 삭제 버튼 */
 .delBtn {
   margin: 20px;
   width: 50px;
   height: 50px;
   text-align: center;
   align-items: center;
-  /* width: 70%; */
-  /* height: 70%; */
   justify-content: center;
   align-content: center;
   background-color: #a9f;
@@ -115,45 +106,26 @@ body { text-align: center; }
 .delBtn:hover {
   justify-content: center;
   align-content: center;
-  /* color: white; */
-  /* background-color: #11f; */
   transition: 1s ease-in-out;
 }
 
-/* InnerText tttttttttttttttttttttttttt */
-/* InnerText tttttttttttttttttttttttttt */
-/* InnerText tttttttttttttttttttttttttt */
+/* InnerText */
 .container-todo>.innertext {
   font-size: 30px;
   color: #fff;
-  /* display: inline-block; */
-  /* margin: 0; */
-  /* text-decoration: underline; */
 }
 .innertext:after {
   display: block;
   content: '';
   border-bottom: solid 3px #ffffff;
   transform: scaleX(1);
-  /* transition: transform 250ms ease-in-out; */
-  /* transform: scaleX(0); */
-  /* transform-origin: 0% 50%; */
 }
 .innertext:hover {
   transition: font-weight 0.2s ease-in-out;
   font-weight: bold;
 }
-.innertext:active {
-  text-transform: uppercase;
-}
+.innertext:active { text-transform: uppercase; }
 
-/* .innertext:hover:after {
-  transform: scaleX(1);
-} */
-
-/*.innertext.fromLeft:after {
-  transform-origin: 0% 50%;
-} */
 
 .clearBtn {
   border: 2px solid var(--LightBlue);

@@ -19,10 +19,7 @@ body {
   font-size: 25px;
 }
 
-/* input area ---------------- */
-/* input area ---------------- */
-/* input area ---------------- */
-
+/* 입력하는 부분 ---------------- */
 .top_input {
   display: flex;
   justify-content: center;
@@ -33,21 +30,11 @@ body {
   margin-right: 10px;
 }
 
-#inputBody {
-  width: 300px;
-}
+#inputBody { width: 300px; }
+#inputDate { height: 32px; }
+#inputSubmit { height: 34px; }
 
-#inputDate {
-  height: 32px;
-}
-
-#inputSubmit {
-  height: 34px;
-}
-
-#inputTitle,
-#inputDate,
-#inputBody {
+#inputTitle, #inputDate, #inputBody {
   color: var(--white);
   background-color: var(--VSCodeBG);
   outline: none;
@@ -55,16 +42,12 @@ body {
   transition: 1s;
 }
 
-#inputTitle:hover,
-#inputDate:hover,
-#inputBody:hover {
+#inputTitle:hover, #inputDate:hover, #inputBody:hover {
   transition: 10ms;
   border: 1px solid var(--YelGreen);
 }
 
-#inputTitle:focus,
-#inputDate:focus,
-#inputBody:focus {
+#inputTitle:focus, #inputDate:focus, #inputBody:focus {
   outline: none !important;
   border: 1px solid var(--Cyans);
   box-shadow: 0 0 20px var(--Cyans);
@@ -78,8 +61,6 @@ body {
   font-size: 15px;
   letter-spacing: 2px;
   width: 50px;
-  /* height: 50px; */
-  /* margin-left: 20px; */
   margin-bottom: 1px;
   transition: 1s;
 }
@@ -100,28 +81,7 @@ body {
   transition: 0s;
 }
 
-/* #inputSubmit {
-  padding: 10px;
-  color: var(--white);
-  background-color: var(--VSCodeBG);
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 4px;
-  border: 1px solid var(--LightBlue);
-  transition: 1s;
-}
-
-#inputSubmit:hover {
-  background-color: var(--Cyans);
-  border: 1px solid var(--Cyans);
-  color: #000;
-  box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
-  transition: all 0.2s;
-} */
-
-/* Visible Area -------------- */
-/* Visible Area -------------- */
-/* Visible Area -------------- */
+/* 보이는 영역 -------------- */
 .headHR {
   margin-left: 40px;
   margin-right: 40px;
@@ -139,15 +99,6 @@ body {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
 }
 
-/* Glow effect HR */
-/* .specialHR {
-  margin-left: 40px;
-  margin-right: 40px;
-  height: 12px;
-  border: 0;
-  box-shadow: inset 0 12px 12px -12px rgba(255, 255, 255, 0.8);
-} */
-
 .container-dday {
   margin-left: 40px;
   min-width: 500px;
@@ -158,17 +109,13 @@ body {
   justify-content: space-evenly;
 }
 
-.delbtn-container {
-  margin-left: -10px;
-}
-
+.delbtn-container { margin-left: -10px; }
 
 .delbtn {
   border: none;
   outline: none;
   background-color: var(--BGColor1);
   color: var(--white);
-  /* margin-left: -10px; */
   text-align: center;
   align-items: center;
   width: 45px;
@@ -180,7 +127,6 @@ body {
 }
 
 .delbtn:hover {
-  /* border: 1px solid var(--Cyans); */
   background-color: var(--Cyans);
   color: #000;
   box-shadow: 0 0 2px #21ebff55, 0 0 4px #21ebff, 0 0 8px #21ebff, 0 0 16px #21ebff;
@@ -192,19 +138,7 @@ body {
   justify-content: center;
   flex-basis: 70px;
 }
-
-.item-dday:nth-child(2) {
-  flex-basis: 100px;
-}
-
-.item-dday:nth-child(3) {
-  flex-basis: 110px;
-}
-
-.item-dday:nth-child(4) {
-  flex-basis: 100px;
-}
-
-.item-dday:nth-child(5) {
-  flex-basis: 300px;
-}
+.item-dday:nth-child(2) { flex-basis: 100px; }
+.item-dday:nth-child(3) { flex-basis: 110px; }
+.item-dday:nth-child(4) { flex-basis: 100px; }
+.item-dday:nth-child(5) { flex-basis: 300px; }

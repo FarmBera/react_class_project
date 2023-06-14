@@ -11,14 +11,12 @@
   transform: 0.5s;
   box-shadow: 0 0 0px #21ebffaa, 0 0 0px #21ebffaa, 0 0 00px #21ebffaa, 0 0 100px #21ebffaa;
 }
-
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align: left;
 }
-
 .login-box .user-box input {
   position: relative;
   width: 100%;
@@ -31,10 +29,8 @@
   outline: none;
   background: transparent;
 }
-
 .login-box .user-box label {
   position: relative;
-  /* left: 0; */
   text-align: left;
   top: -60px;
   padding: 10px 0;
@@ -43,7 +39,6 @@
   pointer-events: none;
   transform: 0.5s;
 }
-
 .login-box .user-box input:focus~label {
   top: -85px;
   left: 0;
@@ -64,7 +59,6 @@
   border: 1px solid #21ebff;
   margin: auto;
 }
-
 #submit:hover {
   background-color: #21ebff;
   color: #000;
@@ -86,7 +80,6 @@
   width: 80%;
   text-align: center;
 }
-
 #register a {
   margin: auto;
   color: #21ebff;

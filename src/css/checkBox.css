@@ -1,3 +1,4 @@
+/* todo list의 체크 박스 전용 css */
 .checkbox {
   --background: #fff;
   --border: #1e2235;
@@ -8,8 +9,6 @@
 }
 
 .checkbox input, .checkbox svg {
-  /* width: 21px; */
-  /* height: 21px; */
   width: 40px;
   height: 40px;
   display: block;
@@ -20,7 +19,6 @@
   outline: none;
   background: var(--background);
   border: none;
-  /* margin: 0; */
   margin-left: 60px;
   padding: 0;
   cursor: pointer;
@@ -36,11 +34,9 @@
   fill: none;
   stroke-width: 2.5px;
   stroke-linecap: round;
-  /* stroke-linejoin: round; */
   stroke: var(--stroke, var(--border-active));
   position: absolute;
   top: 0;
-  /* left: 0; */
   margin-left: 60px;
   width: 40px;
   height: 40px;
@@ -53,15 +49,9 @@
   animation: bounce 0.3s linear forwards 0.2s; }
 .checkbox.bounce svg { --scale: 0; }
 
-/* 튕기는 이펙트 수정 */
+/* 튕기는 Effect */
 @keyframes bounce {
   50% { transform: scale(1); /* 1.2 */ }
   75% { transform: scale(0.8); }
   100% { transform: scale(1); /* 1.2 */}
 }
-
-/* 튕기는 이펙트 기존 */
-/* @keyframes bounce {
-  50% { transform: scale(1.2); }
-  75% { transform: scale(0.9); }
-  100% { transform: scale(1); }} */

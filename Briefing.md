@@ -2,7 +2,9 @@
 
 The React Project for Final Exam
 
-> 코드 안에 comment있으니, 참고부탁드립니다.
+> 코드 안에도 comment있으니, 참고부탁드립니다.
+> 
+> 작동 화면은 Screenshot 폴더에 있습니다.
 
 ## X-Diary: 다이어리 웹사이트
 
@@ -47,7 +49,7 @@ The React Project for Final Exam
   - 웹사이트의 주소가 바뀌면 해당 페이지로 이동하게 구성함
 - 일부 페이지는 페이지가 처음 로드되었을 때 **useEffect**를 이용
   - localStorage에서 해당하는 키 값으로 저장된 값(예를 들면 로그인 상태, userId, userPassword, 저장된 D-Day 목록 등)을 불러와, 컴포넌트가 렌더링 하기 전에 값을 불러와 렌더링 할 수 있도록 구현
--
+- 
 
 ### 메인 화면
 

@@ -63,7 +63,6 @@ body { --inputHeight: 30px; }
   border-color: var(--YelGreen);
   color: #000;
   border-radius: 0px;
-  /* box-shadow: 0 0 2px var(--YelGreen), 0 0 4px var(--YelGreen), 0 0 8px var(--YelGreen), 0 0 16px var(--YelGreen); */
   transition: all 0.5s;
 }
 .diary-submit:active {
@@ -74,18 +73,12 @@ body { --inputHeight: 30px; }
   transition: 0s;
 }
 
-/* //////////////////// */
-/* //////////////////// */
-/* //////////////////// */
-
-/* visible content area */
+/* 컨텐츠 보이는 부분 */
 .diary-container {
   display: flex;
   flex-direction: column;
-  /* margin: 0 auto; */
   margin: 20px;
   align-items: center;
-  /* justify-content: center; */
 }
 
 body { --paddingVal: 20px }
